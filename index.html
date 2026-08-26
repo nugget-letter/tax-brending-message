@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>너겟 브랜드메시지 — 세무사를 위한 카카오톡 브랜드메시지</title>
+<meta name="description" content="신고철에만 연락하는 관계에서 벗어나세요. 콘텐츠 기획부터 발송까지 너겟이 대신합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<style>
+:root{
+  --ground:#100F0E;
+  --ground-2:#191614;
+  --ground-3:#221D1A;
+  --ink:#FFFFFF;
+  --ink-2:#A79E94;
+  --ink-3:#6E665E;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.20);
+
+  --amber:#FFB03A;
+  --orange:#FF6B2C;
+  --red:#F5333F;
+  --flame:linear-gradient(100deg,#FFB03A 0%,#FF6B2C 52%,#F5333F 100%);
+
+  --paper:#FFFFFF;
+  --paper-ink:#17140F;
+  --paper-ink-2:#5C554C;
+
+  --kakao:#FEE500;
+  --kakao-ground:#B2C7DA;
+
+  --font-display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:"IBM Plex Mono","IBM Plex Sans KR","Apple SD Gothic Neo",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --pad:clamp(20px,5vw,64px);
+  --shell:1160px;
+}
+
+*{box-sizing:border-box}
+
+/* 한글은 어절 단위로 줄바꿈 */
+body,h1,h2,h3,h4,p,li,td,th,span,a{word-break:keep-all;overflow-wrap:break-word}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.shell{width:100%;max-width:var(--shell);margin:0 auto;padding-inline:var(--pad)}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.28}
+h1{font-size:clamp(30px,5.4vw,58px);font-weight:900;line-height:1.22}
+h2{font-size:clamp(25px,3.6vw,42px)}
+h3{font-size:clamp(18px,1.9vw,22px)}
+p{margin:0}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--flame)}
+
+.grad{
+  background:var(--flame);-webkit-background-clip:text;background-clip:text;color:transparent;
+  padding-block:.2em;margin-block:-.2em;
+}
+.lede{color:var(--ink-2);font-size:clamp(15px,1.5vw,18px);max-width:60ch;text-wrap:pretty}
+.quote-block p,.step p,.benefit p,.checks li{text-wrap:pretty}
+/* 넓은 화면에서만 줄바꿈 */
+.br-wide{display:none}
+@media (min-width:721px){ .br-wide{display:inline} }
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(16,15,14,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
+.mark{height:26px;width:auto}
+.topbar .btn{padding:9px 18px;font-size:13px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-weight:600;font-size:15px;line-height:1;
+  padding:16px 26px;border-radius:999px;
+  text-decoration:none;border:1px solid transparent;
+  transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--flame);color:#22150B;box-shadow:0 10px 30px -14px rgba(255,107,44,.85)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -16px rgba(255,107,44,.95)}
+.btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink-2);background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.btn-kakao{background:var(--kakao);color:#3C1E1E}
+.btn-kakao:hover{transform:translateY(-2px);box-shadow:0 16px 36px -18px rgba(254,229,0,.8)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:999px}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(64px,9vw,120px);position:relative}
+section + section{border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(34px,5vw,60px)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(56px,8vw,104px) clamp(64px,9vw,110px);overflow:hidden;border-top:none}
+.hero::before{
+  content:"";position:absolute;inset:-30% -10% auto -20%;height:150%;
+  background:radial-gradient(52% 46% at 22% 8%,rgba(255,107,44,.20),transparent 62%),
+             radial-gradient(38% 40% at 88% 34%,rgba(245,51,63,.14),transparent 65%);
+  pointer-events:none;
+}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(36px,5vw,68px);align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.hero h1 .grad{display:inline-block}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.hero-note{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;color:var(--ink-3);
+  display:flex;align-items:center;gap:8px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,176,58,.16)}
+
+/* ---------- kakao phone ---------- */
+.phone{
+  width:min(320px,100%);margin-inline:auto;
+  background:#0A0A0A;border:1px solid rgba(255,255,255,.16);
+  border-radius:34px;padding:9px;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.04) inset;
+}
+.phone-screen{background:var(--kakao-ground);border-radius:26px;overflow:hidden}
+.phone-bar{
+  background:#A5BCD1;color:#1B2733;text-align:center;
+  font-family:var(--font-display);font-weight:700;font-size:13px;
+  padding:14px 12px 12px;letter-spacing:-.01em;
+}
+.thread{padding:14px 12px 20px;display:flex;flex-direction:column;gap:10px;min-height:330px}
+.msg{display:flex;gap:8px;align-items:flex-start}
+.avatar{
+  width:26px;height:26px;border-radius:9px;flex:0 0 26px;
+  background:var(--flame);display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:900;font-size:12px;color:#fff;
+}
+.bubble{
+  background:#fff;color:#1B1B1B;border-radius:4px 14px 14px 14px;
+  padding:10px;max-width:225px;font-size:12.5px;line-height:1.6;
+  box-shadow:0 1px 2px rgba(20,35,50,.12);
+}
+.bubble .who{
+  font-family:var(--font-display);font-weight:700;font-size:11px;color:#57616B;
+  display:block;margin-bottom:7px;
+}
+.bubble img{border-radius:7px;margin-bottom:9px}
+.bubble strong{font-weight:600}
+.bubble .sub{color:#5F6B75;margin-top:7px;display:block}
+.time{font-size:10px;color:#4C5966;align-self:flex-end;padding-bottom:2px;font-family:var(--font-mono)}
+
+/* ---------- problem ---------- */
+.problem-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
+.quote-block{border-left:2px solid transparent;border-image:var(--flame) 1;padding-left:22px;display:flex;flex-direction:column;gap:14px}
+.quote-block p{color:var(--ink-2);font-size:clamp(15px,1.5vw,17px)}
+
+/* ---------- year strip ---------- */
+.year{display:flex;flex-direction:column;gap:22px;background:var(--ground-2);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,30px)}
+.year-row{display:flex;flex-direction:column;gap:10px}
+.year-label{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.year-label .k{font-family:var(--font-display);font-weight:700;font-size:14px}
+.year-label .v{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3)}
+.months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.m{
+  height:38px;border-radius:5px;background:rgba(255,255,255,.055);
+  display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:10px;color:var(--ink-3);
+}
+.m.on{background:rgba(255,176,58,.20);color:#FFC978}
+/* 12칸이 하나의 그라데이션을 나눠 갖도록 */
+.year-row.full .m{background-image:var(--flame);background-size:1200% 100%;color:#22150B;font-weight:500}
+.year-row.full .m:nth-child(1){background-position-x:0%}
+.year-row.full .m:nth-child(2){background-position-x:9.09%}
+.year-row.full .m:nth-child(3){background-position-x:18.18%}
+.year-row.full .m:nth-child(4){background-position-x:27.27%}
+.year-row.full .m:nth-child(5){background-position-x:36.36%}
+.year-row.full .m:nth-child(6){background-position-x:45.45%}
+.year-row.full .m:nth-child(7){background-position-x:54.54%}
+.year-row.full .m:nth-child(8){background-position-x:63.63%}
+.year-row.full .m:nth-child(9){background-position-x:72.72%}
+.year-row.full .m:nth-child(10){background-position-x:81.81%}
+.year-row.full .m:nth-child(11){background-position-x:90.9%}
+.year-row.full .m:nth-child(12){background-position-x:100%}
+.year-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
+
+/* ---------- stat band ---------- */
+.stat-band{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:center}
+.stat-num{font-family:var(--font-display);font-weight:900;font-size:clamp(52px,10vw,116px);line-height:1.02;letter-spacing:-.045em}
+.stat-cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:14px}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
+.step{
+  background:var(--paper);color:var(--paper-ink);
+  border-radius:16px;padding:clamp(22px,2.6vw,30px);
+  display:flex;flex-direction:column;gap:14px;
+}
+.step-n{
+  width:32px;height:32px;border-radius:50%;background:var(--flame);
+  display:grid;place-items:center;color:#fff;
+  font-family:var(--font-display);font-weight:800;font-size:15px;
+}
+.step h3{font-size:20px}
+.step p{color:var(--paper-ink-2);font-size:14.5px;line-height:1.7}
+
+/* ---------- benefits ---------- */
+.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.benefit{background:var(--ground);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px}
+.benefit .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:var(--orange)}
+.benefit p{color:var(--ink-2);font-size:14.5px}
+
+/* ---------- compare ---------- */
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+th,td{padding:18px clamp(16px,2.4vw,28px);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;background:var(--ground-2);
+}
+tbody td:first-child{color:var(--ink-3)}
+tbody td:last-child{color:var(--ink);font-weight:500}
+thead th:last-child{color:#FFC978}
+tbody tr:last-child td{border-bottom:none}
+td .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* 좁은 화면에서는 표를 세로로 쌓아 가로 스크롤을 없앤다 */
+@media (max-width:620px){
+  .compare-wrap{overflow-x:visible}
+  table{min-width:0}
+  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  tbody tr{display:block;border-bottom:1px solid var(--line)}
+  tbody tr:last-child{border-bottom:none}
+  tbody td{display:block;border:none;padding:14px 20px 0}
+  tbody td:last-child{padding-bottom:18px}
+  tbody td::before{
+    content:attr(data-label);display:block;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin-bottom:4px;
+  }
+  tbody td:last-child::before{color:#FFC978}
+}
+
+/* ---------- samples ---------- */
+.samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,48px);align-items:start}
+.sample{display:flex;flex-direction:column;gap:18px;align-items:center}
+.sample-tag{
+  background:var(--ground-3);border:1px solid var(--line);border-radius:999px;
+  padding:8px 16px;font-size:13px;font-weight:500;
+}
+
+.offer-note{margin-top:16px}
+
+/* ---------- offer ---------- */
+.offer{
+  background:var(--ground-2);
+  border:1px solid rgba(255,176,58,.28);
+  border-radius:22px;
+  padding:clamp(28px,4vw,52px);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(24px,4vw,48px);align-items:center;position:relative;overflow:hidden;
+}
+.offer::after{
+  content:"";position:absolute;inset:auto -10% -60% 40%;height:200%;
+  background:radial-gradient(40% 40% at 50% 50%,rgba(255,107,44,.16),transparent 70%);pointer-events:none;
+}
+.offer-copy{display:flex;flex-direction:column;gap:16px;position:relative}
+.offer h2{font-size:clamp(22px,2.8vw,34px)}
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;position:relative}
+.checks li{display:flex;gap:11px;align-items:flex-start;color:var(--ink-2);font-size:14.5px;line-height:1.65}
+.checks svg{flex:0 0 18px;margin-top:4px}
+
+/* ---------- final ---------- */
+.final{text-align:left}
+.final-in{display:flex;flex-direction:column;gap:26px;align-items:flex-start}
+footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);font-size:13px}
+.foot-in{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.foot-in a{text-decoration:none;color:var(--ink-2)}
+.foot-in a:hover{color:var(--ink)}
+.foot-mark{height:20px;width:auto;opacity:.9}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+.msg{opacity:0;transform:translateY(10px);animation:pop .55s cubic-bezier(.2,.7,.3,1) forwards}
+.msg:nth-child(1){animation-delay:.35s}
+.msg:nth-child(2){animation-delay:1.05s}
+.msg:nth-child(3){animation-delay:1.75s}
+@keyframes pop{to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .msg{opacity:1;transform:none;animation:none}
+  .btn:hover{transform:none}
+  *{scroll-behavior:auto!important}
+}
+
+/* ---------- 신청 폼 모달 ---------- */
+.modal[hidden]{display:none}
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
+.modal-back{position:absolute;inset:0;background:rgba(8,7,6,.72);backdrop-filter:blur(3px)}
+.modal-card{
+  position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow-y:auto;
+  background:var(--paper);color:var(--paper-ink);border-radius:20px;
+  padding:clamp(26px,4vw,34px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
+  animation:modal-in .28s cubic-bezier(.2,.7,.3,1);
+}
+@keyframes modal-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.modal-card{animation:none}}
+.modal-x{
+  position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;border-radius:50%;
+  background:rgba(0,0,0,.05);color:var(--paper-ink-2);font-size:19px;line-height:1;cursor:pointer;
+}
+.modal-x:hover{background:rgba(0,0,0,.1)}
+.modal-eyebrow{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--orange);margin:0 0 8px;
+}
+.modal-card h3{font-size:23px;font-weight:900;letter-spacing:-.02em;margin:0}
+.modal-sub{color:var(--paper-ink-2);font-size:14px;line-height:1.6;margin:8px 0 22px}
+.field{display:block;margin-bottom:14px}
+.field > span.lb{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field .req{color:var(--red);margin-left:2px}
+.field input{
+  width:100%;font-family:inherit;font-size:15px;color:var(--paper-ink);
+  padding:12px 14px;border:1px solid #DCD6CE;border-radius:10px;background:#FCFBFA;
+}
+.field input::placeholder{color:#A9A099}
+.field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,107,44,.14)}
+.field.bad input{border-color:var(--red);background:#FEF6F6}
+.err{display:none;color:var(--red);font-size:12.5px;margin-top:5px}
+.field.bad .err{display:block}
+.agree{display:flex;gap:9px;align-items:flex-start;margin:18px 0 6px;font-size:12.5px;line-height:1.6;color:var(--paper-ink-2)}
+.agree input{margin-top:2px;width:15px;height:15px;accent-color:var(--orange);flex:none}
+.agree.bad{color:var(--red)}
+.agree-detail{margin:6px 0 0 24px;font-size:11.5px;line-height:1.65;color:#8A8078}
+.modal .btn{width:100%;justify-content:center;margin-top:16px}
+.modal-done{text-align:center;padding:14px 0 4px}
+.modal-done .check{
+  width:52px;height:52px;border-radius:50%;background:var(--flame);
+  display:grid;place-items:center;margin:0 auto 16px;color:#fff;font-size:26px;
+}
+.modal-done h3{margin-bottom:9px}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid,.problem-grid,.stat-band,.offer{grid-template-columns:minmax(0,1fr)}
+  .steps,.benefits,.samples{grid-template-columns:minmax(0,1fr)}
+  .stat-band{gap:20px}
+  .topbar .btn{display:none}
+  .months{gap:3px}
+  .m{height:32px;font-size:9px}
+}
+@media (max-width:640px){
+  .foot-in{flex-direction:column;align-items:flex-start;gap:12px}
+}
+@media (max-width:520px){
+  .m{height:28px}
+  .btn{width:100%;justify-content:center}
+  .cta-row{width:100%}
+}
+</style>
+
+<header class="topbar">
+  <div class="shell topbar-in">
+    <img class="mark" src="images/logo.png" alt="너겟 nugget">
+    <a class="btn btn-primary" href="#lead-modal" data-lead>무료로 시작하기</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">세무사를 위한 카카오톡 브랜드메시지</p>
+      <h1><span class="grad">2,450만</span> 고객을 <br class="br-wide">붙잡은 방법,<br>세무사님 사무실에도</h1>
+      <p class="lede">1년에 세 번 연락해서는 다음 신고철에 고객 기억에 남지 않습니다.<br class="br-wide">콘텐츠는 너겟이 쓰고, 발송까지 대신합니다.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료로 써보기</a>
+        <a class="btn btn-kakao" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
+      </div>
+      <p class="hero-note"><span class="dot"></span>선착순 10분, 한 달 무료 체험</p>
+    </div>
+
+    <div class="hero-phone rv">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-bar">너겟 세무사</div>
+          <div class="thread">
+            <div class="msg">
+              <div class="avatar">n</div>
+              <div class="bubble">
+                <span class="who">너겟 세무사</span>
+                <img src="images/car.jpg" alt="법인 차량 콘텐츠 이미지" width="285" height="219">
+                <strong>🚗 사업용 차, 어떤 차 사야 세금도 아낄 수 있을까요?</strong>
+                <span class="sub">사업하다 보면 다들 한 번쯤 좋은 차를 타고 싶다는 생각이 들잖아요.</span>
+              </div>
+              <span class="time">오전 9:00</span>
+            </div>
+            <div class="msg">
+              <div class="avatar">n</div>
+              <div class="bubble">
+                <strong>💸 부가세, 이것만 챙겨도 덜 냅니다</strong>
+                <span class="sub">부가가치세를 줄이는 핵심은 매입세액 공제예요.</span>
+              </div>
+              <span class="time">오전 9:01</span>
+            </div>
+            <div class="msg" style="justify-content:flex-end">
+              <span class="time">오전 9:12</span>
+              <div class="bubble" style="background:var(--kakao);border-radius:14px 4px 14px 14px">
+                세무사님, 저희 법인차 이거 물어보려던 참이었어요!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">이런 고민 있으신가요</p>
+      <h2>신고가 끝나면,<br>연락도 같이 끝납니다</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="quote-block rv">
+        <p>다음 신고철에 고객이 세무사님 이름을 기억하고 있을까요? 대부분은 <strong style="color:var(--ink)">검색창부터 엽니다</strong>.</p>
+        <p>그 아홉 달 사이에도 고객은 궁금한 게 생깁니다. 보험, 재무설계, 절세 상담. 그런데 그 질문은 다른 사람에게 갑니다. 세무사님이 못해서가 아니라, 그 순간에 떠오르지 않아서입니다.</p>
+      </div>
+
+      <div class="year rv">
+        <div class="year-row">
+          <div class="year-label"><span class="k">지금 — 신고철에만 연결</span><span class="v">3 / 12</span></div>
+          <div class="months">
+            <div class="m on">1</div><div class="m">2</div><div class="m">3</div><div class="m">4</div>
+            <div class="m on">5</div><div class="m">6</div><div class="m on">7</div><div class="m">8</div>
+            <div class="m">9</div><div class="m">10</div><div class="m">11</div><div class="m">12</div>
+          </div>
+        </div>
+        <div class="year-row full">
+          <div class="year-label"><span class="k">너겟 — 1년 내내 연결</span><span class="v">12 / 12</span></div>
+          <div class="months">
+            <div class="m">1</div><div class="m">2</div><div class="m">3</div><div class="m">4</div>
+            <div class="m">5</div><div class="m">6</div><div class="m">7</div><div class="m">8</div>
+            <div class="m">9</div><div class="m">10</div><div class="m">11</div><div class="m">12</div>
+          </div>
+        </div>
+        <p class="year-foot">부가세 1·7월, 종합소득세 5월. 고객에게 연락하는 건 사실상 이 세 번이 전부입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">다들 아시는 그 서비스</p>
+      <h2>삼쩜삼도 <span class="grad">같은 이유로</span><br>카톡 메시지를 보냅니다</h2>
+    </div>
+    <div class="stat-band rv">
+      <div>
+        <div class="stat-num grad">2,450만</div>
+        <p class="stat-cap">삼쩜삼 누적 고객</p>
+      </div>
+      <p class="lede">삼쩜삼은 신고철마다 2,450만 명에게 카카오톡을 보냅니다. 고객이 잊지 않게 하는 게 그만큼 중요합니다. 너겟은 그걸 세무사 사무실 한 곳에서도 할 수 있게 만들었습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">어떻게 작동하나요</p>
+      <h2>세 단계 중 세무사님이 하실 일은 하나입니다</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-n">1</div>
+        <h3>너겟이 씁니다</h3>
+        <p>그달의 세무·경제 이슈를 찾아 원고까지 만듭니다.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-n">2</div>
+        <h3>세무사님이 봅니다</h3>
+        <p>발송 일주일 전에 원고를 보내드립니다. 고칠 곳이 있으면 말씀만 주세요.</p>
+      </div>
+      <div class="step rv">
+        <div class="step-n">3</div>
+        <h3>알아서 나갑니다</h3>
+        <p>세무사님 카카오톡 플러스친구로 정해진 날, 정해진 시간에 발송됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">세무사님이 얻는 것</p>
+      <h2>세무사님이 잊고 계셔도,<br>고객은 기억합니다</h2>
+    </div>
+    <div class="benefits rv">
+      <div class="benefit">
+        <span class="tag">01 — 작성 부담</span>
+        <h3>쓸 사람을 구하지 않아도 됩니다</h3>
+        <p>세무·경제 콘텐츠만 쓰는 팀이 대신 씁니다. 사무실에 사람을 붙이거나, 밤에 원고를 붙들 일이 없습니다.</p>
+      </div>
+      <div class="benefit">
+        <span class="tag">02 — 고객 접점</span>
+        <h3>고객 카톡에 매달 이름이 뜹니다</h3>
+        <p>정해진 주기로 사무실 이름이 뜹니다. 광고가 아니라 세금 이야기라서 고객이 열어봅니다.</p>
+      </div>
+      <div class="benefit">
+        <span class="tag">03 — 운영 시간</span>
+        <h3>관리할 게 없습니다</h3>
+        <p>정해진 날, 정해진 시간에 나갑니다. 발송 버튼을 누를 사람도 따로 필요 없습니다.</p>
+      </div>
+      <div class="benefit">
+        <span class="tag">04 — 부가 상담</span>
+        <h3>고객이 먼저 연락해 옵니다</h3>
+        <p>“이거 저희도 되나요?” 하고 걸려 오는 전화가 생깁니다. 보험이나 컨설팅 이야기는 그때 꺼내는 게 제일 쉽습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">직접 운영하신다면</p>
+      <h2>같은 일을 직접 하면<br>매달 하루가 꼬박 듭니다</h2>
+    </div>
+    <div class="compare-wrap rv">
+      <table>
+        <thead>
+          <tr><th scope="col">직접 운영</th><th scope="col">너겟 이용</th></tr>
+        </thead>
+        <tbody>
+          <tr><td data-label="직접 운영">월 <span class="num">7~8시간</span> 소요</td><td data-label="너겟 이용">월 <span class="num">0분</span></td></tr>
+          <tr><td data-label="직접 운영">쓰고 디자인할 사람이 필요</td><td data-label="너겟 이용">너겟 팀이 씁니다</td></tr>
+          <tr><td data-label="직접 운영">두어 달 지나면 흐지부지</td><td data-label="너겟 이용">빠지는 달 없이 발송</td></tr>
+          <tr><td data-label="직접 운영">잘못 나가면 거래처에서 전화</td><td data-label="너겟 이용">나가기 전 세무사님이 확인</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLES -->
+<section>
+  <div class="shell">
+    <div class="sec-head rv">
+      <p class="eyebrow">실제 이런 콘텐츠가 발송됩니다</p>
+      <h2>고객이 검색창에 치던 걸,<br>세무사님 이름으로 보냅니다</h2>
+      <p class="lede">아래 ‘너겟 세무사’ 자리에 세무사님 사무실 이름과 연락처가 들어갑니다.</p>
+    </div>
+    <div class="samples">
+      <div class="sample rv">
+        <span class="sample-tag">법인 차량 관련 콘텐츠</span>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">너겟 세무사</div>
+            <div class="thread" style="min-height:0">
+              <div class="msg" style="animation:none;opacity:1;transform:none">
+                <div class="avatar">n</div>
+                <div class="bubble">
+                  <span class="who">너겟 세무사</span>
+                  <img src="images/car.jpg" alt="법인 차량 콘텐츠" width="285" height="219">
+                  <strong>🚗 사업용 차, 어떤 차 사야 세금도 아낄 수 있을까요?</strong>
+                  <span class="sub">사업하다 보면 다들 한 번쯤 좋은 차를 타고 싶다는 생각이 들잖아요. 그런데 사업용으로 차를 사면 세금까지 아낄 수 있다는 사실, 알고 계셨나요?</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample rv">
+        <span class="sample-tag">부가세 관련 콘텐츠</span>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">너겟 세무사</div>
+            <div class="thread" style="min-height:0">
+              <div class="msg" style="animation:none;opacity:1;transform:none">
+                <div class="avatar">n</div>
+                <div class="bubble">
+                  <span class="who">너겟 세무사</span>
+                  <img src="images/coins.jpg" alt="부가세 콘텐츠" width="285" height="219">
+                  <strong>💸 부가세, 이것만 챙겨도 덜 냅니다</strong>
+                  <span class="sub">부가가치세를 줄이는 핵심은 매입세액 공제예요. 사업 관련 지출을 했다면, 반드시 세금계산서·신용카드 영수증·현금영수증으로 받아야 해요.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section>
+  <div class="shell">
+    <div class="offer rv">
+      <div class="offer-copy">
+        <p class="eyebrow">무료 체험 모집 중</p>
+        <h2>먼저 신청하신 <span class="grad">열 분</span>은<br>한 달 무료입니다</h2>
+        <p class="lede">사무실 이름과 연락처를 넣은 메시지가 한 달 동안 고객에게 나갑니다. 맛보기가 아니라 실제 발송입니다.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#lead-modal" data-lead>무료 체험 신청하기</a>
+        </div>
+        <p class="hero-note offer-note"><span class="dot"></span>열 분이 차면 모집을 닫습니다</p>
+      </div>
+      <ul class="checks">
+        <li>
+          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>준비하실 건 <strong style="color:var(--ink)">카카오톡 비즈니스 계정</strong> 하나입니다. 세팅도 운영도 너겟이 합니다.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>고객사 기본 정보만 한 번 넣어주시면 됩니다. 그 외에 신경 쓰실 게 없습니다.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <span>나가기 전에 미리 보시고, 마음에 안 들면 고쳐달라고 하시면 됩니다.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="shell final-in">
+    <h2 class="rv">고객이 <span class="grad">검색창</span>을 열기 전에,<br>세무사님이 먼저 떠오르게</h2>
+    <div class="cta-row rv">
+      <a class="btn btn-primary" href="mailto:won@nugget.im?subject=%5B%EB%84%88%EA%B2%9F%20%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A9%94%EC%8B%9C%EC%A7%80%5D%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98">won@nugget.im 으로 문의하기</a>
+      <a class="btn btn-kakao" href="#" id="kakao-cta-2">카카오톡으로 상담하기</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="shell foot-in">
+    <img class="foot-mark" src="images/logo.png" alt="너겟 nugget">
+    <span>세무사 사무실의 카카오톡 메시지를 대신 보냅니다</span>
+    <a href="mailto:won@nugget.im">도입 문의 · won@nugget.im</a>
+  </div>
+</footer>
+<!-- 무료 체험 신청 폼 -->
+<div class="modal" id="lead-modal" hidden="">
+  <div class="modal-back" data-close=""></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="lead-title">
+    <button class="modal-x" type="button" data-close="" aria-label="닫기">×</button>
+
+    <div id="lead-body">
+      <p class="modal-eyebrow">무료 체험 신청</p>
+      <h3 id="lead-title">한 달 무료로 써보기</h3>
+      <p class="modal-sub">신청해주시면 1영업일 안에 연락드립니다.</p>
+
+      <form id="lead-form" novalidate="">
+        <label class="field" id="f-name">
+          <span class="lb">이름<span class="req">*</span></span>
+          <input name="name" autocomplete="name" placeholder="홍길동">
+          <span class="err">이름을 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-office">
+          <span class="lb">세무사 사무실 이름<span class="req">*</span></span>
+          <input name="office" autocomplete="organization" placeholder="○○세무회계">
+          <span class="err">사무실 이름을 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-phone">
+          <span class="lb">연락처<span class="req">*</span></span>
+          <input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-1234-5678">
+          <span class="err">연락처를 정확히 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-email">
+          <span class="lb">이메일<span class="req">*</span></span>
+          <input name="email" type="email" autocomplete="email" placeholder="name@example.com">
+          <span class="err">이메일을 정확히 입력해주세요.</span>
+        </label>
+
+        <label class="agree" id="f-agree">
+          <input type="checkbox" name="agree">
+          <span>개인정보 수집·이용에 동의합니다 <span class="req">(필수)</span></span>
+        </label>
+        <p class="agree-detail">
+          수집 항목: 이름, 사무실 이름, 연락처, 이메일 · 이용 목적: 무료 체험 상담 및 서비스 안내 ·
+          보유 기간: 문의 처리 후 1년, 이후 파기. 동의를 거부하실 수 있으나 이 경우 신청이 어렵습니다.
+        </p>
+
+        <button class="btn btn-primary" type="submit" id="lead-submit">신청하기</button>
+      </form>
+    </div>
+
+    <div id="lead-done" class="modal-done" hidden="">
+      <div class="check">✓</div>
+      <h3>신청이 접수되었습니다</h3>
+      <p class="modal-sub">1영업일 안에 연락드리겠습니다. 감사합니다.</p>
+      <button class="btn btn-primary" type="button" data-close="">닫기</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ── 신청 폼 ──────────────────────────────────────────────
+   FORM_ENDPOINT 에 폼 수집 주소를 넣으면 그쪽으로 전송됩니다.
+   (예: Formspree "https://formspree.io/f/abcdwxyz")
+   비워두면 입력값을 채운 메일 앱이 열립니다.            */
+var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq72zCelFe0mBBJLG3Mv5R42ew4yLGegSkR8SuFxyVK4un7gmTYQ/exec";
+
+(function(){
+  var modal = document.getElementById("lead-modal");
+  if (!modal) return;
+  var form   = document.getElementById("lead-form");
+  var bodyEl = document.getElementById("lead-body");
+  var doneEl = document.getElementById("lead-done");
+  var btn    = document.getElementById("lead-submit");
+  var lastFocus = null;
+
+  function openModal(e){
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    var first = form.querySelector("input");
+    if (first) first.focus();
+  }
+  function closeModal(){
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll("[data-lead]").forEach(function(b){
+    b.addEventListener("click", openModal);
+  });
+  modal.addEventListener("click", function(e){
+    if (e.target.hasAttribute && e.target.hasAttribute("data-close")) closeModal();
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  /* 유입 경로. 문자에는 nugget.im/tax?s=sms 처럼 붙여 보내면 구분됩니다. */
+  function leadSource(){
+    try{
+      var q = new URLSearchParams(location.search);
+      return q.get("utm_source") || q.get("s")
+          || (document.referrer ? "ref:" + document.referrer : "direct");
+    }catch(e){ return "unknown"; }
+  }
+
+  function mark(id, isBad){
+    document.getElementById(id).classList.toggle("bad", isBad);
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var el = form.elements;
+    var v = {
+      name:   el.name.value.trim(),
+      office: el.office.value.trim(),
+      phone:  el.phone.value.trim(),
+      email:  el.email.value.trim()
+    };
+    var digits = v.phone.replace(/[^0-9]/g, "");
+    var checks = [
+      ["f-name",   v.name.length === 0],
+      ["f-office", v.office.length === 0],
+      ["f-phone",  digits.length < 9 || digits.length > 11],
+      ["f-email",  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)],
+      ["f-agree",  !el.agree.checked]
+    ];
+    var firstBad = null;
+    checks.forEach(function(c){
+      mark(c[0], c[1]);
+      if (c[1] && !firstBad) firstBad = c[0];
+    });
+    if (firstBad){
+      var f = document.getElementById(firstBad).querySelector("input");
+      if (f) f.focus();
+      return;
+    }
+
+    if (FORM_ENDPOINT){
+      btn.disabled = true;
+      btn.textContent = "보내는 중…";
+
+      var payload = new URLSearchParams({
+        name: v.name, office: v.office, phone: v.phone, email: v.email,
+        agree: "동의", source: leadSource()
+      });
+      /* 구글 Apps Script 는 응답에 CORS 헤더를 주지 않는다.
+         no-cors 로 보내면 전송은 되지만 응답은 읽을 수 없다. */
+      var isSheets = /script\.google\.com/.test(FORM_ENDPOINT);
+      var opts = isSheets
+        ? { method: "POST", mode: "no-cors", body: payload }
+        : { method: "POST", body: payload, headers: { "Accept": "application/json" } };
+
+      fetch(FORM_ENDPOINT, opts).then(function(r){
+        if (!isSheets && !r.ok) throw new Error("bad response");
+        finish("신청이 접수되었습니다", "1영업일 안에 연락드리겠습니다. 감사합니다.");
+      }).catch(function(){
+        btn.disabled = false;
+        btn.textContent = "신청하기";
+        mark("f-agree", false);
+        alert("전송에 실패했습니다. 잠시 후 다시 시도하시거나 won@nugget.im 으로 보내주세요.");
+      });
+    } else {
+      var lines = [
+        "이름: " + v.name,
+        "사무실: " + v.office,
+        "연락처: " + v.phone,
+        "이메일: " + v.email,
+        "",
+        "개인정보 수집·이용에 동의합니다."
+      ];
+      window.location.href = "mailto:won@nugget.im"
+        + "?subject=" + encodeURIComponent("[너겟] 무료 체험 신청 - " + v.office)
+        + "&body="    + encodeURIComponent(lines.join("\n"));
+      finish("메일 앱이 열렸습니다", "내용을 확인하시고 보내주시면 접수됩니다.");
+    }
+  });
+
+  function finish(title, sub){
+    doneEl.querySelector("h3").textContent = title;
+    doneEl.querySelector(".modal-sub").textContent = sub;
+    bodyEl.hidden = true;
+    doneEl.hidden = false;
+    alert(title + "\n" + sub);
+  }
+})();
+
+/* 카카오톡 채널 주소를 아래 따옴표 안에 넣으면 버튼이 활성화됩니다.
+   비워두면 카카오톡 버튼은 표시되지 않습니다. (예: "http://pf.kakao.com/_xxxxx") */
+var KAKAO_URL = "";
+
+(function(){
+  var kakaoBtns = document.querySelectorAll(".btn-kakao");
+  kakaoBtns.forEach(function(b){
+    if (KAKAO_URL) { b.href = KAKAO_URL; b.target = "_blank"; b.rel = "noopener"; }
+    else { b.remove(); }
+  });
+})();
+
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach(function(el){ el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  els.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + "ms"; io.observe(el); });
+})();
+</script>
+</body>
+</html>
