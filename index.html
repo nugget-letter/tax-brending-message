@@ -199,6 +199,18 @@ section + section{border-top:1px solid var(--line)}
 .year-row.full .m:nth-child(12){background-position-x:100%}
 .year-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
 
+/* 본문 속 질문 목록 */
+.qlist{display:flex;flex-direction:column;gap:9px;margin:4px 0 2px}
+.qlist li{position:relative;padding-left:17px;color:var(--ink-2);font-size:clamp(15px,1.5vw,17px);line-height:1.6;text-wrap:pretty}
+.qlist li::before{content:"";position:absolute;left:0;top:.68em;width:8px;height:1px;background:var(--line-strong)}
+
+/* 섹션을 닫는 한 마디 */
+.punch{max-width:44ch;margin-top:clamp(36px,5vw,56px);padding-top:clamp(24px,3vw,34px);border-top:1px solid var(--line);
+  font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.5vw,28px);line-height:1.42;letter-spacing:-.02em;
+  color:var(--ink);text-wrap:balance}
+.punch em{display:block;margin-top:14px;font-style:normal;font-weight:500;font-size:.6em;line-height:1.62;
+  letter-spacing:0;color:var(--ink-2);text-wrap:pretty}
+
 /* 질문이 커지는 과정 */
 .ladder{display:flex;flex-direction:column;background:var(--ground-2);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,28px)}
 .rung{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--ground-3)}
@@ -446,9 +458,13 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <div class="problem-grid">
       <div class="quote-block rv">
         <p>신고가 끝나면 아홉 달은 서로 연락할 일이 없습니다. 거래처가 스무 곳일 때는 명절 인사라도 직접 챙기실 수 있었지만, 쉰 곳이 넘어가면 그러기 어렵다고 하시는 분들이 계신 것으로 압니다.</p>
-        <p>그 아홉 달 동안에도 대표님들에게는 질문이 생깁니다. 법인차를 사도 되는지, 직원을 한 명 더 두면 얼마가 드는지, 사업용 카드를 어디까지 쓸 수 있는지.</p>
+        <p>그 아홉 달 동안에도 대표님들에게는 질문이 생깁니다.</p>
+        <ul class="qlist">
+          <li>법인차를 사도 되는지</li>
+          <li>직원을 한 명 더 두면 얼마가 드는지</li>
+          <li>사업용 카드를 어디까지 쓸 수 있는지</li>
+        </ul>
         <p>작은 질문일수록 전화를 미루고 <strong style="color:var(--ink)">검색부터 하십니다</strong>. 그리고 검색 결과에는 매주 블로그를 쓰고 영상을 올리는 다른 사무실이 있습니다.</p>
-        <p>거래처가 옮겨 가는 이유가 세무사님의 실력일 리는 없습니다. 그 아홉 달 동안 다른 이름이 조금 더 자주 보였을 뿐입니다.</p>
       </div>
 
       <div class="year rv">
@@ -471,6 +487,8 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
         <p class="year-foot">부가세 1월과 7월, 종합소득세 5월. 거래처와 연락이 닿는 달은 사실상 이 세 번입니다. 매달 콘텐츠가 한 번씩 나가면 열두 달이 됩니다.</p>
       </div>
     </div>
+
+    <p class="punch rv">거래처가 옮겨 가는 이유가<br>세무사님의 실력일 리는 없습니다.<em>그 아홉 달 동안 다른 이름이 조금 더 자주 보였을 뿐입니다.</em></p>
   </div>
 </section>
 
@@ -608,12 +626,12 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
       <div class="ladder rv">
         <div class="rung">
           <div class="rung-head"><span class="rung-when">6월</span><span class="rung-tag">가벼운 질문</span></div>
-          <p class="rung-q">“사업용 카드로 이것도 결제해도 되나요?”</p>
+          <p class="rung-q">“이 영수증도 비용 처리 되나요?”</p>
         </div>
         <div class="rung-link" aria-hidden="true"></div>
         <div class="rung">
           <div class="rung-head"><span class="rung-when">9월</span><span class="rung-tag">짧은 상담</span></div>
-          <p class="rung-q">“직원을 한 명 더 두면 4대보험이 얼마나 늘까요?”</p>
+          <p class="rung-q">“올해 매출이 늘었는데 세금이 얼마나 나올까요?”</p>
         </div>
         <div class="rung-link" aria-hidden="true"></div>
         <div class="rung is-final">
@@ -631,8 +649,8 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
   <div class="shell">
     <div class="sec-head rv">
       <h2>직접 하시면 얼마나 드는지,<br>저희 기준으로 말씀드리면</h2>
+      <p class="lede">이슈를 고르고, 쓰고, 이미지를 만들고, 그 사이 세법이 바뀌지 않았는지 다시 확인합니다.<br>저희가 매일 하는 일이라, 제대로 된 콘텐츠 한 건에 서너 시간은 걸린다고 말씀드릴 수 있습니다.</p>
     </div>
-    <p class="lede rv" style="max-width:52ch;margin:0 auto 32px;text-align:center">이슈를 고르고, 쓰고, 이미지를 만들고, 그 사이 세법이 바뀌지 않았는지 다시 확인합니다. 저희가 매일 하는 일이라, 제대로 된 콘텐츠 한 건에 서너 시간은 걸린다고 말씀드릴 수 있습니다.</p>
     <div class="compare-wrap rv">
       <table>
         <thead>
