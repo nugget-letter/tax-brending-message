@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>세무사를 위한 카카오톡 브랜드메시지, 너겟</title>
-<meta name="description" content="신고철에만 연락하는 관계에서 벗어나세요. 콘텐츠 기획부터 발송까지 너겟이 대신합니다.">
+<title>세무사를 위한 카카오톡 브랜드메시지</title>
+<meta name="description" content="세무사님이 거래처에 연락하는 건 1년에 세 번입니다. 나머지 아홉 달을 채울 세무·경제 콘텐츠를 대신 쓰고, 세무사님 카카오톡 채널로 보내드립니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
@@ -251,7 +251,7 @@ td .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 }
 
 /* ---------- samples ---------- */
-.samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,48px);align-items:start}
+.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(24px,4vw,40px);align-items:start}
 .sample{display:flex;flex-direction:column;gap:18px;align-items:center}
 .sample-tag{
   background:var(--ground-3);border:1px solid var(--line);border-radius:999px;
@@ -368,7 +368,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 
 <header class="topbar">
   <div class="shell topbar-in">
-    <img class="mark" src="images/logo.png" alt="너겟 nugget">
+    <img class="mark" src="images/logo.png" alt="로고">
     <a class="btn btn-primary" href="#lead-modal" data-lead>무료로 시작하기</a>
   </div>
 </header>
@@ -379,8 +379,8 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 <section class="hero">
   <div class="shell hero-grid">
     <div class="hero-copy">
-      <h1>세무사님이 고객에게 연락하는 건<br class="br-wide"><span class="grad">1년에 세 번</span>입니다</h1>
-      <p class="lede">1월 부가세, 5월 종소세, 7월 부가세. 나머지 아홉 달은 조용합니다.<br>그 아홉 달을 채울 콘텐츠를 저희가 쓰고, 세무사님 카톡 채널로 대신 보냅니다.</p>
+      <h1>세무사님이 거래처에 연락하는 건<br class="br-wide"><span class="grad">1년에 세 번</span>입니다</h1>
+      <p class="lede">1월 부가세, 5월 종소세, 7월 부가세. 나머지 아홉 달은 조용합니다.<br>그 아홉 달을 채울 콘텐츠를 저희가 쓰고, 세무사님 카카오톡 채널로 대신 보냅니다.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료로 써보기</a>
         <a class="btn btn-kakao" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
@@ -391,12 +391,12 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <div class="hero-phone rv">
       <div class="phone">
         <div class="phone-screen">
-          <div class="phone-bar">너겟 세무사</div>
+          <div class="phone-bar">OO세무회계</div>
           <div class="thread">
             <div class="msg">
-              <div class="avatar">n</div>
+              <div class="avatar">세</div>
               <div class="bubble">
-                <span class="who">너겟 세무사</span>
+                <span class="who">OO세무회계</span>
                 <img src="images/car.jpg" alt="법인 차량 콘텐츠 이미지" width="285" height="219">
                 <strong>🚗 법인차로 여행 가면 탈세예요?</strong>
                 <span class="sub">연두색 번호판을 달았다고 자동으로 비용처리되는 건 아니에요.</span>
@@ -404,7 +404,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
               <span class="time">오전 9:00</span>
             </div>
             <div class="msg">
-              <div class="avatar">n</div>
+              <div class="avatar">세</div>
               <div class="bubble">
                 <strong>💸 직원 한 명 뽑으려면 얼마가 들까요?</strong>
                 <span class="sub">월급만 생각하시면 계산이 어긋나요.</span>
@@ -428,15 +428,16 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 <section>
   <div class="shell">
     <div class="sec-head rv">
-      <h2>고객이 세무사님을 잊는 데<br>악감정은 필요 없습니다</h2>
+      <h2>거래처를 잃는 데<br>불만은 필요 없습니다</h2>
     </div>
     <div class="problem-grid">
       <div class="quote-block rv">
-        <p>개업 3년쯤, 거래처가 50곳을 넘어가면 이상한 일이 시작됩니다. 소개로 들어온 초기 고객들이 하나둘, 조용히 빠져나갑니다.</p>
-        <p>스무 곳일 땐 명절마다 직접 인사를 돌렸습니다. 지금은 지난달에 누구와 통화했는지도 잘 기억나지 않습니다.</p>
-        <p>마케팅 담당자를 뽑기엔 이르고, 직접 콘텐츠를 쓰기엔 이미 늦은 시기입니다.</p>
-        <p>그 아홉 달 동안에도 고객은 궁금한 게 생깁니다. 법인차를 사도 되는지, 직원을 한 명 더 뽑으면 얼마가 드는지, 상속을 어떻게 준비해야 하는지.</p>
-        <p>그리고 그 질문은 <strong style="color:var(--ink)">검색창으로 갑니다</strong>. 세무사님 실력이 부족해서가 아닙니다. 그 순간에 떠오르지 않아서입니다.</p>
+        <p>신고가 끝나면 연락할 일이 없어집니다. 다음 부가세까지 다섯 달, 그동안 거래처에서 먼저 전화가 오는 일도 드뭅니다.</p>
+        <p>그런데 그 다섯 달 사이에도 대표님들은 세금이 궁금해집니다. 법인차를 사도 되는지, 직원을 한 명 더 뽑으면 얼마가 드는지, 사업용 카드를 어디까지 긁어도 되는지.</p>
+        <p>이때 세무사님께 바로 전화하는 대표님은 많지 않습니다. 대신 <strong style="color:var(--ink)">검색을 합니다</strong>. 그리고 검색 결과에는 매주 블로그를 쓰고 영상을 찍는 다른 세무사가 있습니다.</p>
+        <p>한두 번으로는 아무 일도 일어나지 않습니다. 다만 ‘세금은 저 사람’이라는 인상이 조금씩 그쪽으로 옮겨갑니다.</p>
+        <p>거래처가 스무 곳일 때는 명절마다 직접 인사를 돌릴 수 있었습니다. 쉰 곳이 넘어가면 그게 안 됩니다. 마케팅 담당자를 두기에는 이르고, 직접 콘텐츠를 만들기에는 이미 너무 바쁩니다.</p>
+        <p>기장 계약이 끊기는 건 대개 그 다음입니다. 화가 나서 옮기는 대표님은 드뭅니다. 그 사이에 다른 이름이 더 익숙해졌을 뿐입니다.</p>
       </div>
 
       <div class="year rv">
@@ -449,31 +450,83 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
           </div>
         </div>
         <div class="year-row full">
-          <div class="year-label"><span class="k">너겟은 1년 내내 연결</span><span class="v">12 / 12</span></div>
+          <div class="year-label"><span class="k">맡기시면 1년 내내 연결</span><span class="v">12 / 12</span></div>
           <div class="months">
             <div class="m">1</div><div class="m">2</div><div class="m">3</div><div class="m">4</div>
             <div class="m">5</div><div class="m">6</div><div class="m">7</div><div class="m">8</div>
             <div class="m">9</div><div class="m">10</div><div class="m">11</div><div class="m">12</div>
           </div>
         </div>
-        <p class="year-foot">고객 입장에서 세무사님이 존재하는 달은 1월, 5월, 7월입니다. 나머지 아홉 칸이 비어 있는 동안, 경쟁 세무사의 블로그와 유튜브는 계속 돌아갑니다.</p>
+        <p class="year-foot">거래처 입장에서 세무사님이 존재하는 달은 1월, 5월, 7월입니다. 나머지 아홉 칸이 비어 있는 동안에도 검색 결과는 계속 채워집니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROOF: 너겟 자체 레퍼런스 (네이버페이) -->
+<!-- SAMPLES -->
 <section>
   <div class="shell">
     <div class="sec-head rv">
-      <h2>저희가 누구인지부터<br>말씀드리는 게 순서 같습니다</h2>
+      <h2>설명을 더 하는 것보다<br>원고를 보시는 게 빠를 것 같습니다</h2>
+      <p class="lede">아래는 실제로 발송되는 콘텐츠입니다. ‘OO세무회계’ 자리에 세무사님 사무실 이름이 들어가고,<br>프로필과 하단 연락처도 전부 세무사님 것으로 바뀝니다.</p>
     </div>
-    <div class="stat-band rv">
-      <div>
-        <div class="stat-num grad">21개월</div>
-        <p class="stat-cap">네이버페이에 매일 글을 쓴 기간</p>
+    <div class="samples">
+      <div class="sample rv">
+        <span class="sample-tag">법인 차량 관련 콘텐츠</span>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">OO세무회계</div>
+            <div class="thread" style="min-height:0">
+              <div class="msg" style="animation:none;opacity:1;transform:none">
+                <div class="avatar">세</div>
+                <div class="bubble">
+                  <span class="who">OO세무회계</span>
+                  <img src="images/car.jpg" alt="법인 차량 콘텐츠" width="285" height="219">
+                  <strong>🚗 법인차로 여행 가면 탈세예요?</strong>
+                  <span class="sub">연두색 번호판을 달았다고 자동으로 비용처리되는 건 아니에요. 연간 차량 비용이 1,500만원을 넘으면 운행일지를 써야 하고, 거기 적은 업무 사용 비율만큼만 비용으로 인정돼요. 주말에 사적으로 쓴 게 확인되면 대표님 상여로 처분돼 소득세까지 붙는데요.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="lede">너겟은 경제 콘텐츠를 쓰는 팀입니다. 2024년 11월부터 네이버페이 금융콘텐츠팀에 콘텐츠를 공급하고 있습니다. 네이버페이 머니스토리에 올라가는 경제 뉴스를 월요일부터 토요일까지 하루 한 건, 재테크와 생활금융 콘텐츠를 매주 세 건 씁니다.<br><br>세무사님이 이런 서비스를 보실 때 제일 걸리는 건 두 가지라고 생각합니다. 내 이름으로 틀린 내용이 나가면 어쩌나, 두어 달 하다 흐지부지되는 거 아닌가. 저희가 지난 21개월 동안 매일 해온 일이 정확히 그 두 가지를 안 하는 일이었습니다.</p>
+      <div class="sample rv">
+        <span class="sample-tag">인건비 관련 콘텐츠</span>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">OO세무회계</div>
+            <div class="thread" style="min-height:0">
+              <div class="msg" style="animation:none;opacity:1;transform:none">
+                <div class="avatar">세</div>
+                <div class="bubble">
+                  <span class="who">OO세무회계</span>
+                  <img src="images/coins.jpg" alt="부가세 콘텐츠" width="285" height="219">
+                  <strong>💸 직원 한 명 뽑으려면 얼마가 들까요?</strong>
+                  <span class="sub">월급만 생각하시면 계산이 어긋나요. 4대보험 사업주 부담분, 퇴직금 적립, 연차수당까지 따지면 실제로 나가는 돈은 훨씬 커지거든요. 뽑기 전에 한 번 계산해보시는 게 좋아요.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sample rv">
+        <span class="sample-tag">신규 사업자 대상 콘텐츠</span>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-bar">OO세무회계</div>
+            <div class="thread" style="min-height:0">
+              <div class="msg" style="animation:none;opacity:1;transform:none">
+                <div class="avatar">세</div>
+                <div class="bubble">
+                  <span class="who">OO세무회계</span>
+                  <strong>🧾 사업자 내고 이건 하셨어요?</strong>
+                  <span class="sub">휴대폰 요금부터 사업자 카드로 바꾸세요. 월 10만원이면 1년에 120만원인데, 비용으로 넣으면 18만원 넘게 아낍니다. 챗GPT 같은 해외 AI 구독료는 사업자 카드로 결제해도 홈택스에 자동으로 안 잡히니 카드 명세를 따로 챙겨두셔야 하고요.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -513,7 +566,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
         <p>세무·경제 콘텐츠만 써온 팀이 대신 씁니다. 사무실에 사람을 붙이거나, 퇴근하고 원고를 붙들고 앉아 계실 일이 없습니다.</p>
       </div>
       <div class="benefit">
-        <h3>고객 카톡에 매달 사무실 이름이 뜹니다</h3>
+        <h3>거래처 카톡에 매달 사무실 이름이 뜹니다</h3>
         <p>광고 문구는 넣지 않습니다. 그달에 알아두면 도움 되는 세금 이야기만 들어갑니다. 그래서 열어봅니다.</p>
       </div>
       <div class="benefit">
@@ -521,7 +574,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
         <p>직접 하면 대개 두어 달을 못 넘깁니다. 신고철이 겹치면 제일 먼저 밀리는 일이니까요. 저희는 그게 본업입니다.</p>
       </div>
       <div class="benefit">
-        <h3>고객이 먼저 전화를 겁니다</h3>
+        <h3>거래처가 먼저 전화를 겁니다</h3>
         <p>“세무사님, 저희도 이거 되나요?” 하고 걸려 오는 전화가 생깁니다. 보험이나 컨설팅 이야기는 이때 꺼내는 게 제일 자연스럽습니다.</p>
       </div>
     </div>
@@ -538,65 +591,15 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <div class="compare-wrap rv">
       <table>
         <thead>
-          <tr><th scope="col">직접 운영</th><th scope="col">너겟 이용</th></tr>
+          <tr><th scope="col">직접 운영</th><th scope="col">맡기실 때</th></tr>
         </thead>
         <tbody>
-          <tr><td data-label="직접 운영">한 건에 <span class="num">3~4시간</span>, 월 4건이면 <span class="num">12~16시간</span></td><td data-label="너겟 이용">월 <span class="num">0분</span></td></tr>
-          <tr><td data-label="직접 운영">쓰고 디자인할 사람이 필요</td><td data-label="너겟 이용">저희 팀이 씁니다</td></tr>
-          <tr><td data-label="직접 운영">두어 달 지나면 흐지부지</td><td data-label="너겟 이용">빠지는 달 없이 발송</td></tr>
-          <tr><td data-label="직접 운영">잘못 나가면 거래처에서 전화</td><td data-label="너겟 이용">나가기 전 세무사님이 확인</td></tr>
+          <tr><td data-label="직접 운영">한 건에 <span class="num">3~4시간</span>, 월 4건이면 <span class="num">12~16시간</span></td><td data-label="맡기실 때">월 <span class="num">0분</span></td></tr>
+          <tr><td data-label="직접 운영">쓰고 디자인할 사람이 필요</td><td data-label="맡기실 때">저희 팀이 씁니다</td></tr>
+          <tr><td data-label="직접 운영">두어 달 지나면 흐지부지</td><td data-label="맡기실 때">빠지는 달 없이 발송</td></tr>
+          <tr><td data-label="직접 운영">잘못 나가면 거래처에서 전화</td><td data-label="맡기실 때">나가기 전 세무사님이 확인</td></tr>
         </tbody>
       </table>
-    </div>
-  </div>
-</section>
-
-<!-- SAMPLES -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>실제로 나가는 글은<br>이렇게 생겼습니다</h2>
-      <p class="lede">아래 ‘너겟 세무사’ 자리에 세무사님 사무실 이름이 들어갑니다.<br>프로필도, 하단 연락처도 전부 세무사님 것으로 바뀝니다.</p>
-    </div>
-    <div class="samples">
-      <div class="sample rv">
-        <span class="sample-tag">법인 차량 관련 콘텐츠</span>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar">너겟 세무사</div>
-            <div class="thread" style="min-height:0">
-              <div class="msg" style="animation:none;opacity:1;transform:none">
-                <div class="avatar">n</div>
-                <div class="bubble">
-                  <span class="who">너겟 세무사</span>
-                  <img src="images/car.jpg" alt="법인 차량 콘텐츠" width="285" height="219">
-                  <strong>🚗 법인차로 여행 가면 탈세예요?</strong>
-                  <span class="sub">연두색 번호판을 달았다고 자동으로 비용처리되는 건 아니에요. 연간 차량 비용이 1,500만원을 넘으면 운행일지를 써야 하고, 거기 적은 업무 사용 비율만큼만 비용으로 인정돼요. 주말에 사적으로 쓴 게 확인되면 대표님 상여로 처분돼 소득세까지 붙는데요.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sample rv">
-        <span class="sample-tag">인건비 관련 콘텐츠</span>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar">너겟 세무사</div>
-            <div class="thread" style="min-height:0">
-              <div class="msg" style="animation:none;opacity:1;transform:none">
-                <div class="avatar">n</div>
-                <div class="bubble">
-                  <span class="who">너겟 세무사</span>
-                  <img src="images/coins.jpg" alt="부가세 콘텐츠" width="285" height="219">
-                  <strong>💸 직원 한 명 뽑으려면 얼마가 들까요?</strong>
-                  <span class="sub">월급만 생각하시면 계산이 어긋나요. 4대보험 사업주 부담분, 퇴직금 적립, 연차수당까지 따지면 실제로 나가는 돈은 훨씬 커지거든요. 뽑기 전에 한 번 계산해보시는 게 좋아요.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -607,7 +610,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <div class="offer rv">
       <div class="offer-copy">
         <h2><span class="grad">열 곳</span>만 받습니다</h2>
-        <p class="lede">솔직하게 말씀드리면, 세무사 사무실을 상대로는 저희도 이번이 처음입니다. 그래서 한 번에 많이 받지 않습니다. 열 곳이면 저희가 한 곳씩 직접 붙어서 할 수 있는 숫자라서요.<br><br>한 달 동안, 세무사님 사무실 이름으로 실제 고객 카톡에 나갑니다. 목업이나 샘플 화면이 아닙니다.</p>
+        <p class="lede">한 달 동안 세무사님 사무실 이름으로 콘텐츠가 나갑니다. 비용은 받지 않습니다.<br><br>많이 받지 않는 이유는 단순합니다. 사무실마다 거래처 업종이 다르고, 그러면 나가야 할 글도 달라집니다. 열 곳이면 저희가 한 곳씩 원고를 직접 챙길 수 있습니다. 그보다 많아지면 그게 안 됩니다.<br><br>화면만 만들어 보여드리는 게 아니라, 거래처 휴대폰에 실제로 도착합니다.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#lead-modal" data-lead>무료 체험 신청하기</a>
         </div>
@@ -646,7 +649,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 
 <footer>
   <div class="shell foot-in">
-    <img class="foot-mark" src="images/logo.png" alt="너겟 nugget">
+    <img class="foot-mark" src="images/logo.png" alt="로고">
     <span>세무사 사무실 대신 글을 씁니다</span>
     <a href="mailto:won@nugget.im">도입 문의는 won@nugget.im</a>
   </div>
@@ -821,7 +824,7 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq
         "개인정보 수집과 이용에 동의합니다."
       ];
       window.location.href = "mailto:won@nugget.im"
-        + "?subject=" + encodeURIComponent("[너겟] 무료 체험 신청 - " + v.office)
+        + "?subject=" + encodeURIComponent("[무료 체험 신청] " + v.office)
         + "&body="    + encodeURIComponent(lines.join("\n"));
       finish("메일 앱이 열렸습니다", "내용을 확인하시고 보내주시면 접수됩니다.");
     }
