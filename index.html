@@ -199,6 +199,19 @@ section + section{border-top:1px solid var(--line)}
 .year-row.full .m:nth-child(12){background-position-x:100%}
 .year-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
 
+/* 질문이 커지는 과정 */
+.ladder{display:flex;flex-direction:column;background:var(--ground-2);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,28px)}
+.rung{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--ground-3)}
+.rung-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px}
+.rung-when{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3)}
+.rung-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
+.rung-q{font-size:clamp(14px,1.4vw,15.5px);line-height:1.55;color:var(--ink-2);text-wrap:pretty}
+.rung.is-final{border-color:transparent;background:linear-gradient(var(--ground-3),var(--ground-3)) padding-box,var(--flame) border-box}
+.rung.is-final .rung-q{color:var(--ink);font-weight:600}
+.rung.is-final .rung-tag{color:var(--amber)}
+.rung-link{width:1px;height:20px;margin:0 auto;background:linear-gradient(var(--line-strong),rgba(255,255,255,.04))}
+.ladder-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
+
 /* ---------- stat band ---------- */
 .stat-band{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:center}
 .stat-num{font-family:var(--font-display);font-weight:900;font-size:clamp(52px,10vw,116px);line-height:1.02;letter-spacing:-.045em}
@@ -585,10 +598,30 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <div class="sec-head rv">
       <h2>법인전환도, 상속 상담도<br>처음엔 사소한 질문이었을 겁니다</h2>
     </div>
-    <div class="quote-block rv" style="max-width:58ch;margin:0 auto">
-      <p>무게 있는 상담일수록 시작은 가벼운 질문 하나였던 경우가 많습니다. 세무사님께서 저희보다 훨씬 잘 아시는 일입니다.</p>
-      <p>다만 그 질문이 나오려면 그 전에 어떤 형태로든 대화가 있어야 합니다. 아홉 달 동안 서로 연락이 없으면, 대표님 입장에서는 사소한 것을 여쭙기가 조심스러워집니다.</p>
-      <p>매달 한 번씩 세무사님 이름으로 소식이 닿으면, 적어도 <strong style="color:var(--ink)">묻기는 편해집니다</strong>.</p>
+    <div class="problem-grid">
+      <div class="quote-block rv">
+        <p>무게 있는 상담일수록 시작은 가벼운 질문 하나였던 경우가 많습니다. 세무사님께서 저희보다 훨씬 잘 아시는 일입니다.</p>
+        <p>다만 그 질문이 나오려면 그 전에 어떤 형태로든 대화가 있어야 합니다. 아홉 달 동안 서로 연락이 없으면, 대표님 입장에서는 사소한 것을 여쭙기가 조심스러워집니다.</p>
+        <p>매달 한 번씩 세무사님 이름으로 소식이 닿으면, 적어도 <strong style="color:var(--ink)">묻기는 편해집니다</strong>.</p>
+      </div>
+
+      <div class="ladder rv">
+        <div class="rung">
+          <div class="rung-head"><span class="rung-when">6월</span><span class="rung-tag">가벼운 질문</span></div>
+          <p class="rung-q">“사업용 카드로 이것도 결제해도 되나요?”</p>
+        </div>
+        <div class="rung-link" aria-hidden="true"></div>
+        <div class="rung">
+          <div class="rung-head"><span class="rung-when">9월</span><span class="rung-tag">짧은 상담</span></div>
+          <p class="rung-q">“직원을 한 명 더 두면 4대보험이 얼마나 늘까요?”</p>
+        </div>
+        <div class="rung-link" aria-hidden="true"></div>
+        <div class="rung is-final">
+          <div class="rung-head"><span class="rung-when">11월</span><span class="rung-tag">수임</span></div>
+          <p class="rung-q">“법인전환, 지금 하는 게 맞을까요?”</p>
+        </div>
+        <p class="ladder-foot">세 번째 질문은 앞의 두 번이 있었기에 나옵니다.</p>
+      </div>
     </div>
   </div>
 </section>
