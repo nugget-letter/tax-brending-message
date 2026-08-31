@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한 달 무료 체험 신청 — 너겟</title>
+<meta name="description" content="세무사님을 위한 카카오톡 브랜드메시지, 한 달 무료 체험 신청">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --ground:#100F0E;
+  --ink:#FFFFFF;
+  --ink-2:#A79E94;
+  --ink-3:#6E665E;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.20);
+
+  --amber:#FFB03A;
+  --orange:#FF6B2C;
+  --red:#F5333F;
+  --flame:linear-gradient(100deg,#FFB03A 0%,#FF6B2C 52%,#F5333F 100%);
+
+  --paper:#FFFFFF;
+  --paper-ink:#17140F;
+  --paper-ink-2:#5C554C;
+
+  --font-display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+
+*{box-sizing:border-box}
+body,h1,h2,h3,p,li,label,span{word-break:keep-all;overflow-wrap:break-word}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+.wrap{width:min(460px,100%)}
+
+.brand{
+  display:flex;align-items:center;gap:8px;justify-content:center;
+  margin-bottom:22px;font-family:var(--font-display);font-weight:900;
+  color:var(--ink-2);font-size:13px;letter-spacing:.04em;
+}
+
+.card{
+  background:var(--paper);color:var(--paper-ink);border-radius:20px;
+  padding:clamp(26px,5vw,34px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
+}
+.card h1{font-size:23px;font-weight:900;letter-spacing:-.02em;margin:0}
+.sub{color:var(--paper-ink-2);font-size:14px;line-height:1.6;margin:8px 0 22px}
+
+.field{display:block;margin-bottom:14px}
+.field > span.lb{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field .req{color:var(--red);margin-left:2px}
+.field input{
+  width:100%;font-family:inherit;font-size:15px;color:var(--paper-ink);
+  padding:12px 14px;border:1px solid #DCD6CE;border-radius:10px;background:#FCFBFA;
+}
+.field input::placeholder{color:#A9A099}
+.field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,107,44,.14)}
+.field.bad input{border-color:var(--red);background:#FEF6F6}
+.err{display:none;color:var(--red);font-size:12.5px;margin-top:5px}
+.field.bad .err{display:block}
+
+.agree{display:flex;gap:9px;align-items:flex-start;margin:18px 0 6px;font-size:12.5px;line-height:1.6;color:var(--paper-ink-2)}
+.agree input{margin-top:2px;width:15px;height:15px;accent-color:var(--orange);flex:none}
+.agree.bad{color:var(--red)}
+.agree-detail{margin:6px 0 0 24px;font-size:11.5px;line-height:1.65;color:#8A8078}
+
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:16px;
+  border:none;border-radius:12px;padding:14px 18px;font-family:inherit;font-size:15px;font-weight:700;
+  cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn-primary{background:var(--flame);color:#22150B;box-shadow:0 10px 30px -14px rgba(255,107,44,.85)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -16px rgba(255,107,44,.95)}
+.btn:disabled{opacity:.7;cursor:default;transform:none}
+
+.done{text-align:center;padding:14px 0 4px}
+.done .check{
+  width:52px;height:52px;border-radius:50%;background:var(--flame);
+  display:grid;place-items:center;margin:0 auto 16px;color:#fff;font-size:26px;
+}
+.done h1{margin-bottom:9px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="brand">NUGGET · 세무사를 위한 카카오톡 브랜드메시지</div>
+
+  <div class="card">
+    <div id="lead-body">
+      <h1>한 달 무료 체험 신청</h1>
+      <p class="sub">남겨주시면 1영업일 안에 연락드리겠습니다.</p>
+
+      <form id="lead-form" novalidate>
+        <label class="field" id="f-name">
+          <span class="lb">이름<span class="req">*</span></span>
+          <input name="name" autocomplete="name" placeholder="홍길동">
+          <span class="err">이름을 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-office">
+          <span class="lb">세무사 사무실 이름<span class="req">*</span></span>
+          <input name="office" autocomplete="organization" placeholder="○○세무회계">
+          <span class="err">사무실 이름을 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-phone">
+          <span class="lb">연락처<span class="req">*</span></span>
+          <input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-1234-5678">
+          <span class="err">연락처를 정확히 입력해주세요.</span>
+        </label>
+        <label class="field" id="f-email">
+          <span class="lb">이메일<span class="req">*</span></span>
+          <input name="email" type="email" autocomplete="email" placeholder="name@example.com">
+          <span class="err">이메일을 정확히 입력해주세요.</span>
+        </label>
+
+        <label class="agree" id="f-agree">
+          <input type="checkbox" name="agree">
+          <span>개인정보 수집과 이용에 동의합니다 <span class="req">(필수)</span></span>
+        </label>
+        <p class="agree-detail">
+          이름, 사무실 이름, 연락처, 이메일은 무료 체험 상담과 서비스 안내에만 이용합니다.
+          문의 처리 후 1년간 보관한 뒤 파기합니다. 동의하지 않으실 수 있으며, 이 경우 신청 접수가 어렵습니다.
+        </p>
+
+        <button class="btn btn-primary" type="submit" id="lead-submit">신청하기</button>
+      </form>
+    </div>
+
+    <div id="lead-done" class="done" hidden>
+      <div class="check">✓</div>
+      <h1>신청이 접수되었습니다</h1>
+      <p class="sub">1영업일 안에 연락드리겠습니다. 감사합니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* index.html의 신청 폼(모달)과 동일한 엔드포인트로 제출하는 별도 페이지입니다.
+   엔드포인트를 바꿀 때는 이 파일과 index.html 양쪽을 같이 고쳐야 합니다. */
+var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq72zCelFe0mBBJLG3Mv5R42ew4yLGegSkR8SuFxyVK4un7gmTYQ/exec";
+
+(function(){
+  var form   = document.getElementById("lead-form");
+  var bodyEl = document.getElementById("lead-body");
+  var doneEl = document.getElementById("lead-done");
+  var btn    = document.getElementById("lead-submit");
+
+  /* 유입 경로. 링크에 ?s=카카오톡, ?s=문자 처럼 붙여 보내면 시트의 '유입경로' 칸에 그대로 남습니다. */
+  function leadSource(){
+    try{
+      var q = new URLSearchParams(location.search);
+      return q.get("utm_source") || q.get("s")
+          || (document.referrer ? "ref:" + document.referrer : "direct");
+    }catch(e){ return "unknown"; }
+  }
+
+  function mark(id, isBad){
+    document.getElementById(id).classList.toggle("bad", isBad);
+  }
+
+  function finish(){
+    bodyEl.hidden = true;
+    doneEl.hidden = false;
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var el = form.elements;
+    var v = {
+      name:   el.name.value.trim(),
+      office: el.office.value.trim(),
+      phone:  el.phone.value.trim(),
+      email:  el.email.value.trim()
+    };
+    var digits = v.phone.replace(/[^0-9]/g, "");
+    var checks = [
+      ["f-name",   v.name.length === 0],
+      ["f-office", v.office.length === 0],
+      ["f-phone",  digits.length < 9 || digits.length > 11],
+      ["f-email",  !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)],
+      ["f-agree",  !el.agree.checked]
+    ];
+    var firstBad = null;
+    checks.forEach(function(c){
+      mark(c[0], c[1]);
+      if (c[1] && !firstBad) firstBad = c[0];
+    });
+    if (firstBad){
+      var f = document.getElementById(firstBad).querySelector("input");
+      if (f) f.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "보내는 중…";
+
+    var payload = new URLSearchParams({
+      name: v.name, office: v.office, phone: v.phone, email: v.email,
+      agree: "동의", source: leadSource()
+    });
+
+    /* 구글 Apps Script는 응답에 CORS 헤더를 주지 않으므로
+       no-cors로 보내면 전송은 되지만 응답은 읽을 수 없습니다. */
+    fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: payload })
+      .then(finish)
+      .catch(function(){
+        btn.disabled = false;
+        btn.textContent = "신청하기";
+        mark("f-agree", false);
+        alert("전송에 실패했습니다. 잠시 후 다시 시도하시거나 won@nugget.im 으로 보내주세요.");
+      });
+  });
+})();
+</script>
+</body>
+</html>
