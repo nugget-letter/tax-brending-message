@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>세무사를 위한 카카오톡 브랜드메시지</title>
-<meta name="description" content="세무사님이 거래처에 연락하는 건 1년에 세 번입니다. 나머지 아홉 달을 채울 세무·경제 콘텐츠를 대신 쓰고, 세무사님 카카오톡 채널로 보내드립니다.">
+<title>코넥트 — 세무사님의 두 번째 직원, 월 10만원으로 고용하세요</title>
+<meta name="description" content="세무·경제 전문 콘텐츠 팀이 콘텐츠를 만들어 세무사님의 카카오톡 채널로 보내드리는 고객관리 솔루션, 코넥트. 주 3회 발송, 월 10만원, 선착순 10개 업체 한 달 무료.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 </head>
 <body>
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
@@ -37,6 +38,7 @@
   --font-display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   --font-mono:"IBM Plex Mono","IBM Plex Sans KR","Apple SD Gothic Neo",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-brand:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 
   --pad:clamp(20px,5vw,64px);
   --shell:1160px;
@@ -75,7 +77,11 @@ p{margin:0}
   padding-block:.2em;margin-block:-.2em;
 }
 .lede{color:var(--ink-2);font-size:clamp(15px,1.5vw,18px);max-width:60ch;text-wrap:pretty}
-.quote-block p,.step p,.benefit p,.checks li{text-wrap:pretty}
+.benefit p,.checks li{text-wrap:pretty}
+.footnote{font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--ink-3);margin-top:18px}
+.brand{font-family:var(--font-brand);font-weight:800;font-size:21px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.brand-sm{font-size:16px}
+.brand-mention{font-family:var(--font-brand);font-weight:700;color:var(--ink)}
 /* 넓은 화면에서만 줄바꿈 */
 .br-wide{display:none}
 @media (min-width:721px){ .br-wide{display:inline} }
@@ -88,7 +94,6 @@ p{margin:0}
   border-bottom:1px solid var(--line);
 }
 .topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
-.mark{height:26px;width:auto}
 .topbar .btn{padding:9px 18px;font-size:13px}
 
 /* ---------- buttons ---------- */
@@ -121,169 +126,27 @@ section + section{border-top:1px solid var(--line)}
              radial-gradient(38% 40% at 88% 34%,rgba(245,51,63,.14),transparent 65%);
   pointer-events:none;
 }
-.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(36px,5vw,68px);align-items:center}
-.hero-copy{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.hero-copy-solo{position:relative;display:flex;flex-direction:column;gap:22px;align-items:flex-start;max-width:640px}
 .hero h1 .grad{display:inline-block}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
-.hero-note{
-  font-family:var(--font-mono);font-size:12px;letter-spacing:.04em;color:var(--ink-3);
-  display:flex;align-items:center;gap:8px;
-}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,176,58,.16)}
-
-/* ---------- kakao phone ---------- */
-.phone{
-  width:min(320px,100%);margin-inline:auto;
-  background:#0A0A0A;border:1px solid rgba(255,255,255,.16);
-  border-radius:34px;padding:9px;
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.04) inset;
-}
-.phone-screen{background:var(--kakao-ground);border-radius:26px;overflow:hidden}
-.phone-bar{
-  background:#A5BCD1;color:#1B2733;text-align:center;
-  font-family:var(--font-display);font-weight:700;font-size:13px;
-  padding:14px 12px 12px;letter-spacing:-.01em;
-}
-.thread{padding:14px 12px 20px;display:flex;flex-direction:column;gap:10px;min-height:330px}
-.msg{display:flex;gap:8px;align-items:flex-start}
-.avatar{
-  width:26px;height:26px;border-radius:9px;flex:0 0 26px;
-  background:var(--flame);display:grid;place-items:center;
-  font-family:var(--font-display);font-weight:900;font-size:12px;color:#fff;
-}
-.bubble{
-  background:#fff;color:#1B1B1B;border-radius:4px 14px 14px 14px;
-  padding:10px;max-width:225px;font-size:12.5px;line-height:1.6;
-  box-shadow:0 1px 2px rgba(20,35,50,.12);
-}
-.bubble .who{
-  font-family:var(--font-display);font-weight:700;font-size:11px;color:#57616B;
-  display:block;margin-bottom:7px;
-}
-.bubble img{border-radius:7px;margin-bottom:9px}
-.bubble strong{font-weight:600}
-.bubble .sub{color:#5F6B75;margin-top:7px;display:block}
-.time{font-size:10px;color:#4C5966;align-self:flex-end;padding-bottom:2px;font-family:var(--font-mono)}
-
-/* ---------- problem ---------- */
-.problem-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
-.quote-block{border-left:2px solid transparent;border-image:var(--flame) 1;padding-left:22px;display:flex;flex-direction:column;gap:14px}
-.quote-block p{color:var(--ink-2);font-size:clamp(15px,1.5vw,17px)}
-
-/* ---------- year strip ---------- */
-.year{display:flex;flex-direction:column;gap:22px;background:var(--ground-2);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,30px)}
-.year-row{display:flex;flex-direction:column;gap:10px}
-.year-label{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.year-label .k{font-family:var(--font-display);font-weight:700;font-size:14px}
-.year-label .v{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3)}
-.months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
-.m{
-  height:38px;border-radius:5px;background:rgba(255,255,255,.055);
-  display:grid;place-items:center;
-  font-family:var(--font-mono);font-size:10px;color:var(--ink-3);
-}
-.m.on{background:rgba(255,176,58,.20);color:#FFC978}
-/* 12칸이 하나의 그라데이션을 나눠 갖도록 */
-.year-row.full .m{background-image:var(--flame);background-size:1200% 100%;color:#22150B;font-weight:500}
-.year-row.full .m:nth-child(1){background-position-x:0%}
-.year-row.full .m:nth-child(2){background-position-x:9.09%}
-.year-row.full .m:nth-child(3){background-position-x:18.18%}
-.year-row.full .m:nth-child(4){background-position-x:27.27%}
-.year-row.full .m:nth-child(5){background-position-x:36.36%}
-.year-row.full .m:nth-child(6){background-position-x:45.45%}
-.year-row.full .m:nth-child(7){background-position-x:54.54%}
-.year-row.full .m:nth-child(8){background-position-x:63.63%}
-.year-row.full .m:nth-child(9){background-position-x:72.72%}
-.year-row.full .m:nth-child(10){background-position-x:81.81%}
-.year-row.full .m:nth-child(11){background-position-x:90.9%}
-.year-row.full .m:nth-child(12){background-position-x:100%}
-.year-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
 
 /* 본문 속 질문 목록 */
-.qlist{display:flex;flex-direction:column;gap:9px;margin:4px 0 2px}
-.qlist li{position:relative;padding-left:17px;color:var(--ink-2);font-size:clamp(15px,1.5vw,17px);line-height:1.6;text-wrap:pretty}
-.qlist li::before{content:"";position:absolute;left:0;top:.68em;width:8px;height:1px;background:var(--line-strong)}
-
-/* 섹션을 닫는 한 마디 */
-.punch{max-width:44ch;margin-top:clamp(36px,5vw,56px);padding-top:clamp(24px,3vw,34px);border-top:1px solid var(--line);
-  font-family:var(--font-display);font-weight:800;font-size:clamp(19px,2.5vw,28px);line-height:1.42;letter-spacing:-.02em;
-  color:var(--ink);text-wrap:balance}
-.punch em{display:block;margin-top:14px;font-style:normal;font-weight:500;font-size:.6em;line-height:1.62;
-  letter-spacing:0;color:var(--ink-2);text-wrap:pretty}
-
-/* 질문이 커지는 과정 */
-.ladder{display:flex;flex-direction:column;background:var(--ground-2);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3vw,28px)}
-.rung{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--ground-3)}
-.rung-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px}
-.rung-when{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3)}
-.rung-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3)}
-.rung-q{font-size:clamp(14px,1.4vw,15.5px);line-height:1.55;color:var(--ink-2);text-wrap:pretty}
-.rung.is-final{border-color:transparent;background:linear-gradient(var(--ground-3),var(--ground-3)) padding-box,var(--flame) border-box}
-.rung.is-final .rung-q{color:var(--ink);font-weight:600}
-.rung.is-final .rung-tag{color:var(--amber)}
-.rung-link{width:1px;height:20px;margin:0 auto;background:linear-gradient(var(--line-strong),rgba(255,255,255,.04))}
-.ladder-foot{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px;margin-top:20px}
-
-/* ---------- stat band ---------- */
-.stat-band{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:center}
-.stat-num{font-family:var(--font-display);font-weight:900;font-size:clamp(52px,10vw,116px);line-height:1.02;letter-spacing:-.045em}
-.stat-cap{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:14px}
-
-/* ---------- steps ---------- */
-.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,22px)}
-.step{
-  background:var(--paper);color:var(--paper-ink);
-  border-radius:16px;padding:clamp(22px,2.6vw,30px);
-  display:flex;flex-direction:column;gap:14px;
-}
-.step h3{font-size:20px}
-.step p{color:var(--paper-ink-2);font-size:14.5px;line-height:1.7}
+.qlist{list-style:none;display:flex;flex-direction:column;gap:9px;margin:4px 0 2px;padding:0}
+.qlist li{position:relative;padding-left:19px;color:var(--ink-2);font-size:clamp(15px,1.5vw,17px);line-height:1.6;text-wrap:pretty}
+.qlist li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
 
 /* ---------- benefits ---------- */
-.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
 .benefit{background:var(--ground);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px}
 .benefit p{color:var(--ink-2);font-size:14.5px}
 
-/* ---------- compare ---------- */
-.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px}
-table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
-th,td{padding:18px clamp(16px,2.4vw,28px);text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-thead th{
-  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;background:var(--ground-2);
+/* ---------- sample ---------- */
+.sample{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
+.sample-shot{
+  width:min(320px,100%);height:auto;border-radius:20px;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.08);
 }
-tbody td:first-child{color:var(--ink-3)}
-tbody td:last-child{color:var(--ink);font-weight:500}
-thead th:last-child{color:#FFC978}
-tbody tr:last-child td{border-bottom:none}
-td .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-
-/* 좁은 화면에서는 표를 세로로 쌓아 가로 스크롤을 없앤다 */
-@media (max-width:620px){
-  .compare-wrap{overflow-x:visible}
-  table{min-width:0}
-  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-  tbody tr{display:block;border-bottom:1px solid var(--line)}
-  tbody tr:last-child{border-bottom:none}
-  tbody td{display:block;border:none;padding:14px 20px 0}
-  tbody td:last-child{padding-bottom:18px}
-  tbody td::before{
-    content:attr(data-label);display:block;
-    font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-3);margin-bottom:4px;
-  }
-  tbody td:last-child::before{color:#FFC978}
-}
-
-/* ---------- samples ---------- */
-.samples{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:clamp(24px,4vw,40px);align-items:start}
-.sample{display:flex;flex-direction:column;gap:18px;align-items:center}
-.sample-tag{
-  background:var(--ground-3);border:1px solid var(--line);border-radius:999px;
-  padding:8px 16px;font-size:13px;font-weight:500;
-}
-
-.offer-note{margin-top:16px}
+.sample-caption{max-width:44ch}
 
 /* ---------- offer ---------- */
 .offer{
@@ -294,6 +157,7 @@ td .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
   display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
   gap:clamp(24px,4vw,48px);align-items:center;position:relative;overflow:hidden;
 }
+.offer.solo{grid-template-columns:minmax(0,1fr)}
 .offer::after{
   content:"";position:absolute;inset:auto -10% -60% 40%;height:200%;
   background:radial-gradient(40% 40% at 50% 50%,rgba(255,107,44,.16),transparent 70%);pointer-events:none;
@@ -311,20 +175,13 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 .foot-in{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .foot-in a{text-decoration:none;color:var(--ink-2)}
 .foot-in a:hover{color:var(--ink)}
-.foot-mark{height:20px;width:auto;opacity:.9}
 
 /* ---------- reveal ---------- */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 .rv.in{opacity:1;transform:none}
-.msg{opacity:0;transform:translateY(10px);animation:pop .55s cubic-bezier(.2,.7,.3,1) forwards}
-.msg:nth-child(1){animation-delay:.35s}
-.msg:nth-child(2){animation-delay:1.05s}
-.msg:nth-child(3){animation-delay:1.75s}
-@keyframes pop{to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
-  .msg{opacity:1;transform:none;animation:none}
   .btn:hover{transform:none}
   *{scroll-behavior:auto!important}
 }
@@ -374,18 +231,14 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 
 /* ---------- responsive ---------- */
 @media (max-width:900px){
-  .hero-grid,.problem-grid,.stat-band,.offer{grid-template-columns:minmax(0,1fr)}
-  .steps,.benefits,.samples{grid-template-columns:minmax(0,1fr)}
-  .stat-band{gap:20px}
+  .offer{grid-template-columns:minmax(0,1fr)}
+  .benefits{grid-template-columns:minmax(0,1fr)}
   .topbar .btn{display:none}
-  .months{gap:3px}
-  .m{height:32px;font-size:9px}
 }
 @media (max-width:640px){
   .foot-in{flex-direction:column;align-items:flex-start;gap:12px}
 }
 @media (max-width:520px){
-  .m{height:28px}
   .btn{width:100%;justify-content:center}
   .cta-row{width:100%}
 }
@@ -393,316 +246,106 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 
 <header class="topbar">
   <div class="shell topbar-in">
-    <img class="mark" src="images/logo.png" alt="로고">
-    <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료로 시작하기</a>
+    <a class="brand" href="#top">코넥트</a>
+    <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
   </div>
 </header>
 
 <main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="shell hero-grid">
-    <div class="hero-copy">
-      <h1>거래처가 세무사님을 찾는 건<br class="br-wide"><span class="grad">1년에 세 번</span>입니다</h1>
-      <p class="lede">1월 부가세, 5월 종소세, 7월 부가세. 그 사이 아홉 달은 서로 연락할 일이 마땅치 않습니다.<br>그 아홉 달에 보내실 세무·경제 콘텐츠를 저희가 대신 쓰고, 세무사님 카카오톡 채널로 발송해 드립니다.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료로 시작하기</a>
-        <a class="btn btn-kakao" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
-      </div>
-      <p class="hero-note"><span class="dot"></span>먼저 함께해 주실 열 곳을 찾고 있습니다. 한 달 동안 비용은 없습니다</p>
+<section class="hero" id="top">
+  <div class="shell">
+  <div class="hero-copy-solo">
+    <h1>세무사님의 <span class="grad">두 번째 직원</span>, 월 10만원으로 고용하세요</h1>
+    <p class="lede">거래처 수임 이후 '관리받고 있다'는 느낌은 고객을 붙잡는 중요한 요인 중 하나입니다. 많은 기업이 알림과 콘텐츠로 고객과 계속 연결되려는 이유기도 하고요.</p>
+    <p class="lede">하지만..</p>
+    <ul class="qlist">
+      <li>주제 선정하는 게 어려워요</li>
+      <li>직접 콘텐츠 작성하려면 시간이 많이 소요돼요</li>
+      <li>콘텐츠 발송·관리까지 본업에 쓸 시간이 부족해요</li>
+    </ul>
+    <p class="lede">세무사님도 같은 고민을 하고 계신다면, <span class="brand-mention">코넥트</span>가 대신해 드릴게요.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
+      <a class="btn btn-kakao" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
     </div>
-
-    <div class="hero-phone rv">
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-bar">OO세무회계</div>
-          <div class="thread">
-            <div class="msg">
-              <div class="avatar">세</div>
-              <div class="bubble">
-                <span class="who">OO세무회계</span>
-                <img src="images/car.jpg" alt="법인 차량 콘텐츠 이미지" width="285" height="219">
-                <strong>🚗 법인차로 여행 가면 탈세예요?</strong>
-                <span class="sub">연두색 번호판을 달았다고 자동으로 비용처리되는 건 아니에요.</span>
-              </div>
-              <span class="time">오전 9:00</span>
-            </div>
-            <div class="msg">
-              <div class="avatar">세</div>
-              <div class="bubble">
-                <strong>💸 직원 한 명 뽑으려면 얼마가 들까요?</strong>
-                <span class="sub">월급만 생각하시면 계산이 어긋나요.</span>
-              </div>
-              <span class="time">오전 9:01</span>
-            </div>
-            <div class="msg" style="justify-content:flex-end">
-              <span class="time">오전 9:12</span>
-              <div class="bubble" style="background:var(--kakao);border-radius:14px 4px 14px 14px">
-                세무사님, 저희 법인차 이거 여쭤보려던 참이었어요!
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
   </div>
 </section>
 
-<!-- PROBLEM -->
+<!-- SOLUTION -->
 <section>
   <div class="shell">
     <div class="sec-head rv">
-      <h2>혹시 이런 순간이<br>있으셨을까요?</h2>
-    </div>
-    <div class="problem-grid">
-      <div class="quote-block rv">
-        <p>신고가 끝나면 아홉 달은 서로 연락할 일이 없습니다. 거래처가 스무 곳일 때는 명절 인사라도 직접 챙기실 수 있었지만, 쉰 곳이 넘어가면 그러기 어렵다고 하시는 분들이 계신 것으로 압니다.</p>
-        <p>그 아홉 달 동안에도 대표님들에게는 질문이 생깁니다.</p>
-        <ul class="qlist">
-          <li>법인차를 사도 되는지</li>
-          <li>직원을 한 명 더 두면 얼마가 드는지</li>
-          <li>사업용 카드를 어디까지 쓸 수 있는지</li>
-        </ul>
-        <p>작은 질문일수록 전화를 미루고 <strong style="color:var(--ink)">검색부터 하십니다</strong>. 그리고 검색 결과에는 매주 블로그를 쓰고 영상을 올리는 다른 사무실이 있습니다.</p>
-      </div>
-
-      <div class="year rv">
-        <div class="year-row">
-          <div class="year-label"><span class="k">지금은 신고철에만 연결</span><span class="v">3 / 12</span></div>
-          <div class="months">
-            <div class="m on">1</div><div class="m">2</div><div class="m">3</div><div class="m">4</div>
-            <div class="m on">5</div><div class="m">6</div><div class="m on">7</div><div class="m">8</div>
-            <div class="m">9</div><div class="m">10</div><div class="m">11</div><div class="m">12</div>
-          </div>
-        </div>
-        <div class="year-row full">
-          <div class="year-label"><span class="k">맡기시면 1년 내내 연결</span><span class="v">12 / 12</span></div>
-          <div class="months">
-            <div class="m">1</div><div class="m">2</div><div class="m">3</div><div class="m">4</div>
-            <div class="m">5</div><div class="m">6</div><div class="m">7</div><div class="m">8</div>
-            <div class="m">9</div><div class="m">10</div><div class="m">11</div><div class="m">12</div>
-          </div>
-        </div>
-        <p class="year-foot">부가세 1월과 7월, 종합소득세 5월. 거래처와 연락이 닿는 달은 사실상 이 세 번입니다. 매달 콘텐츠가 한 번씩 나가면 열두 달이 됩니다.</p>
-      </div>
-    </div>
-
-    <p class="punch rv">저희가 채우려는 건 실력이 아니라<br>아홉 달의 공백입니다.<em>그동안 거래처에 무슨 이야기를 건넬지, 그 부분만 저희가 맡습니다.</em></p>
-  </div>
-</section>
-
-<!-- SAMPLES -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>저희가 쓰는 글은<br>이런 모습입니다</h2>
-      <p class="lede">세법 해석이 갈리는 대목은 단정해서 쓰지 않습니다. 세무사님 이름으로 나가는 글이니까요.<br>‘OO세무회계’ 자리에 사무실 이름이 들어갑니다. 프로필과 하단 연락처도 마찬가지고요.</p>
-    </div>
-    <div class="samples">
-      <div class="sample rv">
-        <span class="sample-tag">법인 차량 관련 콘텐츠</span>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar">OO세무회계</div>
-            <div class="thread" style="min-height:0">
-              <div class="msg" style="animation:none;opacity:1;transform:none">
-                <div class="avatar">세</div>
-                <div class="bubble">
-                  <span class="who">OO세무회계</span>
-                  <img src="images/car.jpg" alt="법인 차량 콘텐츠" width="285" height="219">
-                  <strong>🚗 법인차로 여행 가면 탈세예요?</strong>
-                  <span class="sub">연두색 번호판을 달았다고 자동으로 비용처리되는 건 아니에요. 연간 차량 비용이 1,500만원을 넘으면 운행일지를 써야 하고, 거기 적은 업무 사용 비율만큼만 비용으로 인정돼요. 주말에 사적으로 쓴 게 확인되면 대표님 상여로 처분돼 소득세까지 붙는데요.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sample rv">
-        <span class="sample-tag">인건비 관련 콘텐츠</span>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar">OO세무회계</div>
-            <div class="thread" style="min-height:0">
-              <div class="msg" style="animation:none;opacity:1;transform:none">
-                <div class="avatar">세</div>
-                <div class="bubble">
-                  <span class="who">OO세무회계</span>
-                  <img src="images/coins.jpg" alt="부가세 콘텐츠" width="285" height="219">
-                  <strong>💸 직원 한 명 뽑으려면 얼마가 들까요?</strong>
-                  <span class="sub">월급만 생각하시면 계산이 어긋나요. 4대보험 사업주 부담분, 퇴직금 적립, 연차수당까지 따지면 실제로 나가는 돈은 훨씬 커지거든요. 뽑기 전에 한 번 계산해보시는 게 좋아요.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="sample rv">
-        <span class="sample-tag">신규 사업자 대상 콘텐츠</span>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar">OO세무회계</div>
-            <div class="thread" style="min-height:0">
-              <div class="msg" style="animation:none;opacity:1;transform:none">
-                <div class="avatar">세</div>
-                <div class="bubble">
-                  <span class="who">OO세무회계</span>
-                  <strong>🧾 사업자 내고 이건 하셨어요?</strong>
-                  <span class="sub">휴대폰 요금부터 사업자 카드로 바꾸세요. 월 10만원이면 1년에 120만원인데, 비용으로 넣으면 18만원 넘게 아낍니다. 챗GPT 같은 해외 AI 구독료는 사업자 카드로 결제해도 홈택스에 자동으로 안 잡히니 카드 명세를 따로 챙겨두셔야 하고요.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>세무사님께서 하실 일은<br>확인 한 번입니다</h2>
-    </div>
-    <div class="steps">
-      <div class="step rv">
-        <h3>저희가 초안을 씁니다</h3>
-        <p>그달에 대표님들이 많이 찾아보는 세무·경제 이슈를 골라 원고와 이미지를 준비합니다.</p>
-      </div>
-      <div class="step rv">
-        <h3>세무사님께서 확인하십니다</h3>
-        <p>발송 일주일 전에 원고를 보내드립니다. 표현이든 내용이든 고쳐야 할 곳을 알려주시면 그대로 반영합니다. 이번 달은 보류하자고 하셔도 괜찮습니다.</p>
-      </div>
-      <div class="step rv">
-        <h3>발송은 저희가 맡습니다</h3>
-        <p>확인해 주신 원고가 정하신 날짜와 시간에 세무사님 카카오톡 채널로 나갑니다. 따로 눌러주실 것은 없습니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>이런 부담을<br>덜어드릴 수 있습니다</h2>
+      <h2><span class="brand-mention">코넥트</span>는 세무사님을 위한<br>고객관리 솔루션입니다</h2>
+      <p class="lede">세무·경제 전문 콘텐츠 팀이 콘텐츠를 만들고, 세무사님의 카카오톡 채널로 고객에게 콘텐츠를 보내드리는 서비스예요.<br>세무사님은 본업에만 집중하시면, 고객 관리는 저희가 대신해 드려요.</p>
     </div>
     <div class="benefits rv">
       <div class="benefit">
-        <h3>쓸 사람을 따로 두지 않아도 됩니다</h3>
-        <p>세무·경제 콘텐츠만 써온 팀이 원고를 맡습니다. 사무실에 인력을 두시거나, 퇴근 후에 직접 원고를 붙드실 일은 없습니다.</p>
+        <h3>사람이 직접 쓴 진짜 콘텐츠</h3>
+        <p>AI가 양산한 뻔한 내용이 아닙니다. 네이버페이의 세무 플랫폼을 담당하는 세무·경제 콘텐츠 전문 팀이 직접 원고를 작성합니다.</p>
       </div>
       <div class="benefit">
-        <h3>거래처 카톡에 매달 사무실 이름이 뜹니다</h3>
-        <p>광고 문구는 넣지 않습니다. 그달에 대표님들이 알아두시면 도움이 될 세금 이야기만 담습니다.</p>
+        <h3>카카오톡 채널로 간편 전송</h3>
+        <p>완성된 콘텐츠는 세무사님의 카카오톡 채널을 통해 고객에게 자동 발송됩니다. 별도의 복잡한 시스템 조작은 없습니다.</p>
       </div>
       <div class="benefit">
-        <h3>빠지는 달이 생기지 않습니다</h3>
-        <p>신고철이 겹치는 달에도 발송은 그대로 나갑니다. 사무실이 가장 바쁘실 때 콘텐츠 일정이 먼저 밀리지 않도록, 그 부분만 저희가 따로 관리합니다.</p>
-      </div>
-      <div class="benefit">
-        <h3>거래처가 먼저 전화를 겁니다</h3>
-        <p>“세무사님, 저희도 이거 되나요?” 하고 문의가 들어오는 경우가 생깁니다. 다른 이야기를 더 꺼내시기에도 이때가 가장 자연스러운 순간입니다.</p>
+        <h3>안전하고 투명한 프로세스</h3>
+        <p>원고 제작 → 세무사님 사전 확인 → 확인 후 발송 과정으로 진행돼요. 세무사님께서는 콘텐츠 발송 전 확인만 해주시면 됩니다.</p>
       </div>
     </div>
+    <p class="footnote rv">*해당 회차 마음에 들지 않는 콘텐츠는 대체 콘텐츠로 발송 가능합니다.</p>
   </div>
 </section>
 
-<!-- UPSELL: 추가 수임 각도 -->
+<!-- SAMPLE -->
 <section>
   <div class="shell">
     <div class="sec-head rv">
-      <h2>법인전환도, 상속 상담도<br>처음엔 사소한 질문이었을 겁니다</h2>
+      <h2>콘텐츠 샘플</h2>
     </div>
-    <div class="problem-grid">
-      <div class="quote-block rv">
-        <p>무게 있는 상담일수록 시작은 가벼운 질문 하나였던 경우가 많습니다. 세무사님께서 저희보다 훨씬 잘 아시는 일입니다.</p>
-        <p>다만 그 질문이 나오려면 그 전에 어떤 형태로든 대화가 있어야 합니다. 아홉 달 동안 서로 연락이 없으면, 대표님 입장에서는 사소한 것을 여쭙기가 조심스러워집니다.</p>
-        <p>매달 한 번씩 세무사님 이름으로 소식이 닿으면, 적어도 <strong style="color:var(--ink)">묻기는 편해집니다</strong>.</p>
-      </div>
-
-      <div class="ladder rv">
-        <div class="rung">
-          <div class="rung-head"><span class="rung-when">6월</span><span class="rung-tag">가벼운 질문</span></div>
-          <p class="rung-q">“이 영수증도 비용 처리 되나요?”</p>
-        </div>
-        <div class="rung-link" aria-hidden="true"></div>
-        <div class="rung">
-          <div class="rung-head"><span class="rung-when">9월</span><span class="rung-tag">짧은 상담</span></div>
-          <p class="rung-q">“올해 매출이 늘었는데 세금이 얼마나 나올까요?”</p>
-        </div>
-        <div class="rung-link" aria-hidden="true"></div>
-        <div class="rung is-final">
-          <div class="rung-head"><span class="rung-when">11월</span><span class="rung-tag">수임</span></div>
-          <p class="rung-q">“법인전환, 지금 하는 게 맞을까요?”</p>
-        </div>
-        <p class="ladder-foot">세 번째 질문은 앞의 두 번이 있었기에 나옵니다.</p>
-      </div>
+    <div class="sample rv">
+      <img class="sample-shot" src="images/sample-content.png" alt="코넥트로 발송되는 카카오톡 브랜드메시지 콘텐츠 예시" width="750" height="858">
+      <p class="lede sample-caption">콘텐츠는 세무사님의 이름으로 나가고, 콘텐츠 전문은 별도 페이지를 통해 확인할 수 있습니다.</p>
     </div>
   </div>
 </section>
 
-<!-- COMPARE -->
+<!-- PRICING -->
 <section>
   <div class="shell">
     <div class="sec-head rv">
-      <h2>직접 하시면 얼마나 드는지,<br>저희 기준으로 말씀드리면</h2>
-      <p class="lede">콘텐츠 한 건에 서너 시간쯤 걸립니다.<br>이슈를 고르고, 쓰고, 이미지를 만들고, 인용한 숫자가 지금도 맞는지 확인하는 데까지요.</p>
+      <h2>주 3회, 월 10만원이라는<br>부담 없는 가격으로 꾸준한 접점을 만들어 보세요</h2>
     </div>
-    <div class="compare-wrap rv">
-      <table>
-        <thead>
-          <tr><th scope="col">직접 운영</th><th scope="col">맡기실 때</th></tr>
-        </thead>
-        <tbody>
-          <tr><td data-label="직접 운영">한 건에 <span class="num">3~4시간</span>, 월 4건이면 <span class="num">12~16시간</span></td><td data-label="맡기실 때">월 <span class="num">0분</span></td></tr>
-          <tr><td data-label="직접 운영">쓰고 디자인할 인력이 필요</td><td data-label="맡기실 때">저희 팀이 씁니다</td></tr>
-          <tr><td data-label="직접 운영">바쁜 달에는 일정이 밀림</td><td data-label="맡기실 때">빠지는 달 없이 발송</td></tr>
-          <tr><td data-label="직접 운영">한번 나가면 되돌리기 어려움</td><td data-label="맡기실 때">나가기 전 세무사님이 확인</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- OFFER -->
-<section>
-  <div class="shell">
-    <div class="offer rv">
+    <div class="offer solo rv">
       <div class="offer-copy">
-        <h2>우선 <span class="grad">열 곳</span>과<br>함께 시작하려 합니다</h2>
-        <p class="lede">한 달 동안 세무사님 사무실 이름으로 콘텐츠가 나갑니다. 비용은 받지 않습니다.<br><br>거래처 업종을 보고 원고를 맞춰 준비하다 보니, 이번에는 열 곳까지만 받으려 합니다. 체험 기간에도 거래처에게 실제로 발송됩니다.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#lead-modal" data-lead>무료 체험 신청하기</a>
-        </div>
-        <p class="hero-note offer-note"><span class="dot"></span>열 곳이 채워지면 접수를 마감합니다</p>
+        <ul class="checks">
+          <li>
+            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><strong style="color:var(--ink)">발송 주기</strong> · 주 3회</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><strong style="color:var(--ink)">월 이용료</strong> · 월 10만원</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <span><strong style="color:var(--ink)">체험 혜택</strong> · 선착순 10개 업체, 1개월 무료</span>
+          </li>
+        </ul>
+        <p class="lede" style="margin-top:20px">거래처는 세무사님께서 꾸준히 관리해 준다고 느끼고, 콘텐츠는 새로운 상담·추가 용역으로 이어지기도 합니다.</p>
+        <p class="footnote">*체험 기간 종료 후 자동으로 결제되지 않습니다. 정식 결제 전 세무사님께 미리 확인 후 진행하니 안심하고 체험해 보세요.</p>
       </div>
-      <ul class="checks">
-        <li>
-          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span>준비하실 것은 <strong style="color:var(--ink)">카카오톡 채널</strong> 하나입니다. 아직 없으시면 개설부터 도와드리겠습니다.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span>채널 소유권과 관리 권한은 계속 세무사님께 있습니다. 저희는 콘텐츠 등록과 발송만 맡습니다.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <span>체험이 끝난 뒤 자동으로 결제되는 일은 없습니다. 계속 이용하실지 먼저 여쭙겠습니다.</span>
-        </li>
-      </ul>
     </div>
   </div>
 </section>
 
-<!-- FINAL -->
+<!-- 신청 폼 -->
 <section class="final">
   <div class="shell final-in">
-    <h2 class="rv">그 <span class="grad">열 곳</span> 중 한 곳이<br>세무사님이면 좋겠습니다</h2>
     <div class="cta-row rv">
-      <a class="btn btn-primary" href="mailto:won@nugget.im?subject=%5B%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%A9%94%EC%8B%9C%EC%A7%80%5D%20%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4">won@nugget.im 으로 문의하기</a>
+      <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
       <a class="btn btn-kakao" href="#" id="kakao-cta-2">카카오톡으로 상담하기</a>
     </div>
   </div>
@@ -712,7 +355,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
 
 <footer>
   <div class="shell foot-in">
-    <img class="foot-mark" src="images/logo.png" alt="로고">
+    <a class="brand brand-sm" href="#top">코넥트</a>
     <span>세무사 사무실을 대신해 글을 씁니다</span>
     <a href="mailto:won@nugget.im">도입 문의는 won@nugget.im</a>
   </div>
