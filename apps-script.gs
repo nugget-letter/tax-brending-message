@@ -15,7 +15,18 @@ var NOTIFY_EMAIL = "won@nugget.im";
 // 기록할 시트 이름
 var SHEET_NAME = "신청";
 
-var HEADERS = ["접수시각", "이름", "사무실", "연락처", "이메일", "동의", "유입경로"];
+var HEADERS = ["접수시각", "이름", "사무실", "연락처", "이메일", "동의", "유입경로", "어드민 전송"];
+
+// 신청을 어드민(tax-auto)에도 함께 보낸다. 시트는 그대로 남기고 어드민이 추가로
+// 받는 구조라, 전송이 실패해도 신청 자체는 시트와 알림 메일로 남는다.
+var ADMIN_ENDPOINT = "https://tax-auto.vercel.app/api/submissions";
+
+// 어드민이 요구하는 공유 토큰. 코드에 박아두지 않고 스크립트 속성에서 읽는다.
+// 설정: Apps Script 편집기 → 프로젝트 설정 → 스크립트 속성 →
+//       속성 SUBMISSION_TOKEN, 값은 Vercel 환경변수와 같은 문자열
+function adminToken_() {
+  return PropertiesService.getScriptProperties().getProperty("SUBMISSION_TOKEN") || "";
+}
 
 
 function doPost(e) {
@@ -35,10 +46,16 @@ function doPost(e) {
       p.phone ? "'" + p.phone : "",
       p.email  || "",
       p.agree  || "",
-      p.source || ""
+      p.source || "",
+      ""
     ]);
+    var row = sheet.getLastRow();
 
     notify_(p);
+
+    // 어드민 전송은 시트 기록이 끝난 뒤에 한다 — 여기서 뭐가 터지든 위의
+    // 기록과 알림은 이미 끝나 있어서 신청이 사라지지 않는다.
+    sheet.getRange(row, 8).setValue(sendToAdmin_(p));
 
     return json_({ ok: true });
 
@@ -70,8 +87,46 @@ function getSheet_() {
     sheet.setColumnWidth(3, 180);
     sheet.setColumnWidth(5, 200);
     sheet.setColumnWidth(7, 160);
+    sheet.setColumnWidth(8, 110);
   }
   return sheet;
+}
+
+
+/**
+ * 어드민에 신청을 보내고, 시트에 적을 상태 문자열을 돌려준다.
+ * 성공이든 실패든 예외를 밖으로 던지지 않는다 — 이 호출 때문에 신청 처리가
+ * 깨지면 안 되기 때문이다.
+ */
+function sendToAdmin_(p) {
+  var token = adminToken_();
+  if (!token) return "미설정";
+
+  try {
+    var res = UrlFetchApp.fetch(ADMIN_ENDPOINT, {
+      method: "post",
+      contentType: "application/json",
+      headers: { "x-submission-token": token },
+      payload: JSON.stringify({
+        name:   p.name   || "",
+        office: p.office || "",
+        phone:  p.phone  || "",
+        email:  p.email  || "",
+        // 어드민은 boolean true만 동의로 인정한다. 동의 없이 들어온 신청은
+        // 어드민이 400으로 거절하고, 그 사실이 시트의 "어드민 전송" 칸에 남는다.
+        consented: (p.agree || "").indexOf("동의") === 0,
+        source: p.source ? "tax-sales / " + p.source : "tax-sales"
+      }),
+      muteHttpExceptions: true
+    });
+
+    var code = res.getResponseCode();
+    if (code === 201) return "o";
+    return "실패: " + code + " " + res.getContentText().slice(0, 100);
+
+  } catch (err) {
+    return "실패: " + String(err).slice(0, 100);
+  }
 }
 
 
