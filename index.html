@@ -1,366 +1,552 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-radius="soft">
 <head>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>코넥트 — 세무사님의 두 번째 직원, 월 10만원으로 고용하세요</title>
-<meta name="description" content="세무·경제 전문 콘텐츠 팀이 콘텐츠를 만들어 세무사님의 카카오톡 채널로 보내드리는 고객관리 솔루션, 코넥트. 주 3회 발송, 월 10만원, 선착순 10개 업체 한 달 무료.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>코넥트: 세무사를 위한 거래처 커뮤니케이션 자동화</title>
+<meta name="description" content="매달 반복되는 거래처 자료 요청과 소통 콘텐츠 제작을 코넥트가 자동화합니다. 카카오톡 알림톡으로 발송하고, 세무사님은 검토만 하세요.">
+<meta property="og:title" content="코넥트: 세무사를 위한 거래처 커뮤니케이션 자동화">
+<meta property="og:description" content="매달 반복되는 거래처 자료 요청과 소통 콘텐츠 제작을 코넥트가 자동화합니다. 카카오톡 알림톡으로 발송하고, 세무사님은 검토만 하세요.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f7f9f8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&display=swap">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 </head>
 <body>
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<!--
+  deal (taste-skill design-taste-frontend): kind=software
+  palette=teal-on-paper (bg #f7f9f8 / surface #ebf0ee / ink+accent #06525c / muted #2f737d) — re-dealt 2026-11-17 against user-supplied references (flex.team, recatch.cc, chungoose.kr, bolta.io: black/white, blue, orange, warm-gradient B2B SaaS); teal duotone sits outside all four, skip past white-link-blue (clashes with chungoose's white+blue) and mint-pink-accounts
+  type: client override 2026-11-17 — display/text set to Pretendard Variable (bold, weight 700, like flex.team) in place of the dealt Geist pairing; Geist Mono kept for labels/mono bits only
+  hero=centred (centred headline and lede only, no pill, no product frame — removed at the client's request) · rhythm=dark-band (closing section only, using the palette's inverse teal) · buttons=solid · radius=soft · section heads (label/h2/lede) centred site-wide so every section's opening echoes the hero, content grids unfold left-aligned below — client request 2026-11-17
+-->
 <style>
 :root{
-  --ground:#100F0E;
-  --ground-2:#191614;
-  --ground-3:#221D1A;
-  --ink:#FFFFFF;
-  --ink-2:#A79E94;
-  --ink-3:#6E665E;
-  --line:rgba(255,255,255,.10);
-  --line-strong:rgba(255,255,255,.20);
-
-  --amber:#FFB03A;
-  --orange:#FF6B2C;
-  --red:#F5333F;
-  --flame:linear-gradient(100deg,#FFB03A 0%,#FF6B2C 52%,#F5333F 100%);
-
-  --paper:#FFFFFF;
-  --paper-ink:#17140F;
-  --paper-ink-2:#5C554C;
-
+  --p-bg:#f7f9f8;
+  --p-surface:#ebf0ee;
+  --p-ink:#06525c;
+  --p-muted:#2f737d;
+  --p-line:rgba(6,82,92,.14);
+  --p-line-strong:rgba(6,82,92,.26);
+  --p-accent:#06525c;
+  --p-accent-ink:#f7f9f8;
   --kakao:#FEE500;
-  --kakao-ground:#B2C7DA;
 
-  --font-display:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --font-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --font-mono:"IBM Plex Mono","IBM Plex Sans KR","Apple SD Gothic Neo",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --font-brand:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  /* inverse set (the palette's dark teal), scoped onto footer.closing for the one step-up band */
+  --p-inv-bg:#06525c;
+  --p-inv-surface:#205d66;
+  --p-inv-ink:#f7f9f8;
+  --p-inv-muted:#c1d0d2;
+  --p-inv-accent:#f7f9f8;
+  --p-inv-accent-ink:#06525c;
+  --p-inv-line:rgba(255,255,255,.14);
+  --p-inv-line-strong:rgba(255,255,255,.26);
 
-  --pad:clamp(20px,5vw,64px);
-  --shell:1160px;
+  --font-display:"Pretendard Variable","Pretendard",-apple-system,"system-ui","Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-text:"Pretendard Variable","Pretendard",-apple-system,"system-ui","Segoe UI",Roboto,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:"Geist Mono","Pretendard Variable","Apple SD Gothic Neo",ui-monospace,Menlo,monospace;
+  --display-weight:700;
+
+  --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px; --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+  --r-sm:8px; --r-md:12px; --r-lg:20px;
+  --nav:72px; --padt:96px; --padb:64px; --gut:80px;
+  --shell:1280px;
 }
+@media (max-width:640px){ :root{ --nav:56px; --padt:64px; --padb:40px; --gut:24px; } }
 
 *{box-sizing:border-box}
-
-/* 한글은 어절 단위로 줄바꿈 */
 body,h1,h2,h3,h4,p,li,td,th,span,a{word-break:keep-all;overflow-wrap:break-word}
 
+html{scroll-behavior:auto}
 body{
-  margin:0;
-  background:var(--ground);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.75;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  margin:0;background:var(--p-bg);color:var(--p-ink);
+  font-family:var(--font-text);font-weight:400;font-size:16px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-
 img{max-width:100%;display:block}
 a{color:inherit}
+.wrap{width:min(100% - 2*var(--gut), var(--shell));margin:0 auto;position:relative;z-index:2}
+.grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.grid12 > *{min-width:0}
+.c-3{grid-column:span 3}
+.c-4{grid-column:span 4}
+.c-6{grid-column:1/7}
+.c7-12{grid-column:7/13}
+@media (max-width:900px){ .grid12{grid-template-columns:1fr} .c-3,.c-4,.c-6,.c7-12{grid-column:1/-1} }
+@media (min-width:901px) and (max-width:1023px){ .c-3,.c-4{grid-column:span 6} }
 
-.shell{width:100%;max-width:var(--shell);margin:0 auto;padding-inline:var(--pad)}
+.skip-link{position:absolute;left:var(--gut);top:-48px;background:var(--p-accent);color:var(--p-accent-ink);padding:10px 16px;border-radius:var(--r-sm);font-weight:500;z-index:100;transition:top .15s ease}
+.skip-link:focus{top:12px}
 
 /* ---------- type ---------- */
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;margin:0;text-wrap:balance;letter-spacing:-.02em;line-height:1.28}
-h1{font-size:clamp(30px,5.4vw,58px);font-weight:900;line-height:1.22}
-h2{font-size:clamp(25px,3.6vw,42px)}
-h3{font-size:clamp(18px,1.9vw,22px)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--display-weight,500);color:var(--p-ink);margin:0;text-wrap:balance;line-height:1.25}
+h1{font-size:clamp(32px,4.6vw,56px);letter-spacing:-.02em;line-height:1.1}
+h2{font-size:clamp(26px,3.1vw,38px);letter-spacing:-.015em}
+h3{font-size:clamp(18px,1.6vw,20px);letter-spacing:-.02em}
 p{margin:0}
 
-.grad{
-  background:var(--flame);-webkit-background-clip:text;background-clip:text;color:transparent;
-  padding-block:.2em;margin-block:-.2em;
-}
-.lede{color:var(--ink-2);font-size:clamp(15px,1.5vw,18px);max-width:60ch;text-wrap:pretty}
-.benefit p,.checks li{text-wrap:pretty}
-.footnote{font-family:var(--font-mono);font-size:12px;line-height:1.7;color:var(--ink-3);margin-top:18px}
-.brand{font-family:var(--font-brand);font-weight:800;font-size:21px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
-.brand-sm{font-size:16px}
-.brand-mention{font-family:var(--font-brand);font-weight:700;color:var(--ink)}
-/* 넓은 화면에서만 줄바꿈 */
-.br-wide{display:none}
-@media (min-width:721px){ .br-wide{display:inline} }
+.label{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--p-muted)}
+.lede{color:var(--p-ink);font-size:clamp(15px,1.4vw,18px);max-width:60ch;text-wrap:pretty;line-height:1.65}
+.note{font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--p-muted);margin-top:var(--s-4)}
+.brand{font-family:var(--font-display);font-weight:500;font-size:19px;letter-spacing:-.03em;color:var(--p-ink);text-decoration:none}
+.mention{font-weight:500;color:var(--p-ink)}
+.lead-in{color:var(--p-muted);font-weight:inherit}
 
-/* ---------- top bar ---------- */
-.topbar{
-  position:sticky;top:0;z-index:60;
-  background:rgba(16,15,14,.82);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
-}
-.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:66px}
-.topbar .btn{padding:9px 18px;font-size:13px}
+/* ---------- nav ---------- */
+header.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);background:var(--p-bg);border-bottom:1px solid var(--p-line);z-index:50}
+header.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-link{font-size:14px;color:var(--p-muted);text-decoration:none}
+.nav-link:hover{color:var(--p-ink)}
 
 /* ---------- buttons ---------- */
 .btn{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--font-body);font-weight:600;font-size:15px;line-height:1;
-  padding:16px 26px;border-radius:999px;
-  text-decoration:none;border:1px solid transparent;
-  transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease;
-  white-space:nowrap;
+  display:inline-flex;align-items:center;gap:8px;justify-content:center;
+  font-family:var(--font-text);font-weight:500;font-size:16px;line-height:1;
+  height:44px;padding-inline:24px;border-radius:var(--r-md);text-decoration:none;
+  border:1px solid transparent;white-space:nowrap;cursor:pointer;
+  transition:transform .12s ease,box-shadow .12s ease,background-color .12s ease,border-color .12s ease;
 }
-.btn-primary{background:var(--flame);color:#22150B;box-shadow:0 10px 30px -14px rgba(255,107,44,.85)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -16px rgba(255,107,44,.95)}
-.btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
-.btn-ghost:hover{border-color:var(--ink-2);background:rgba(255,255,255,.05);transform:translateY(-2px)}
-.btn-kakao{background:var(--kakao);color:#3C1E1E}
-.btn-kakao:hover{transform:translateY(-2px);box-shadow:0 16px 36px -18px rgba(254,229,0,.8)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:999px}
+.btn:active{transform:scale(.97)}
+.btn--primary{background:var(--p-accent);color:var(--p-accent-ink)}
+.btn--primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(6,82,92,.38)}
+.btn--primary:active{transform:translateY(0) scale(.97)}
+.btn--secondary{border-color:var(--p-line-strong);color:var(--p-ink);background:transparent}
+.btn--secondary:hover{border-color:var(--p-muted);background:rgba(6,82,92,.05)}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--p-accent);outline-offset:3px;border-radius:var(--r-sm)}
 
-/* ---------- sections ---------- */
-section{padding-block:clamp(64px,9vw,120px);position:relative}
-section + section{border-top:1px solid var(--line)}
-.sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(34px,5vw,60px)}
+/* ---------- section box ---------- */
+section{position:relative;padding-block:var(--padt) var(--padb);height:calc(var(--h,1) * 100svh);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+section.band{background:var(--p-surface)}
+section.band::before{content:"";position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(var(--p-bg),var(--p-surface));pointer-events:none}
+section.band::after{content:"";position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(var(--p-surface),var(--p-bg));pointer-events:none}
+.head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-3);margin:0 auto var(--s-7);max-width:640px}
+footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
+@media (max-width:900px){
+  section{height:auto;min-height:calc(var(--hm,var(--h,1)) * 100lvh);overflow:visible}
+  footer.closing{height:auto;min-height:calc(var(--hm,var(--h,1)) * 100lvh)}
+}
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(56px,8vw,104px) clamp(64px,9vw,110px);overflow:hidden;border-top:none}
+/* ---------- hero (centred: x.ai-style headline, no product frame) ---------- */
+.hero{padding-top:calc(var(--nav) + 48px);padding-bottom:var(--padb);position:relative}
 .hero::before{
-  content:"";position:absolute;inset:-30% -10% auto -20%;height:150%;
-  background:radial-gradient(52% 46% at 22% 8%,rgba(255,107,44,.20),transparent 62%),
-             radial-gradient(38% 40% at 88% 34%,rgba(245,51,63,.14),transparent 65%);
-  pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(55% 48% at 50% 36%, rgba(6,82,92,.09), transparent 72%),
+    radial-gradient(rgba(6,82,92,.16) 1.5px, transparent 1.5px);
+  background-size:auto, 26px 26px;
+  -webkit-mask-image:radial-gradient(58% 62% at 50% 38%, #000 42%, transparent 86%);
+  mask-image:radial-gradient(58% 62% at 50% 38%, #000 42%, transparent 86%);
 }
-.hero-copy-solo{position:relative;display:flex;flex-direction:column;gap:22px;align-items:flex-start;max-width:640px}
+@media (max-width:640px){ .hero{padding-top:calc(var(--nav) + 40px)} }
+.hero .wrap{height:100%}
+.hero-text{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-5);max-width:880px;margin:0 auto;flex:none}
 .hero h1{text-wrap:wrap}
-.hero h1 .grad{display:inline-block}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.hero .lede{font-size:clamp(16px,1.3vw,18px);max-width:52ch;margin:0 auto}
+.hero .btn-row{justify-content:center}
+.dock{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s-2) var(--s-6);margin-top:var(--s-2)}
+@media (max-width:640px){ .dock{flex-direction:column;align-items:center;gap:var(--s-2)} }
+.dock-item{display:flex;align-items:baseline;justify-content:center;gap:6px;font-family:var(--font-mono);font-size:13px;color:var(--p-muted)}
+.dock-item b{color:var(--p-ink);font-weight:500}
 
-/* 본문 속 질문 목록 */
-.qlist{list-style:none;display:flex;flex-direction:column;gap:9px;margin:4px 0 2px;padding:0}
-.qlist li{position:relative;padding-left:19px;color:var(--ink-2);font-size:clamp(15px,1.5vw,17px);line-height:1.6;text-wrap:pretty}
-.qlist li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
+/* ---------- entrance (load once, not on scroll) ---------- */
+[data-enter]{opacity:0;transform:translateY(10px);animation:enter .6s cubic-bezier(.2,.7,.3,1) forwards}
+[data-enter="1"]{animation-delay:.05s}
+[data-enter="2"]{animation-delay:.15s}
+[data-enter="3"]{animation-delay:.25s}
+@keyframes enter{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-enter]{opacity:1;transform:none;animation:none} .steps::after,.step-badge,.tag{animation:none}}
 
-/* ---------- benefits ---------- */
-.benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.benefit{background:var(--ground);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:12px}
-.benefit p{color:var(--ink-2);font-size:14.5px}
+/* ---------- cards (one family, page-wide) ---------- */
+.card{background:var(--p-surface);border:1px solid var(--p-line);border-radius:var(--r-lg);padding:var(--s-6);transition:transform .2s ease,box-shadow .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(6,82,92,.28)}
+.card h3{margin-bottom:var(--s-2)}
+.card p{color:var(--p-ink);font-size:14.5px;line-height:1.6}
+.ico{width:56px;height:56px;border-radius:var(--r-md);display:grid;place-items:center;background:rgba(6,82,92,.08);color:var(--p-accent);margin-bottom:var(--s-4)}
+.ico svg{width:26px;height:26px}
 
-/* ---------- sample ---------- */
-.sample{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
-.sample-shot{
-  width:min(320px,100%);height:auto;border-radius:20px;
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.08);
+/* ---------- problem + solution (merged, one section) ---------- */
+.quote-stack{display:flex;flex-direction:column;gap:var(--s-6)}
+.quote{
+  font-family:var(--font-display);font-weight:400;color:var(--p-muted);
+  font-size:clamp(18px,1.8vw,22px);line-height:1.5;letter-spacing:-.01em;
+  padding-left:22px;border-left:3px solid var(--p-line-strong);
 }
-.sample-caption{max-width:44ch}
+.quote--turn{color:var(--p-ink);font-weight:500;border-left-color:var(--p-accent);font-size:clamp(20px,2.1vw,25px)}
+.solution-copy{display:flex;flex-direction:column;gap:var(--s-4);align-items:flex-start}
+.chat-frame{--p-line:var(--p-inv-line);--p-muted:var(--p-inv-muted);background:#04353c;border:1px solid var(--p-line);border-radius:var(--r-lg);padding:28px 22px;height:480px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 30px 70px -30px rgba(4,53,60,.55)}
+.chat-row{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.chat-bubble{max-width:82%;background:var(--kakao);color:#3C1E1E;font-size:13.5px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 4px 14px}
+.chat-time{font-family:var(--font-mono);font-size:11px;color:var(--p-muted)}
+.chat-divider{display:flex;align-items:center;gap:10px;margin:2px 0;color:var(--p-muted);font-size:12px;font-family:var(--font-mono)}
+.chat-divider::before,.chat-divider::after{content:"";flex:1;height:1px;background:var(--p-line)}
+.chat-row.auto .chat-bubble{background:var(--p-inv-accent);color:var(--p-inv-accent-ink);max-width:92%}
+.chat-row.in{align-items:flex-start}
+.chat-row.in .chat-bubble{background:#fff;color:#20242c;border-radius:14px 14px 14px 4px}
+@media (max-width:900px){ .chat-frame{height:auto} }
 
-/* ---------- offer ---------- */
-.offer{
-  background:var(--ground-2);
-  border:1px solid rgba(255,176,58,.28);
-  border-radius:22px;
-  padding:clamp(28px,4vw,52px);
-  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
-  gap:clamp(24px,4vw,48px);align-items:center;position:relative;overflow:hidden;
+/* ---------- benefits (photo cards) ---------- */
+.benefit-photo{border-radius:var(--r-lg);overflow:hidden;height:320px;border:1px solid var(--p-line)}
+.benefit-photo img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.benefit-card:hover .benefit-photo img{transform:scale(1.03)}
+@media (max-width:900px){ .benefit-photo{height:220px} }
+.benefit-photo img{width:100%;height:100%;object-fit:cover}
+.benefit-card h3{margin-top:var(--s-4)}
+.benefit-card p{margin-top:6px}
+
+/* ---------- app-frame (the real product, big) ---------- */
+.app-frame{align-items:start}
+.app-note{display:flex;flex-direction:column;gap:var(--s-5)}
+.app-points{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s-4)}
+.app-points li{font-size:14.5px;color:var(--p-ink);line-height:1.6}
+.app-points li b{color:var(--p-accent);font-weight:500}
+
+/* ---------- deck-shot (a real deck screenshot, full width) ---------- */
+.deck-shot{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--p-line);box-shadow:0 30px 70px -30px rgba(0,0,0,.6);max-width:800px;margin:var(--s-6) auto 0}
+.deck-shot img{display:block;width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.deck-shot:hover img{transform:scale(1.02)}
+.mini-kko{background:#B2C7DA;border-radius:var(--r-md);overflow:hidden;max-width:280px}
+.mini-kko .top{display:flex;align-items:center;gap:8px;padding:10px 12px 2px}
+.mini-kko .top img{width:20px;height:20px;border-radius:6px}
+.mini-kko .top span{font-size:12.5px;font-weight:500;color:#17202E}
+.mini-kko .body{margin:4px 8px 10px;background:#fff;border-radius:10px;overflow:hidden}
+.mini-kko .tag{background:var(--kakao);color:#3C1E1E;font-size:11px;font-weight:600;padding:6px 12px}
+.mini-kko .ti{padding:12px 12px 0;font-size:14px;font-weight:600;color:#121826;line-height:1.4}
+.mini-kko .tx{padding:10px 12px 12px;font-size:12px;color:#3A4254;line-height:1.6}
+.mini-kko .bt{display:flex}
+.mini-kko .bt div{flex:1;padding:9px;text-align:center;font-size:12px;font-weight:600}
+.mini-kko .bt .y{background:var(--kakao);color:#3C1E1E}
+.mini-kko .bt .g{background:#F1F0ED;color:#4A4A4A}
+
+/* ---------- process (feature section 1) ---------- */
+.process-grid{align-items:start}
+.proc-badge{display:inline-block;font-family:var(--font-mono);font-weight:500;font-size:15px;color:var(--p-accent-ink);background:var(--p-accent);padding:7px 16px;border-radius:var(--r-md);margin-bottom:var(--s-3)}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s-2);position:relative}
+.steps::before{content:"";position:absolute;left:16px;top:4px;bottom:4px;width:2px;background:var(--p-line-strong);z-index:0}
+.steps::after{content:"";position:absolute;left:12px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--p-accent);box-shadow:0 0 0 4px rgba(6,82,92,.18);z-index:0;animation:pulseTravel 3.6s ease-in-out infinite}
+.steps li{display:flex;gap:var(--s-4);align-items:center}
+.step-rail{position:relative;z-index:1;flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
+.step-card{flex:1;min-width:0;background:var(--p-surface);border:1px solid var(--p-line);border-radius:999px;padding:11px 20px;transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s ease}
+.step-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(6,82,92,.35)}
+.step-badge{flex:none;width:32px;height:32px;border-radius:50%;background:var(--p-accent);color:var(--p-accent-ink);font-family:var(--font-mono);font-weight:500;font-size:14px;display:grid;place-items:center;position:relative;animation:badgePing 3.6s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.step-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.step-t b{font-weight:500;font-size:16px}
+.step-t span{color:var(--p-ink);font-size:13px}
+@keyframes pulseTravel{0%{top:4px;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:calc(100% - 12px);opacity:0}}
+@keyframes badgePing{0%,18%,100%{box-shadow:0 0 0 0 rgba(6,82,92,0)}6%{box-shadow:0 0 0 7px rgba(6,82,92,.3)}}
+.tags-title{font-weight:500;font-size:clamp(19px,1.8vw,22px);color:var(--p-ink);letter-spacing:-.01em}
+.tags-rows{display:flex;flex-direction:column;gap:12px}
+.tags-row{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+.tags-row--offset{padding:0 9%}
+.tag{flex:1;font-size:15px;padding:11px 16px;border-radius:999px;background:var(--p-surface);border:1px solid var(--p-line);color:var(--p-muted);text-align:center;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;animation:tagGlow 5s ease-in-out infinite;animation-delay:calc(var(--i,0) * .5s)}
+.tag:hover{transform:translateY(-1px);border-color:var(--p-accent)}
+@keyframes tagGlow{0%,92%,100%{box-shadow:0 0 0 0 rgba(6,82,92,0);border-color:var(--p-line);color:var(--p-muted)}4%{box-shadow:0 0 0 6px rgba(6,82,92,.16);border-color:var(--p-accent);color:var(--p-ink)}}
+@media (max-width:900px){ .tags-row{flex-wrap:wrap} .tags-row--offset{padding:0} .tag{flex:0 0 calc(50% - 6px)} }
+
+/* ---------- content types + benefits ---------- */
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-5)}
+.type-card p{font-size:14px;color:var(--p-muted);line-height:1.6;margin-top:6px}
+.type-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--p-bg);border:1px solid var(--p-line);color:var(--p-accent);margin-bottom:var(--s-4)}
+@media (max-width:900px){ .type-grid{grid-template-columns:1fr} }
+
+/* ---------- pricing ---------- */
+.price-grid{align-items:stretch}
+.price-card{display:flex;flex-direction:column;gap:var(--s-4)}
+.plan-row{display:flex;align-items:center;gap:10px}
+.plan-name{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--p-ink);letter-spacing:-.01em}
+.plan-discount{font-size:13px;color:var(--p-accent);font-weight:500}
+.price-num{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.strike{color:var(--p-muted);font-size:17px;text-decoration:line-through}
+.arrow{color:var(--p-accent);font-size:17px}
+.now{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,2.6vw,32px)}
+.feats{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.feats li{display:flex;gap:10px;align-items:flex-start;color:var(--p-muted);font-size:14.5px;line-height:1.6}
+.feats svg{flex:0 0 17px;margin-top:4px;color:var(--p-accent)}
+.price-card .btn{margin-top:auto;width:100%}
+
+/* ---------- faq ---------- */
+.faq{display:flex;flex-direction:column;min-width:0}
+.faq-item{padding:var(--s-4) 0;border-top:1px solid var(--p-line)}
+.faq-item:first-child{border-top:none;padding-top:0}
+.faq-q{font-weight:500;font-size:16px;margin-bottom:8px}
+.faq-a{color:var(--p-ink);font-size:14.5px;line-height:1.65}
+.faq-contact{background:var(--p-surface);border:1px solid var(--p-line);border-radius:var(--r-lg);padding:var(--s-6);height:100%;display:flex;flex-direction:column;gap:var(--s-4)}
+.faq-contact h3{font-size:22px}
+.faq-contact p{color:var(--p-ink);font-size:14.5px;line-height:1.65}
+
+/* ---------- close + footer (one section) ---------- */
+.closing{
+  --p-bg:var(--p-inv-bg); --p-surface:var(--p-inv-surface); --p-ink:var(--p-inv-ink);
+  --p-muted:var(--p-inv-muted); --p-accent:var(--p-inv-accent); --p-accent-ink:var(--p-inv-accent-ink);
+  --p-line:var(--p-inv-line); --p-line-strong:var(--p-inv-line-strong);
+  background:var(--p-bg);padding-block:var(--padt) var(--padb);position:relative;
 }
-.offer.solo{grid-template-columns:minmax(0,1fr)}
-.offer::after{
-  content:"";position:absolute;inset:auto -10% -60% 40%;height:200%;
-  background:radial-gradient(40% 40% at 50% 50%,rgba(255,107,44,.16),transparent 70%);pointer-events:none;
-}
-.offer-copy{display:flex;flex-direction:column;gap:16px;position:relative}
-.offer h2{font-size:clamp(22px,2.8vw,34px)}
-.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;position:relative}
-.checks li{display:flex;gap:11px;align-items:flex-start;color:var(--ink-2);font-size:14.5px;line-height:1.65}
-.checks svg{flex:0 0 18px;margin-top:4px}
+.closing::before{content:"";position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(#f7f9f8,var(--p-bg));pointer-events:none}
+.closing .wrap{height:100%;display:flex;flex-direction:column;justify-content:center;gap:var(--s-8)}
+.close-copy{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-5);max-width:640px;margin:0 auto;padding-bottom:var(--s-8);border-bottom:1px solid var(--p-line)}
+.close-copy h2{font-size:clamp(34px,4.6vw,52px)}
+.close-copy .btn-row{justify-content:center}
+.close-note{color:var(--p-muted);font-size:14.5px}
+.foot-row{display:flex;flex-wrap:wrap;gap:var(--s-3) var(--s-6);align-items:center;justify-content:space-between;padding-top:var(--s-6)}
+.foot-left{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;color:var(--p-muted);font-size:13.5px}
+.foot-left a{text-decoration:none;color:var(--p-muted)}
+.foot-left a:hover{color:var(--p-ink)}
+.biz-info{margin-top:var(--s-4)}
+.biz-info summary{cursor:pointer;list-style:none;font-size:13px;color:var(--p-muted);display:inline-flex;align-items:center;gap:6px}
+.biz-info summary::-webkit-details-marker{display:none}
+.biz-info summary::after{content:"⌄";font-size:13px;transition:transform .15s ease}
+.biz-info[open] summary::after{transform:rotate(180deg)}
+.biz-info-body{display:flex;flex-direction:column;gap:4px;margin-top:10px;color:var(--p-muted);font-size:12.5px;line-height:1.7}
 
-/* ---------- final ---------- */
-.final{text-align:left}
-.final-in{display:flex;flex-direction:column;gap:26px;align-items:flex-start}
-footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);font-size:13px}
-.foot-in{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.foot-in a{text-decoration:none;color:var(--ink-2)}
-.foot-in a:hover{color:var(--ink)}
-
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-@media (prefers-reduced-motion:reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .btn:hover{transform:none}
-  *{scroll-behavior:auto!important}
-}
-
-/* ---------- 신청 폼 모달 ---------- */
+/* ---------- modal (preserved behaviour, restyled) ---------- */
 .modal[hidden]{display:none}
 .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
-.modal-back{position:absolute;inset:0;background:rgba(8,7,6,.72);backdrop-filter:blur(3px)}
+.modal-back{position:absolute;inset:0;background:rgba(5,7,12,.7)}
 .modal-card{
-  position:relative;width:min(460px,100%);max-height:calc(100vh - 40px);overflow-y:auto;
-  background:var(--paper);color:var(--paper-ink);border-radius:20px;
-  padding:clamp(26px,4vw,34px);box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
-  animation:modal-in .28s cubic-bezier(.2,.7,.3,1);
+  position:relative;width:min(440px,100%);max-height:calc(100vh - 40px);overflow-y:auto;
+  background:#fff;color:#121826;border-radius:var(--r-lg);
+  padding:32px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
 }
-@keyframes modal-in{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.modal-card{animation:none}}
-.modal-x{
-  position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;border-radius:50%;
-  background:rgba(0,0,0,.05);color:var(--paper-ink-2);font-size:19px;line-height:1;cursor:pointer;
-}
+.modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border:none;border-radius:50%;background:rgba(0,0,0,.05);color:#5B6678;font-size:19px;line-height:1;cursor:pointer}
 .modal-x:hover{background:rgba(0,0,0,.1)}
-.modal-card h3{font-size:23px;font-weight:900;letter-spacing:-.02em;margin:0}
-.modal-sub{color:var(--paper-ink-2);font-size:14px;line-height:1.6;margin:8px 0 22px}
+.modal-card h3{font-size:22px;font-weight:500;margin:0;color:#121826}
+.modal-sub{color:#5B6678;font-size:14px;line-height:1.6;margin:8px 0 22px}
 .field{display:block;margin-bottom:14px}
-.field > span.lb{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
-.field .req{color:var(--red);margin-left:2px}
-.field input{
-  width:100%;font-family:inherit;font-size:15px;color:var(--paper-ink);
-  padding:12px 14px;border:1px solid #DCD6CE;border-radius:10px;background:#FCFBFA;
-}
+.field > span.lb{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:#121826}
+.field .req{color:#D64545;margin-left:2px}
+.field input{width:100%;font-family:inherit;font-size:16px;color:#121826;height:48px;padding-inline:14px;border:1px solid #DCD6CE;border-radius:var(--r-sm);background:#FCFBFA}
 .field input::placeholder{color:#A9A099}
-.field input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,107,44,.14)}
-.field.bad input{border-color:var(--red);background:#FEF6F6}
-.err{display:none;color:var(--red);font-size:12.5px;margin-top:5px}
+.field input:focus{outline:none;border-color:#9ecf5e;box-shadow:0 0 0 3px rgba(154,200,90,.22)}
+.field.bad input{border-color:#D64545;background:#FEF6F6}
+.err{display:none;color:#D64545;font-size:12.5px;margin-top:5px}
 .field.bad .err{display:block}
-.agree{display:flex;gap:9px;align-items:flex-start;margin:18px 0 6px;font-size:12.5px;line-height:1.6;color:var(--paper-ink-2)}
-.agree input{margin-top:2px;width:15px;height:15px;accent-color:var(--orange);flex:none}
-.agree.bad{color:var(--red)}
+.agree{display:flex;gap:9px;align-items:flex-start;margin:18px 0 6px;font-size:12.5px;line-height:1.6;color:#5B6678}
+.agree input{margin-top:2px;width:15px;height:15px;accent-color:#9ecf5e;flex:none}
+.agree.bad{color:#D64545}
 .agree-detail{margin:6px 0 0 24px;font-size:11.5px;line-height:1.65;color:#8A8078}
-.modal .btn{width:100%;justify-content:center;margin-top:16px}
+.modal .btn{width:100%;margin-top:16px}
 .modal-done{text-align:center;padding:14px 0 4px}
-.modal-done .check{
-  width:52px;height:52px;border-radius:50%;background:var(--flame);
-  display:grid;place-items:center;margin:0 auto 16px;color:#fff;font-size:26px;
-}
+.modal-done .check{width:52px;height:52px;border-radius:50%;background:var(--p-accent);display:grid;place-items:center;margin:0 auto 16px;color:var(--p-accent-ink);font-size:26px}
 .modal-done h3{margin-bottom:9px}
 
 /* ---------- responsive ---------- */
-@media (max-width:900px){
-  .offer{grid-template-columns:minmax(0,1fr)}
-  .benefits{grid-template-columns:minmax(0,1fr)}
-  .topbar .btn{display:none}
-}
 @media (max-width:640px){
-  .foot-in{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-row{flex-direction:column;align-items:flex-start;gap:12px}
 }
 @media (max-width:520px){
-  .btn{width:100%;justify-content:center}
-  .cta-row{width:100%}
+  .btn{width:100%}
+  .btn-row{width:100%}
 }
 </style>
 
-<header class="topbar">
-  <div class="shell topbar-in">
+<header class="nav">
+  <div class="wrap">
+    <a class="skip-link" href="#top">본문 바로가기</a>
     <a class="brand" href="#top">코넥트</a>
-    <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
   </div>
 </header>
 
-<main>
+<main id="top" tabindex="-1">
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="shell">
-  <div class="hero-copy-solo">
-    <h1>세무사님의 <span class="grad">두 번째 직원</span>, 월 10만원으로 고용하세요</h1>
-    <p class="lede">거래처 수임 이후 '관리받고 있다'는 느낌은 고객을 붙잡는 중요한 요인 중 하나입니다. 많은 기업이 알림과 콘텐츠로 고객과 계속 연결되려는 이유기도 하고요.</p>
-    <p class="lede">하지만..</p>
-    <ul class="qlist">
-      <li>주제 선정하는 게 어려워요</li>
-      <li>직접 콘텐츠 작성하려면 시간이 많이 소요돼요</li>
-      <li>콘텐츠 발송·관리까지 본업에 쓸 시간이 부족해요</li>
-    </ul>
-    <p class="lede">세무사님도 같은 고민을 하고 계신다면, <span class="brand-mention">코넥트</span>가 대신해 드릴게요.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
-      <a class="btn btn-kakao" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
+<!-- HERO · collage -->
+<section class="hero" data-enter>
+  <div class="wrap">
+    <div class="hero-text" data-enter="1">
+      <div class="hero-copy">
+        <h1><span class="lead-in">세무사를 위한</span><br>고객 커뮤니케이션 자동화 솔루션</h1>
+        <p class="lede">매달 반복되는 자료 요청 알림과 각종 콘텐츠<br>이제 직접 만들고 발송하지 않아도 됩니다</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+          <a class="btn btn--secondary" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
+        </div>
+      </div>
     </div>
-  </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2><span class="brand-mention">코넥트</span>는 세무사님을 위한<br>고객관리 솔루션입니다</h2>
-      <p class="lede">세무·경제 전문 콘텐츠 팀이 콘텐츠를 만들고, 세무사님의 카카오톡 채널로 고객에게 콘텐츠를 보내드리는 서비스예요.<br>세무사님은 본업에만 집중하시면, 고객 관리는 저희가 대신해 드려요.</p>
+<!-- PROBLEM + SOLUTION, one section -->
+<section style="justify-content:flex-end">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0">
+      <h2>본업만으로도 바쁜데,<br>거래처 소통까지 챙기고 계신가요?</h2>
+      <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, 세무사님은 검토만 하세요.</p>
     </div>
-    <div class="benefits rv">
-      <div class="benefit">
-        <h3>사람이 직접 쓴 진짜 콘텐츠</h3>
-        <p>AI가 양산한 뻔한 내용이 아닙니다. 네이버페이의 세무 플랫폼을 담당하는 세무·경제 콘텐츠 전문 팀이 직접 원고를 작성합니다.</p>
-      </div>
-      <div class="benefit">
-        <h3>카카오톡 채널로 간편 전송</h3>
-        <p>완성된 콘텐츠는 세무사님의 카카오톡 채널을 통해 고객에게 자동 발송됩니다. 별도의 복잡한 시스템 조작은 없습니다.</p>
-      </div>
-      <div class="benefit">
-        <h3>안전하고 투명한 프로세스</h3>
-        <p>원고 제작 → 세무사님 사전 확인 → 확인 후 발송 과정으로 진행돼요. 세무사님께서는 콘텐츠 발송 전 확인만 해주시면 됩니다.</p>
-      </div>
-    </div>
-    <p class="footnote rv">*해당 회차 마음에 들지 않는 콘텐츠는 대체 콘텐츠로 발송 가능합니다.</p>
   </div>
 </section>
 
-<!-- SAMPLE -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>콘텐츠는 이렇게 보내드리고 있어요</h2>
+<!-- APP-FRAME: the real product, big -->
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <h2>세무사가 직접 보낸 것처럼<br>콘텐츠가 발송됩니다</h2>
+      <p class="lede">콘텐츠는 세무사님의 카카오톡 채널 이름으로 발송되고,<br>전문은 별도 페이지에서 확인할 수 있도록 제공됩니다.</p>
     </div>
-    <div class="sample rv">
-      <img class="sample-shot" src="images/sample-content.png" alt="코넥트로 발송되는 카카오톡 브랜드메시지 콘텐츠 예시" width="750" height="858">
-      <p class="lede sample-caption">콘텐츠는 세무사님의 이름으로 나가고, 콘텐츠 전문은 별도 페이지를 통해 확인할 수 있습니다.</p>
+    <div class="deck-shot">
+      <img src="assets/photos/section3-deck.jpg" alt="코넥트가 자동 발송하는 콘텐츠 예시 — 세무 일정 안내 콘텐츠와 거래처 소통 콘텐츠 실제 화면">
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section style="--h:2;justify-content:center">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:var(--s-6)">
+      <h2>발송부터 리마인드까지,<br>코넥트가 끝까지 챙겨드려요</h2>
+    </div>
+    <div class="process-grid" style="max-width:860px;margin:0 auto;padding-bottom:var(--s-6)">
+      <span class="proc-badge">자동화 프로세스</span>
+      <ol class="steps">
+        <li style="--delay:0s"><span class="step-rail"><span class="step-badge">1</span></span><span class="step-card"><span class="step-t"><b>세무사에게 알림톡 발송 계획 안내</b><span>어떤 콘텐츠가 언제 나가는지 먼저 안내해 드려요</span></span></span></li>
+        <li style="--delay:.9s"><span class="step-rail"><span class="step-badge">2</span></span><span class="step-card"><span class="step-t"><b>세무사의 채널로 알림톡 발송</b><span>세무사님 이름으로 거래처에 자동 발송됩니다</span></span></span></li>
+        <li style="--delay:1.8s"><span class="step-rail"><span class="step-badge">3</span></span><span class="step-card"><span class="step-t"><b>미응답 거래처 자동 리마인드 발송</b><span>놓친 거래처에게는 코넥트가 다시 한 번 알려드려요</span></span></span></li>
+        <li style="--delay:2.7s"><span class="step-rail"><span class="step-badge">4</span></span><span class="step-card"><span class="step-t"><b>최종 미응답 거래처 리스트 전달</b><span>끝까지 응답하지 않은 곳만 세무사님께 정리해 전달해요</span></span></span></li>
+      </ol>
+      <h3 class="tags-title" style="margin-top:var(--s-8)">코넥트를 이용하면 이런 업무들을 자동화할 수 있어요</h3>
+      <div class="tags-rows" style="margin-top:var(--s-3)">
+        <ul class="tags-row">
+          <li class="tag" style="--i:0">신규 거래처 안내</li>
+          <li class="tag" style="--i:1">부가가치세</li>
+          <li class="tag" style="--i:2">원천세</li>
+          <li class="tag" style="--i:3">법인세</li>
+        </ul>
+        <ul class="tags-row tags-row--offset">
+          <li class="tag" style="--i:4">연말정산</li>
+          <li class="tag" style="--i:5">보수총액신고</li>
+          <li class="tag" style="--i:6">지방세</li>
+          <li class="tag" style="--i:7">종합소득세</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT TYPES -->
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <h2>지금 당장 코넥트와<br>4가지 업무를 자동화해보세요</h2>
+    </div>
+    <div class="type-grid" style="max-width:800px;margin:0 auto">
+      <div class="card type-card">
+        <span class="type-icon"><svg role="img" aria-label="세무 일정 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>세무 일정 안내</h3>
+        <p>이번 달 신고·제출해야 하는 세무 일정을 미리 안내해요.</p>
+      </div>
+      <div class="card type-card">
+        <span class="type-icon"><svg role="img" aria-label="납부 기한 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>납부 기한 안내</h3>
+        <p>부가가치세·원천세·4대 보험료 등 납부기한을 안내해요.</p>
+      </div>
+      <div class="card type-card">
+        <span class="type-icon"><svg role="img" aria-label="신고 준비 서류 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 2.5h7l3 3v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 9h6M7 12h6M7 15h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>신고 준비 서류 안내</h3>
+        <p>원천세·법인세·부가가치세 신고에 필요한 서류를 거래처에 요청해요.</p>
+      </div>
+      <div class="card type-card">
+        <span class="type-icon"><svg role="img" aria-label="세무 콘텐츠 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.5a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9v.5h4v-.5c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 10 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 17.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>세무 콘텐츠</h3>
+        <p>절세 꿀팁, 지원사업, 노무 등 거래처에 유용한 정보를 제공해요.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS (stat row) -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <h2>AI 시대에도 살아남는<br>세무사가 될 수 있습니다</h2>
+      <p class="lede">거래처 소통을 코넥트에게 맡기면<br>세무사님께는 이런 변화가 생겨요.</p>
+    </div>
+    <div class="grid12">
+      <div class="benefit-card c-4">
+        <div class="benefit-photo"><img src="assets/photos/benefit-time.jpg" alt="탁자 위 알람 시계 — 절약되는 시간을 나타내는 사진"></div>
+        <h3>한 달에 20시간을 절약할 수 있어요</h3>
+        <p style="font-size:14.5px;color:var(--p-muted)">절약한 시간은 본업에만 집중할 수 있어요.</p>
+      </div>
+      <div class="benefit-card c-4">
+        <div class="benefit-photo"><img src="assets/photos/benefit-income.jpg" alt="동전을 쌓아 올리는 손 — 추가 수입을 나타내는 사진"></div>
+        <h3>추가 수입을 기대할 수 있어요</h3>
+        <p style="font-size:14.5px;color:var(--p-muted)">콘텐츠와 연관된 추가 용역, 금융 상품 가입 등으로 이어질 수 있어요.</p>
+      </div>
+      <div class="benefit-card c-4">
+        <div class="benefit-photo"><img src="assets/photos/benefit-trust.jpg" alt="자료를 검토하는 모습 — 전문적인 인상을 나타내는 사진"></div>
+        <h3>전문적인 인상을 줄 수 있어요</h3>
+        <p style="font-size:14.5px;color:var(--p-muted)">깔끔하게 안내를 전달해 거래처에도 전문적인 인상을 줄 수 있어요.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section>
-  <div class="shell">
-    <div class="sec-head rv">
-      <h2>주 3회, 월 10만원이라는<br>부담 없는 가격으로 꾸준한 접점을 만들어 보세요</h2>
+<section class="band" id="pricing" style="--hm:1.55">
+  <div class="wrap">
+    <div class="head">
+      <h2>지금 시작하면<br>가장 저렴한 가격으로 이용할 수 있어요</h2>
     </div>
-    <div class="offer solo rv">
-      <div class="offer-copy">
-        <ul class="checks">
-          <li>
-            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span><strong style="color:var(--ink)">발송 주기</strong> · 주 3회</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span><strong style="color:var(--ink)">월 이용료</strong> · 월 10만원</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 18 18" width="18" height="18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="8.25" stroke="#FF8A3C" stroke-width="1.5"></circle><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="#FF8A3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span><strong style="color:var(--ink)">체험 혜택</strong> · 선착순 10개 업체, 1개월 무료</span>
-          </li>
+    <div class="price-grid grid12">
+      <div class="card price-card c-6">
+        <div class="plan-row">
+          <span class="plan-name">Basic</span>
+          <span class="plan-discount">50% 할인가</span>
+        </div>
+        <div class="price-num"><span class="strike">20만원</span><span class="arrow">→</span><span class="now">월 10만원</span></div>
+        <span class="label" style="text-transform:none">VAT 별도</span>
+        <ul class="feats">
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>주 1회 거래처 소통 콘텐츠</span></li>
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>세무 일정 맞춤형 알림 콘텐츠</span></li>
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>발송 전 세무사님 사전 확인</span></li>
         </ul>
-        <p class="lede" style="margin-top:20px">거래처는 세무사님께서 꾸준히 관리해 준다고 느끼고, 콘텐츠는 새로운 상담·추가 용역으로 이어지기도 합니다.</p>
-        <p class="footnote">*체험 기간 종료 후 자동으로 결제되지 않습니다. 정식 결제 전 세무사님께 미리 확인 후 진행하니 안심하고 체험해 보세요.</p>
+        <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+      </div>
+      <div class="card price-card c7-12">
+        <span class="plan-name">Enterprise</span>
+        <div class="price-num"><span class="now">별도 협의</span></div>
+        <span class="label" style="text-transform:none">거래처 규모나 운영 방식이 다르다면</span>
+        <ul class="feats">
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basic 요금제의 모든 기능을 포함해요</span></li>
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>사무실 규모와 거래처 수에 맞춰 별도로 설계해 드려요</span></li>
+          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>전담 상담을 통해 맞춤 견적을 안내해 드려요</span></li>
+        </ul>
+        <a class="btn btn--secondary" href="#lead-modal" data-lead>문의하기</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 신청 폼 -->
-<section class="final">
-  <div class="shell final-in">
-    <div class="cta-row rv">
-      <a class="btn btn-primary" href="#lead-modal" data-lead>한 달 무료 체험 신청하기</a>
-      <a class="btn btn-kakao" href="#" id="kakao-cta-2">카카오톡으로 상담하기</a>
-    </div>
-  </div>
-</section>
 
 </main>
 
-<footer>
-  <div class="shell foot-in">
-    <a class="brand brand-sm" href="#top">코넥트</a>
-    <span>세무사 사무실을 대신해 글을 씁니다</span>
-    <a href="mailto:won@nugget.im">도입 문의는 won@nugget.im</a>
+<!-- CLOSE + FOOTER, one section -->
+<footer class="closing band">
+  <div class="wrap">
+    <div class="close-copy" style="margin-top:var(--s-7)">
+      <h2>거래처 커뮤니케이션, 지금 코넥트에 맡겨보세요</h2>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+        <a class="btn btn--secondary" href="#" id="kakao-cta-2">카카오톡으로 상담하기</a>
+      </div>
+    </div>
+    <div class="foot-block">
+      <div class="foot-row">
+        <a class="brand" href="#top">코넥트</a>
+      </div>
+      <details class="biz-info">
+        <summary>사업자 정보</summary>
+        <div class="biz-info-body">
+          <p>주식회사 너겟은 코넥트 내 대한민국 거래를 중개하는 통신판매중개자이며, 통신판매의 당사자가 아닙니다.</p>
+          <p>담당자 이지원 · 고객센터 won@nugget.im</p>
+          <p>© 2026 코넥트 by 너겟. All rights reserved.</p>
+        </div>
+      </details>
+    </div>
+    </details>
   </div>
 </footer>
+
 <!-- 무료 체험 신청 폼 -->
 <div class="modal" id="lead-modal" hidden="">
   <div class="modal-back" data-close=""></div>
@@ -368,8 +554,8 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
     <button class="modal-x" type="button" data-close="" aria-label="닫기">×</button>
 
     <div id="lead-body">
-      <h3 id="lead-title">한 달 무료 체험 신청</h3>
-      <p class="modal-sub">남겨주시면 1영업일 안에 연락드리겠습니다.</p>
+      <h3 id="lead-title">코넥트 서비스 신청</h3>
+      <p class="modal-sub">1영업일 안에 연락드리겠습니다.</p>
 
       <form id="lead-form" novalidate="">
         <label class="field" id="f-name">
@@ -402,7 +588,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
           문의 처리 후 1년간 보관한 뒤 파기합니다. 동의하지 않으실 수 있으며, 이 경우 신청 접수가 어렵습니다.
         </p>
 
-        <button class="btn btn-primary" type="submit" id="lead-submit">신청하기</button>
+        <button class="btn btn--primary" type="submit" id="lead-submit">신청하기</button>
       </form>
     </div>
 
@@ -410,7 +596,7 @@ footer{border-top:1px solid var(--line);padding-block:34px;color:var(--ink-3);fo
       <div class="check">✓</div>
       <h3>신청이 접수되었습니다</h3>
       <p class="modal-sub">1영업일 안에 연락드리겠습니다. 감사합니다.</p>
-      <button class="btn btn-primary" type="button" data-close="">닫기</button>
+      <button class="btn btn--primary" type="button" data-close="">닫기</button>
     </div>
   </div>
 </div>
@@ -551,26 +737,12 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq
 var KAKAO_URL = "";
 
 (function(){
-  var kakaoBtns = document.querySelectorAll(".btn-kakao");
+  var kakaoBtns = [document.getElementById("kakao-cta"), document.getElementById("kakao-cta-2")];
   kakaoBtns.forEach(function(b){
+    if (!b) return;
     if (KAKAO_URL) { b.href = KAKAO_URL; b.target = "_blank"; b.rel = "noopener"; }
     else { b.remove(); }
   });
-})();
-
-(function(){
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var els = document.querySelectorAll(".rv");
-  if (reduce || !("IntersectionObserver" in window)) {
-    els.forEach(function(el){ el.classList.add("in"); });
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-    });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-  els.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + "ms"; io.observe(el); });
 })();
 </script>
 </body>
