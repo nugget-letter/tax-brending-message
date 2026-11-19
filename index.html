@@ -9,7 +9,7 @@
 <meta property="og:title" content="코넥트: 세무사를 위한 거래처 커뮤니케이션 자동화">
 <meta property="og:description" content="매달 반복되는 거래처 자료 요청과 소통 콘텐츠 제작을 코넥트가 자동화합니다. 카카오톡 알림톡으로 발송하고, 세무사님은 검토만 하세요.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#f7f9f8">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&display=swap">
@@ -18,29 +18,29 @@
 <body>
 <!--
   deal (taste-skill design-taste-frontend): kind=software
-  palette=teal-on-paper (bg #f7f9f8 / surface #ebf0ee / ink+accent #06525c / muted #2f737d) — re-dealt 2026-11-17 against user-supplied references (flex.team, recatch.cc, chungoose.kr, bolta.io: black/white, blue, orange, warm-gradient B2B SaaS); teal duotone sits outside all four, skip past white-link-blue (clashes with chungoose's white+blue) and mint-pink-accounts
+  palette=navy-on-white (bg #ffffff / surface #eef2fa / ink+accent #222c40 / muted #64748b) — client override 2026-11-19, colors matched directly to https://www.taxcanvas.kr/ (computed styles read from the live reference: ink rgb(34,44,64), muted rgb(139,150,168)→nudged to #64748b for 4.5:1 contrast, surface tint rgb(238,242,250), primary CTA bg = ink itself with white label, matching their monochrome button), replacing the prior teal-on-paper deal
   type: client override 2026-11-17 — display/text set to Pretendard Variable (bold, weight 700, like flex.team) in place of the dealt Geist pairing; Geist Mono kept for labels/mono bits only
   hero=centred (centred headline and lede only, no pill, no product frame — removed at the client's request) · rhythm=dark-band (closing section only, using the palette's inverse teal) · buttons=solid · radius=soft · section heads (label/h2/lede) centred site-wide so every section's opening echoes the hero, content grids unfold left-aligned below — client request 2026-11-17
 -->
 <style>
 :root{
-  --p-bg:#f7f9f8;
-  --p-surface:#ebf0ee;
-  --p-ink:#06525c;
-  --p-muted:#2f737d;
-  --p-line:rgba(6,82,92,.14);
-  --p-line-strong:rgba(6,82,92,.26);
-  --p-accent:#06525c;
-  --p-accent-ink:#f7f9f8;
+  --p-bg:#ffffff;
+  --p-surface:#eef2fa;
+  --p-ink:#222c40;
+  --p-muted:#5b6b85;
+  --p-line:rgba(34,44,64,.12);
+  --p-line-strong:rgba(34,44,64,.24);
+  --p-accent:#222c40;
+  --p-accent-ink:#ffffff;
   --kakao:#FEE500;
 
-  /* inverse set (the palette's dark teal), scoped onto footer.closing for the one step-up band */
-  --p-inv-bg:#06525c;
-  --p-inv-surface:#205d66;
-  --p-inv-ink:#f7f9f8;
-  --p-inv-muted:#c1d0d2;
-  --p-inv-accent:#f7f9f8;
-  --p-inv-accent-ink:#06525c;
+  /* inverse set (the reference's dark navy), scoped onto footer.closing for the one step-up band */
+  --p-inv-bg:#222c40;
+  --p-inv-surface:#2b3f6c;
+  --p-inv-ink:#ffffff;
+  --p-inv-muted:#aab4c8;
+  --p-inv-accent:#f7f7f5;
+  --p-inv-accent-ink:#222c40;
   --p-inv-line:rgba(255,255,255,.14);
   --p-inv-line-strong:rgba(255,255,255,.26);
 
@@ -89,6 +89,7 @@ p{margin:0}
 
 .label{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--p-muted)}
 .lede{color:var(--p-ink);font-size:clamp(15px,1.4vw,18px);max-width:60ch;text-wrap:pretty;line-height:1.65}
+.lede--turn{color:var(--p-accent)}
 .note{font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--p-muted);margin-top:var(--s-4)}
 .brand{font-family:var(--font-display);font-weight:500;font-size:19px;letter-spacing:-.03em;color:var(--p-ink);text-decoration:none}
 .mention{font-weight:500;color:var(--p-ink)}
@@ -99,6 +100,8 @@ header.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);background:var(
 header.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
 .nav-link{font-size:14px;color:var(--p-muted);text-decoration:none}
 .nav-link:hover{color:var(--p-ink)}
+.btn.nav-cta{width:auto;flex:none;padding-inline:18px;font-size:14px}
+@media (max-width:480px){ .btn.nav-cta{padding-inline:12px;font-size:12px;height:40px} }
 
 /* ---------- buttons ---------- */
 .btn{
@@ -110,10 +113,10 @@ header.nav .wrap{height:100%;display:flex;align-items:center;justify-content:spa
 }
 .btn:active{transform:scale(.97)}
 .btn--primary{background:var(--p-accent);color:var(--p-accent-ink)}
-.btn--primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(6,82,92,.38)}
+.btn--primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(34,44,64,.38)}
 .btn--primary:active{transform:translateY(0) scale(.97)}
 .btn--secondary{border-color:var(--p-line-strong);color:var(--p-ink);background:transparent}
-.btn--secondary:hover{border-color:var(--p-muted);background:rgba(6,82,92,.05)}
+.btn--secondary:hover{border-color:var(--p-muted);background:rgba(34,44,64,.05)}
 .btn-row{display:flex;flex-wrap:wrap;gap:var(--s-3)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--p-accent);outline-offset:3px;border-radius:var(--r-sm)}
 
@@ -134,8 +137,8 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background:
-    radial-gradient(55% 48% at 50% 36%, rgba(6,82,92,.09), transparent 72%),
-    radial-gradient(rgba(6,82,92,.16) 1.5px, transparent 1.5px);
+    radial-gradient(55% 48% at 50% 36%, rgba(34,44,64,.09), transparent 72%),
+    radial-gradient(rgba(34,44,64,.16) 1.5px, transparent 1.5px);
   background-size:auto, 26px 26px;
   -webkit-mask-image:radial-gradient(58% 62% at 50% 38%, #000 42%, transparent 86%);
   mask-image:radial-gradient(58% 62% at 50% 38%, #000 42%, transparent 86%);
@@ -158,14 +161,23 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 [data-enter="2"]{animation-delay:.15s}
 [data-enter="3"]{animation-delay:.25s}
 @keyframes enter{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){[data-enter]{opacity:1;transform:none;animation:none} .steps::after,.step-badge,.tag{animation:none}}
+
+/* ---------- reveal (fades up once, first time it scrolls into view) ---------- */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.2,.7,.3,1),transform .65s cubic-bezier(.2,.7,.3,1)}
+[data-reveal].is-visible{opacity:1;transform:none}
+.type-grid [data-reveal]:nth-child(1),.price-grid [data-reveal]:nth-child(1),.grid12 [data-reveal]:nth-child(1){transition-delay:0s}
+.type-grid [data-reveal]:nth-child(2),.price-grid [data-reveal]:nth-child(2),.grid12 [data-reveal]:nth-child(2){transition-delay:.1s}
+.type-grid [data-reveal]:nth-child(3),.grid12 [data-reveal]:nth-child(3){transition-delay:.2s}
+.type-grid [data-reveal]:nth-child(4){transition-delay:.3s}
+
+@media (prefers-reduced-motion:reduce){[data-enter]{opacity:1;transform:none;animation:none} [data-reveal]{opacity:1;transform:none;transition:none} .steps::after,.step-badge,.tag{animation:none}}
 
 /* ---------- cards (one family, page-wide) ---------- */
 .card{background:var(--p-surface);border:1px solid var(--p-line);border-radius:var(--r-lg);padding:var(--s-6);transition:transform .2s ease,box-shadow .2s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(6,82,92,.28)}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(34,44,64,.28)}
 .card h3{margin-bottom:var(--s-2)}
 .card p{color:var(--p-ink);font-size:14.5px;line-height:1.6}
-.ico{width:56px;height:56px;border-radius:var(--r-md);display:grid;place-items:center;background:rgba(6,82,92,.08);color:var(--p-accent);margin-bottom:var(--s-4)}
+.ico{width:56px;height:56px;border-radius:var(--r-md);display:grid;place-items:center;background:rgba(34,44,64,.08);color:var(--p-accent);margin-bottom:var(--s-4)}
 .ico svg{width:26px;height:26px}
 
 /* ---------- problem + solution (merged, one section) ---------- */
@@ -177,7 +189,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 }
 .quote--turn{color:var(--p-ink);font-weight:500;border-left-color:var(--p-accent);font-size:clamp(20px,2.1vw,25px)}
 .solution-copy{display:flex;flex-direction:column;gap:var(--s-4);align-items:flex-start}
-.chat-frame{--p-line:var(--p-inv-line);--p-muted:var(--p-inv-muted);background:#04353c;border:1px solid var(--p-line);border-radius:var(--r-lg);padding:28px 22px;height:480px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 30px 70px -30px rgba(4,53,60,.55)}
+.chat-frame{--p-line:var(--p-inv-line);--p-muted:var(--p-inv-muted);background:#182133;border:1px solid var(--p-line);border-radius:var(--r-lg);padding:28px 22px;height:480px;display:flex;flex-direction:column;justify-content:center;gap:16px;box-shadow:0 30px 70px -30px rgba(10,14,24,.55)}
 .chat-row{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
 .chat-bubble{max-width:82%;background:var(--kakao);color:#3C1E1E;font-size:13.5px;line-height:1.55;padding:10px 14px;border-radius:14px 14px 4px 14px}
 .chat-time{font-family:var(--font-mono);font-size:11px;color:var(--p-muted)}
@@ -208,6 +220,21 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 .deck-shot{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--p-line);box-shadow:0 30px 70px -30px rgba(0,0,0,.6);max-width:800px;margin:var(--s-6) auto 0}
 .deck-shot img{display:block;width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 .deck-shot:hover img{transform:scale(1.02)}
+
+/* ---------- content gallery (real alimtalk examples, labelled) ---------- */
+.content-gallery{display:flex;gap:var(--s-6);justify-content:center;align-items:flex-end;flex-wrap:wrap;margin:var(--s-7) auto 0}
+.content-item{position:relative;flex:none;transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.content-item:hover{transform:translateY(-4px)}
+.content-item img{display:block;max-height:420px;width:auto;border-radius:28px;box-shadow:0 30px 70px -30px rgba(0,0,0,.5)}
+.content-tag{position:absolute;top:18px;left:50%;transform:translateX(-50%);background:#fff;color:var(--p-ink);font-size:13px;font-weight:600;padding:8px 16px;border-radius:999px;box-shadow:0 10px 24px -10px rgba(0,0,0,.3);white-space:nowrap;z-index:1}
+@media (max-width:900px){ .content-item img{max-height:320px} }
+
+/* ---------- talk shot (real alimtalk screenshots) ---------- */
+.talk-panel{background:var(--p-surface);border:1px solid var(--p-line);border-radius:var(--r-lg);padding:var(--s-6) var(--s-5);margin:0 auto;max-width:900px}
+.talk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-5);align-items:start}
+.talk-shot{display:flex;justify-content:center}
+.talk-shot img{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,.22))}
+@media (max-width:900px){ .talk-panel{max-width:340px;padding:var(--s-5) var(--s-4)} .talk-grid{grid-template-columns:1fr} }
 .mini-kko{background:#B2C7DA;border-radius:var(--r-md);overflow:hidden;max-width:280px}
 .mini-kko .top{display:flex;align-items:center;gap:8px;padding:10px 12px 2px}
 .mini-kko .top img{width:20px;height:20px;border-radius:6px}
@@ -226,30 +253,30 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 .proc-badge{display:inline-block;font-family:var(--font-mono);font-weight:500;font-size:15px;color:var(--p-accent-ink);background:var(--p-accent);padding:7px 16px;border-radius:var(--r-md);margin-bottom:var(--s-3)}
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--s-2);position:relative}
 .steps::before{content:"";position:absolute;left:16px;top:4px;bottom:4px;width:2px;background:var(--p-line-strong);z-index:0}
-.steps::after{content:"";position:absolute;left:12px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--p-accent);box-shadow:0 0 0 4px rgba(6,82,92,.18);z-index:0;animation:pulseTravel 3.6s ease-in-out infinite}
+.steps::after{content:"";position:absolute;left:12px;top:4px;width:8px;height:8px;border-radius:50%;background:var(--p-accent);box-shadow:0 0 0 4px rgba(34,44,64,.18);z-index:0;animation:pulseTravel 3.6s ease-in-out infinite}
 .steps li{display:flex;gap:var(--s-4);align-items:center}
 .step-rail{position:relative;z-index:1;flex:none;width:32px;height:32px;display:flex;align-items:center;justify-content:center}
 .step-card{flex:1;min-width:0;background:var(--p-surface);border:1px solid var(--p-line);border-radius:999px;padding:11px 20px;transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s ease}
-.step-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(6,82,92,.35)}
+.step-card:hover{transform:translateY(-2px);box-shadow:0 14px 28px -18px rgba(34,44,64,.35)}
 .step-badge{flex:none;width:32px;height:32px;border-radius:50%;background:var(--p-accent);color:var(--p-accent-ink);font-family:var(--font-mono);font-weight:500;font-size:14px;display:grid;place-items:center;position:relative;animation:badgePing 3.6s ease-in-out infinite;animation-delay:var(--delay,0s)}
 .step-t{display:flex;flex-direction:column;gap:2px;min-width:0}
 .step-t b{font-weight:500;font-size:16px}
 .step-t span{color:var(--p-ink);font-size:13px}
 @keyframes pulseTravel{0%{top:4px;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:calc(100% - 12px);opacity:0}}
-@keyframes badgePing{0%,18%,100%{box-shadow:0 0 0 0 rgba(6,82,92,0)}6%{box-shadow:0 0 0 7px rgba(6,82,92,.3)}}
+@keyframes badgePing{0%,18%,100%{box-shadow:0 0 0 0 rgba(34,44,64,0)}6%{box-shadow:0 0 0 7px rgba(34,44,64,.3)}}
 .tags-title{font-weight:500;font-size:clamp(19px,1.8vw,22px);color:var(--p-ink);letter-spacing:-.01em}
 .tags-rows{display:flex;flex-direction:column;gap:12px}
 .tags-row{display:flex;gap:12px;list-style:none;margin:0;padding:0}
 .tags-row--offset{padding:0 9%}
-.tag{flex:1;font-size:15px;padding:11px 16px;border-radius:999px;background:var(--p-surface);border:1px solid var(--p-line);color:var(--p-muted);text-align:center;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;animation:tagGlow 5s ease-in-out infinite;animation-delay:calc(var(--i,0) * .5s)}
+.tag{flex:1;font-size:15px;padding:11px 16px;border-radius:999px;background:var(--p-surface);border:1px solid var(--p-line);color:var(--p-muted);text-align:center;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
 .tag:hover{transform:translateY(-1px);border-color:var(--p-accent)}
-@keyframes tagGlow{0%,92%,100%{box-shadow:0 0 0 0 rgba(6,82,92,0);border-color:var(--p-line);color:var(--p-muted)}4%{box-shadow:0 0 0 6px rgba(6,82,92,.16);border-color:var(--p-accent);color:var(--p-ink)}}
 @media (max-width:900px){ .tags-row{flex-wrap:wrap} .tags-row--offset{padding:0} .tag{flex:0 0 calc(50% - 6px)} }
 
 /* ---------- content types + benefits ---------- */
 .type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-5)}
 .type-card p{font-size:14px;color:var(--p-muted);line-height:1.6;margin-top:6px}
 .type-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--p-bg);border:1px solid var(--p-line);color:var(--p-accent);margin-bottom:var(--s-4)}
+.type-icon--solid{width:56px;height:56px;border-radius:0;background:none;border:none}
 @media (max-width:900px){ .type-grid{grid-template-columns:1fr} }
 
 /* ---------- pricing ---------- */
@@ -259,6 +286,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 .plan-name{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--p-ink);letter-spacing:-.01em}
 .plan-discount{font-size:13px;color:var(--p-accent);font-weight:500}
 .price-num{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price-vat{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--p-muted)}
 .strike{color:var(--p-muted);font-size:17px;text-decoration:line-through}
 .arrow{color:var(--p-accent);font-size:17px}
 .now{font-family:var(--font-display);font-weight:500;font-size:clamp(26px,2.6vw,32px)}
@@ -284,7 +312,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
   --p-line:var(--p-inv-line); --p-line-strong:var(--p-inv-line-strong);
   background:var(--p-bg);padding-block:var(--padt) var(--padb);position:relative;
 }
-.closing::before{content:"";position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(#f7f9f8,var(--p-bg));pointer-events:none}
+.closing::before{content:"";position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(#ffffff,var(--p-bg));pointer-events:none}
 .closing .wrap{height:100%;display:flex;flex-direction:column;justify-content:center;gap:var(--s-8)}
 .close-copy{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-5);max-width:640px;margin:0 auto;padding-bottom:var(--s-8);border-bottom:1px solid var(--p-line)}
 .close-copy h2{font-size:clamp(34px,4.6vw,52px)}
@@ -345,7 +373,8 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 <header class="nav">
   <div class="wrap">
     <a class="skip-link" href="#top">본문 바로가기</a>
-    <a class="brand" href="#top">코넥트</a>
+    <a class="brand" href="#top">Konect</a>
+    <a class="btn btn--primary nav-cta" href="#lead-modal" data-lead>무료 체험 시작하기</a>
   </div>
 </header>
 
@@ -357,7 +386,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
     <div class="hero-text" data-enter="1">
       <div class="hero-copy">
         <h1><span class="lead-in">세무사를 위한</span><br>고객 커뮤니케이션 자동화 솔루션</h1>
-        <p class="lede">매달 반복되는 자료 요청 알림과 각종 콘텐츠<br>이제 직접 만들고 발송하지 않아도 됩니다</p>
+        <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, 세무사님은 검토만 하세요.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
           <a class="btn btn--secondary" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
@@ -368,111 +397,100 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 </section>
 
 <!-- PROBLEM + SOLUTION, one section -->
-<section style="justify-content:flex-end">
+<section style="justify-content:center">
   <div class="wrap">
-    <div class="head" style="margin-bottom:0">
-      <h2>본업만으로도 바쁜데,<br>거래처 소통까지 챙기고 계신가요?</h2>
-      <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, 세무사님은 검토만 하세요.</p>
+    <div class="head" data-reveal style="margin-bottom:0;gap:var(--s-6)">
+      <h2>"직접 거래처 소통까지 챙기고 계신가요?"</h2>
+      <p class="lede">세무 업무만으로도 하루가 모자란데,<br>거래처 자료 요청부터 리마인드까지 일일이 챙기긴 쉽지 않습니다.</p>
+      <p class="lede lede--turn">코넥트는 그 시간을 세무사님께 다시 돌려드립니다.</p>
     </div>
   </div>
 </section>
 
 <!-- APP-FRAME: the real product, big -->
-<section class="band">
+<section class="band" style="--h:1.4;justify-content:center">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-reveal style="margin-bottom:var(--s-6)">
       <h2>세무사가 직접 보낸 것처럼<br>콘텐츠가 발송됩니다</h2>
       <p class="lede">콘텐츠는 세무사님의 카카오톡 채널 이름으로 발송되고,<br>전문은 별도 페이지에서 확인할 수 있도록 제공됩니다.</p>
     </div>
-    <div class="deck-shot">
-      <img src="assets/photos/section3-deck.jpg" alt="코넥트가 자동 발송하는 콘텐츠 예시 — 세무 일정 안내 콘텐츠와 거래처 소통 콘텐츠 실제 화면">
+    <div class="talk-panel" data-reveal>
+      <div class="talk-grid">
+        <div class="talk-shot"><img src="assets/photos/alimtalk-sample-1.png" alt="코넥트가 발송한 종합소득세 중간예납 안내 알림톡 수신 화면"></div>
+        <div class="talk-shot"><img src="assets/photos/alimtalk-sample-2.png" alt="코넥트가 발송한 원천세 신고자료 요청 알림톡 수신 화면"></div>
+        <div class="talk-shot"><img src="assets/photos/alimtalk-sample-3.png" alt="코넥트가 발송한 추석 선물 안내 알림톡 수신 화면"></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section style="--h:2;justify-content:center">
+<section style="justify-content:center">
   <div class="wrap">
-    <div class="head" style="margin-bottom:var(--s-6)">
+    <div class="head" data-reveal style="margin-bottom:var(--s-6)">
       <h2>발송부터 리마인드까지,<br>코넥트가 끝까지 챙겨드려요</h2>
     </div>
-    <div class="process-grid" style="max-width:860px;margin:0 auto;padding-bottom:var(--s-6)">
+    <div class="process-grid" style="max-width:860px;margin:0 auto">
       <span class="proc-badge">자동화 프로세스</span>
       <ol class="steps">
-        <li style="--delay:0s"><span class="step-rail"><span class="step-badge">1</span></span><span class="step-card"><span class="step-t"><b>세무사에게 알림톡 발송 계획 안내</b><span>어떤 콘텐츠가 언제 나가는지 먼저 안내해 드려요</span></span></span></li>
+        <li style="--delay:0s"><span class="step-rail"><span class="step-badge">1</span></span><span class="step-card"><span class="step-t"><b>알림톡 발송 계획 안내</b><span>어떤 콘텐츠가 언제 나가는지 먼저 안내해 드려요</span></span></span></li>
         <li style="--delay:.9s"><span class="step-rail"><span class="step-badge">2</span></span><span class="step-card"><span class="step-t"><b>세무사의 채널로 알림톡 발송</b><span>세무사님 이름으로 거래처에 자동 발송됩니다</span></span></span></li>
         <li style="--delay:1.8s"><span class="step-rail"><span class="step-badge">3</span></span><span class="step-card"><span class="step-t"><b>미응답 거래처 자동 리마인드 발송</b><span>놓친 거래처에게는 코넥트가 다시 한 번 알려드려요</span></span></span></li>
-        <li style="--delay:2.7s"><span class="step-rail"><span class="step-badge">4</span></span><span class="step-card"><span class="step-t"><b>최종 미응답 거래처 리스트 전달</b><span>끝까지 응답하지 않은 곳만 세무사님께 정리해 전달해요</span></span></span></li>
+        <li style="--delay:2.7s"><span class="step-rail"><span class="step-badge">4</span></span><span class="step-card"><span class="step-t"><b>최종 미응답 거래처 리스트 전달</b><span>응답하지 않은 곳만 세무사님께 정리해 전달해요</span></span></span></li>
       </ol>
-      <h3 class="tags-title" style="margin-top:var(--s-8)">코넥트를 이용하면 이런 업무들을 자동화할 수 있어요</h3>
-      <div class="tags-rows" style="margin-top:var(--s-3)">
-        <ul class="tags-row">
-          <li class="tag" style="--i:0">신규 거래처 안내</li>
-          <li class="tag" style="--i:1">부가가치세</li>
-          <li class="tag" style="--i:2">원천세</li>
-          <li class="tag" style="--i:3">법인세</li>
-        </ul>
-        <ul class="tags-row tags-row--offset">
-          <li class="tag" style="--i:4">연말정산</li>
-          <li class="tag" style="--i:5">보수총액신고</li>
-          <li class="tag" style="--i:6">지방세</li>
-          <li class="tag" style="--i:7">종합소득세</li>
-        </ul>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTENT TYPES -->
-<section class="band">
+<section class="band" style="justify-content:center">
   <div class="wrap">
-    <div class="head">
+    <div class="head" data-reveal>
       <h2>지금 당장 코넥트와<br>4가지 업무를 자동화해보세요</h2>
     </div>
     <div class="type-grid" style="max-width:800px;margin:0 auto">
-      <div class="card type-card">
-        <span class="type-icon"><svg role="img" aria-label="세무 일정 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 8h14M7 2v4M13 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <div class="card type-card" data-reveal>
+        <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 일정 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="34" rx="9" fill="var(--p-accent)"/><rect x="20" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><rect x="37" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><circle cx="24" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="32" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="40" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="24" cy="46" r="3.6" fill="#fff" fill-opacity=".55"/><circle cx="32" cy="46" r="3.6" fill="var(--kakao)"/></svg></span>
         <h3>세무 일정 안내</h3>
         <p>이번 달 신고·제출해야 하는 세무 일정을 미리 안내해요.</p>
       </div>
-      <div class="card type-card">
-        <span class="type-icon"><svg role="img" aria-label="납부 기한 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="card type-card" data-reveal>
+        <span class="type-icon type-icon--solid"><svg role="img" aria-label="납부 기한 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="26" y="6" width="12" height="9" rx="4" fill="var(--p-accent)"/><circle cx="32" cy="35" r="22" fill="var(--p-accent)"/><path d="M32 23v13l10 6" stroke="#fff" stroke-opacity=".9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="35" r="3.2" fill="var(--kakao)"/></svg></span>
         <h3>납부 기한 안내</h3>
         <p>부가가치세·원천세·4대 보험료 등 납부기한을 안내해요.</p>
       </div>
-      <div class="card type-card">
-        <span class="type-icon"><svg role="img" aria-label="신고 준비 서류 안내 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 2.5h7l3 3v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 9h6M7 12h6M7 15h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <div class="card type-card" data-reveal>
+        <span class="type-icon type-icon--solid"><svg role="img" aria-label="신고 준비 서류 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M14 8h24l12 12v34a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" fill="var(--p-accent)"/><path d="M38 8v10a2 2 0 0 0 2 2h10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="17" y="30" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="38" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="46" width="13" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><circle cx="46" cy="48" r="9" fill="var(--kakao)"/><path d="M42 48.2l2.6 2.6 5.2-5.2" stroke="#3C1E1E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3>신고 준비 서류 안내</h3>
-        <p>원천세·법인세·부가가치세 신고에 필요한 서류를 거래처에 요청해요.</p>
+        <p>원천세·법인세·부가가치세 신고에 필요한 서류를<br>거래처에 요청해요.</p>
       </div>
-      <div class="card type-card">
-        <span class="type-icon"><svg role="img" aria-label="세무 콘텐츠 아이콘" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.5a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9v.5h4v-.5c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 10 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 17.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <div class="card type-card" data-reveal>
+        <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 콘텐츠 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M32 7a17 17 0 0 0-8.6 31.7c1.9 1.1 3 3.2 3 5.4v1.4h11.2v-1.4c0-2.2 1.1-4.3 3-5.4A17 17 0 0 0 32 7Z" fill="var(--p-accent)"/><rect x="24.5" y="48.5" width="15" height="4.4" rx="2.2" fill="var(--p-accent)"/><rect x="26.5" y="55" width="11" height="3.6" rx="1.8" fill="var(--p-accent)"/><circle cx="32" cy="26" r="6.4" fill="var(--kakao)"/></svg></span>
         <h3>세무 콘텐츠</h3>
-        <p>절세 꿀팁, 지원사업, 노무 등 거래처에 유용한 정보를 제공해요.</p>
+        <p>절세 꿀팁, 지원사업, 노무 등 거래처에<br>유용한 정보를 제공해요.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- BENEFITS (stat row) -->
-<section>
+<section style="justify-content:center">
   <div class="wrap">
-    <div class="head">
-      <h2>AI 시대에도 살아남는<br>세무사가 될 수 있습니다</h2>
-      <p class="lede">거래처 소통을 코넥트에게 맡기면<br>세무사님께는 이런 변화가 생겨요.</p>
+    <div class="head" data-reveal>
+      <h2>거래처 소통을 코넥트에 맡기면<br>세무사님께는 이런 변화가 생겨요</h2>
     </div>
     <div class="grid12">
-      <div class="benefit-card c-4">
+      <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-time.jpg" alt="탁자 위 알람 시계 — 절약되는 시간을 나타내는 사진"></div>
         <h3>한 달에 20시간을 절약할 수 있어요</h3>
         <p style="font-size:14.5px;color:var(--p-muted)">절약한 시간은 본업에만 집중할 수 있어요.</p>
       </div>
-      <div class="benefit-card c-4">
+      <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-income.jpg" alt="동전을 쌓아 올리는 손 — 추가 수입을 나타내는 사진"></div>
         <h3>추가 수입을 기대할 수 있어요</h3>
         <p style="font-size:14.5px;color:var(--p-muted)">콘텐츠와 연관된 추가 용역, 금융 상품 가입 등으로 이어질 수 있어요.</p>
       </div>
-      <div class="benefit-card c-4">
+      <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-trust.jpg" alt="자료를 검토하는 모습 — 전문적인 인상을 나타내는 사진"></div>
         <h3>전문적인 인상을 줄 수 있어요</h3>
         <p style="font-size:14.5px;color:var(--p-muted)">깔끔하게 안내를 전달해 거래처에도 전문적인 인상을 줄 수 있어요.</p>
@@ -482,30 +500,29 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 </section>
 
 <!-- PRICING -->
-<section class="band" id="pricing" style="--hm:1.55">
+<section class="band" id="pricing" style="--hm:1.55;justify-content:center">
   <div class="wrap">
-    <div class="head">
-      <h2>지금 시작하면<br>가장 저렴한 가격으로 이용할 수 있어요</h2>
+    <div class="head" data-reveal>
+      <h2>우리 사무실에 맞춰 선택하는<br>코넥트 플랜</h2>
     </div>
     <div class="price-grid grid12">
-      <div class="card price-card c-6">
+      <div class="card price-card c-6" data-reveal>
         <div class="plan-row">
           <span class="plan-name">Basic</span>
           <span class="plan-discount">50% 할인가</span>
         </div>
-        <div class="price-num"><span class="strike">20만원</span><span class="arrow">→</span><span class="now">월 10만원</span></div>
-        <span class="label" style="text-transform:none">VAT 별도</span>
+        <div class="price-num"><span class="strike">20만원</span><span class="arrow">→</span><span class="now">월 10만원</span><span class="price-vat">VAT 별도</span></div>
+        <span class="label" style="text-transform:none">1인·소규모 법인 세무사 추천</span>
         <ul class="feats">
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>주 1회 거래처 소통 콘텐츠</span></li>
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>세무 일정 맞춤형 알림 콘텐츠</span></li>
-          <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>발송 전 세무사님 사전 확인</span></li>
         </ul>
         <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
       </div>
-      <div class="card price-card c7-12">
+      <div class="card price-card c7-12" data-reveal>
         <span class="plan-name">Enterprise</span>
         <div class="price-num"><span class="now">별도 협의</span></div>
-        <span class="label" style="text-transform:none">거래처 규모나 운영 방식이 다르다면</span>
+        <span class="label" style="text-transform:none">대규모 법인 세무사 추천</span>
         <ul class="feats">
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basic 요금제의 모든 기능을 포함해요</span></li>
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>사무실 규모와 거래처 수에 맞춰 별도로 설계해 드려요</span></li>
@@ -523,7 +540,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 <!-- CLOSE + FOOTER, one section -->
 <footer class="closing band">
   <div class="wrap">
-    <div class="close-copy" style="margin-top:var(--s-7)">
+    <div class="close-copy" data-reveal style="margin-top:var(--s-7)">
       <h2>거래처 커뮤니케이션, 지금 코넥트에 맡겨보세요</h2>
       <div class="btn-row">
         <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
@@ -743,6 +760,26 @@ var KAKAO_URL = "";
     if (KAKAO_URL) { b.href = KAKAO_URL; b.target = "_blank"; b.rel = "noopener"; }
     else { b.remove(); }
   });
+})();
+
+/* 스크롤하며 처음 화면에 들어올 때 한 번 떠오르는 모션 */
+(function(){
+  var els = document.querySelectorAll("[data-reveal]");
+  if (!els.length) return;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach(function(el){ el.classList.add("is-visible"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .15, rootMargin: "0px 0px -8% 0px" });
+  els.forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
