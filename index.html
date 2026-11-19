@@ -89,6 +89,8 @@ p{margin:0}
 
 .label{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--p-muted)}
 .lede{color:var(--p-ink);font-size:clamp(15px,1.4vw,18px);max-width:60ch;text-wrap:pretty;line-height:1.65}
+.br-m{display:none}
+@media (max-width:900px){ .br-m{display:block} }
 .lede--turn{color:var(--p-accent)}
 .note{font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--p-muted);margin-top:var(--s-4)}
 .brand{font-family:var(--font-display);font-weight:500;font-size:19px;letter-spacing:-.03em;color:var(--p-ink);text-decoration:none}
@@ -401,7 +403,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
   <div class="wrap">
     <div class="head" data-reveal style="margin-bottom:0;gap:var(--s-6)">
       <h2>"직접 거래처 소통까지 챙기고 계신가요?"</h2>
-      <p class="lede">세무 업무만으로도 하루가 모자란데,<br>거래처 자료 요청부터 리마인드까지 일일이 챙기긴 쉽지 않습니다.</p>
+      <p class="lede">세무 업무만으로도 하루가 모자란데,<br>거래처 자료 요청부터 리마인드까지 <br class="br-m">일일이 챙기긴 쉽지 않습니다.</p>
       <p class="lede lede--turn">코넥트는 그 시간을 세무사님께 다시 돌려드립니다.</p>
     </div>
   </div>
