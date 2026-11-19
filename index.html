@@ -9,6 +9,12 @@
 <meta property="og:title" content="코넥트: 세무사를 위한 거래처 커뮤니케이션 자동화">
 <meta property="og:description" content="매달 반복되는 거래처 자료 요청과 소통 콘텐츠 제작을 코넥트가 자동화합니다. 카카오톡 알림톡으로 발송하고, 세무사님은 검토만 하세요.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://tax-sales.vercel.app/assets/og/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Konect — 세무사를 위한 거래처 커뮤니케이션 자동화">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tax-sales.vercel.app/assets/og/og-image.png">
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,6 +97,7 @@ p{margin:0}
 .lede{color:var(--p-ink);font-size:clamp(15px,1.4vw,18px);max-width:60ch;text-wrap:pretty;line-height:1.65}
 .br-m{display:none}
 @media (max-width:900px){ .br-m{display:block} }
+@media (max-width:370px){ .br-wide{display:none} }
 .lede--turn{color:var(--p-accent)}
 .note{font-family:var(--font-mono);font-size:13px;line-height:1.7;color:var(--p-muted);margin-top:var(--s-4)}
 .brand{font-family:var(--font-display);font-weight:500;font-size:19px;letter-spacing:-.03em;color:var(--p-ink);text-decoration:none}
@@ -388,7 +395,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
     <div class="hero-text" data-enter="1">
       <div class="hero-copy">
         <h1><span class="lead-in">세무사를 위한</span><br>고객 커뮤니케이션 자동화 솔루션</h1>
-        <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, 세무사님은 검토만 하세요.</p>
+        <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, <br class="br-m">세무사님은 검토만 하세요.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
           <a class="btn btn--secondary" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
@@ -435,10 +442,10 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
     <div class="process-grid" style="max-width:860px;margin:0 auto">
       <span class="proc-badge">자동화 프로세스</span>
       <ol class="steps">
-        <li style="--delay:0s"><span class="step-rail"><span class="step-badge">1</span></span><span class="step-card"><span class="step-t"><b>알림톡 발송 계획 안내</b><span>어떤 콘텐츠가 언제 나가는지 먼저 안내해 드려요</span></span></span></li>
-        <li style="--delay:.9s"><span class="step-rail"><span class="step-badge">2</span></span><span class="step-card"><span class="step-t"><b>세무사의 채널로 알림톡 발송</b><span>세무사님 이름으로 거래처에 자동 발송됩니다</span></span></span></li>
-        <li style="--delay:1.8s"><span class="step-rail"><span class="step-badge">3</span></span><span class="step-card"><span class="step-t"><b>미응답 거래처 자동 리마인드 발송</b><span>놓친 거래처에게는 코넥트가 다시 한 번 알려드려요</span></span></span></li>
-        <li style="--delay:2.7s"><span class="step-rail"><span class="step-badge">4</span></span><span class="step-card"><span class="step-t"><b>최종 미응답 거래처 리스트 전달</b><span>응답하지 않은 곳만 세무사님께 정리해 전달해요</span></span></span></li>
+        <li style="--delay:0s"><span class="step-rail"><span class="step-badge">1</span></span><span class="step-card"><span class="step-t"><b>알림톡 발송 계획 안내</b><span>어떤 콘텐츠가 언제 나가는지 먼저 안내해&nbsp;드려요</span></span></span></li>
+        <li style="--delay:.9s"><span class="step-rail"><span class="step-badge">2</span></span><span class="step-card"><span class="step-t"><b>세무사의 채널로 알림톡 발송</b><span>세무사님 이름으로 거래처에 자동&nbsp;발송됩니다</span></span></span></li>
+        <li style="--delay:1.8s"><span class="step-rail"><span class="step-badge">3</span></span><span class="step-card"><span class="step-t"><b>미응답 거래처 자동 리마인드 발송</b><span>놓친 거래처에게는 코넥트가 다시 한 번&nbsp;알려드려요</span></span></span></li>
+        <li style="--delay:2.7s"><span class="step-rail"><span class="step-badge">4</span></span><span class="step-card"><span class="step-t"><b>최종 미응답 거래처 리스트 전달</b><span>응답하지 않은 곳만 세무사님께 정리해&nbsp;전달해요</span></span></span></li>
       </ol>
     </div>
   </div>
@@ -454,22 +461,22 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
       <div class="card type-card" data-reveal>
         <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 일정 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="34" rx="9" fill="var(--p-accent)"/><rect x="20" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><rect x="37" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><circle cx="24" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="32" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="40" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="24" cy="46" r="3.6" fill="#fff" fill-opacity=".55"/><circle cx="32" cy="46" r="3.6" fill="var(--kakao)"/></svg></span>
         <h3>세무 일정 안내</h3>
-        <p>이번 달 신고·제출해야 하는 세무 일정을 미리 안내해요.</p>
+        <p>이번 달 신고·제출해야 하는 세무 일정을 미리&nbsp;안내해요.</p>
       </div>
       <div class="card type-card" data-reveal>
         <span class="type-icon type-icon--solid"><svg role="img" aria-label="납부 기한 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="26" y="6" width="12" height="9" rx="4" fill="var(--p-accent)"/><circle cx="32" cy="35" r="22" fill="var(--p-accent)"/><path d="M32 23v13l10 6" stroke="#fff" stroke-opacity=".9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="35" r="3.2" fill="var(--kakao)"/></svg></span>
         <h3>납부 기한 안내</h3>
-        <p>부가가치세·원천세·4대 보험료 등 납부기한을 안내해요.</p>
+        <p>부가가치세·원천세·4대 보험료 등 납부기한을&nbsp;안내해요.</p>
       </div>
       <div class="card type-card" data-reveal>
         <span class="type-icon type-icon--solid"><svg role="img" aria-label="신고 준비 서류 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M14 8h24l12 12v34a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" fill="var(--p-accent)"/><path d="M38 8v10a2 2 0 0 0 2 2h10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="17" y="30" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="38" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="46" width="13" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><circle cx="46" cy="48" r="9" fill="var(--kakao)"/><path d="M42 48.2l2.6 2.6 5.2-5.2" stroke="#3C1E1E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3>신고 준비 서류 안내</h3>
-        <p>원천세·법인세·부가가치세 신고에 필요한 서류를<br>거래처에 요청해요.</p>
+        <p>원천세·법인세·부가가치세 신고에 필요한 서류를 <br class="br-wide">거래처에 요청해요.</p>
       </div>
       <div class="card type-card" data-reveal>
         <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 콘텐츠 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M32 7a17 17 0 0 0-8.6 31.7c1.9 1.1 3 3.2 3 5.4v1.4h11.2v-1.4c0-2.2 1.1-4.3 3-5.4A17 17 0 0 0 32 7Z" fill="var(--p-accent)"/><rect x="24.5" y="48.5" width="15" height="4.4" rx="2.2" fill="var(--p-accent)"/><rect x="26.5" y="55" width="11" height="3.6" rx="1.8" fill="var(--p-accent)"/><circle cx="32" cy="26" r="6.4" fill="var(--kakao)"/></svg></span>
         <h3>세무 콘텐츠</h3>
-        <p>절세 꿀팁, 지원사업, 노무 등 거래처에<br>유용한 정보를 제공해요.</p>
+        <p>절세 꿀팁, 지원사업, 노무 등 거래처에<br>유용한 정보를&nbsp;제공해요.</p>
       </div>
     </div>
   </div>
@@ -479,23 +486,23 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 <section style="justify-content:center">
   <div class="wrap">
     <div class="head" data-reveal>
-      <h2>거래처 소통을 코넥트에 맡기면<br>세무사님께는 이런 변화가 생겨요</h2>
+      <h2>거래처 소통을 코넥트에 맡기면<br>세무사님께는 이런 변화가&nbsp;생겨요</h2>
     </div>
     <div class="grid12">
       <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-time.jpg" alt="탁자 위 알람 시계 — 절약되는 시간을 나타내는 사진"></div>
         <h3>한 달에 20시간을 절약할 수 있어요</h3>
-        <p style="font-size:14.5px;color:var(--p-muted)">절약한 시간은 본업에만 집중할 수 있어요.</p>
+        <p style="font-size:14.5px;color:var(--p-muted)">절약한 시간은 본업에만 집중할 수&nbsp;있어요.</p>
       </div>
       <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-income.jpg" alt="동전을 쌓아 올리는 손 — 추가 수입을 나타내는 사진"></div>
         <h3>추가 수입을 기대할 수 있어요</h3>
-        <p style="font-size:14.5px;color:var(--p-muted)">콘텐츠와 연관된 추가 용역, 금융 상품 가입 등으로 이어질 수 있어요.</p>
+        <p style="font-size:14.5px;color:var(--p-muted)">콘텐츠와 연관된 추가 용역, 금융 상품 가입 등으로 이어질 수&nbsp;있어요.</p>
       </div>
       <div class="benefit-card c-4" data-reveal>
         <div class="benefit-photo"><img src="assets/photos/benefit-trust.jpg" alt="자료를 검토하는 모습 — 전문적인 인상을 나타내는 사진"></div>
         <h3>전문적인 인상을 줄 수 있어요</h3>
-        <p style="font-size:14.5px;color:var(--p-muted)">깔끔하게 안내를 전달해 거래처에도 전문적인 인상을 줄 수 있어요.</p>
+        <p style="font-size:14.5px;color:var(--p-muted)">깔끔하게 안내를 전달해 거래처에도 전문적인 인상을 줄&nbsp;수&nbsp;있어요.</p>
       </div>
     </div>
   </div>
