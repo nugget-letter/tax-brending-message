@@ -142,7 +142,7 @@ footer.closing{height:calc(var(--h,1) * 100svh);box-sizing:border-box}
 }
 
 /* ---------- hero (centred: x.ai-style headline, no product frame) ---------- */
-.hero{padding-top:calc(var(--nav) + 48px);padding-bottom:var(--padb);position:relative}
+.hero{padding-top:calc(var(--nav) + 48px);padding-bottom:var(--padb);position:relative;justify-content:center}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background:
@@ -395,6 +395,9 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
 .wk-head{background:var(--kakao);padding:.5em .95em;font-size:.9em;color:#191919}
 .wk-img{width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
 .wk-body{padding:.75em 1em .1em;font-size:.9em;line-height:1.5;color:#191919;white-space:pre-line}
+.wk-msg.wk-long .wk-body{font-size:.72em;line-height:1.38}
+.wk-msg.wk-long .wk-foot{font-size:.68em}
+.wk-msg.wk-long .wk-btn{padding:.4em;margin-top:.3em}
 .wk-body b{display:block;margin:.5em 0;font-weight:700}
 .wk-foot{padding:.5em 1.1em 0;font-size:.74em;color:#8a8f99;line-height:1.45}
 .wk-btn{margin:.6em .95em .85em;background:#f3f3f3;border:1px solid #e6e6e6;border-radius:.5em;text-align:center;padding:.55em;font-size:.9em;color:#191919}
@@ -414,9 +417,10 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
   .wk-copy h2,.wk-bar{display:none}
   .wk-mob-head{display:block;text-align:center;font-size:20px;line-height:1.35;letter-spacing:-.03em}
   .wk-panel{--u:min(13px, calc((100svh - var(--nav) - 200px) / 44));order:1;border-radius:22px}
-  .wk-list{position:relative;min-height:5.6em;max-width:none;display:block}
-  .wk-card,.wk-card.done{position:absolute;inset:0;opacity:0;grid-template-columns:1fr;background:none;box-shadow:none;padding:0;text-align:center;pointer-events:none}
-  .wk-card svg{display:none}
+  .wk-list{position:relative;min-height:7.4em;max-width:none;display:block}
+  .wk-card,.wk-card.done{position:absolute;inset:0;opacity:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 10px;background:none;box-shadow:none;padding:0;text-align:center;pointer-events:none}
+  .wk-card svg{width:28px;height:28px;margin:0}
+  .wk-card p{flex:1 0 100%}
   .wk-card.on{opacity:1;background:none;box-shadow:none}
   .wk-card p{grid-template-rows:1fr}
 }
@@ -1054,7 +1058,7 @@ var KAKAO_URL = "";
   var MSGS = [
     { day:"2026년 11월 2일 월요일", img:"assets/photos/alimtalk-thumb-schedule.png",
       body:"OOO 대표님 안녕하세요.\n코넥트세무회계 박칠성 세무사입니다.\n\n11월 신고·제출해야 하는 세무 일정을 미리 안내드려요.\n\n• 원천세(10월 지급분) 신고 (~11월 10일)\n• 부가가치세 예정고지 납부 (~11월 25일)\n\n일정에 맞춰 자료 요청이나 납부 안내 알림톡을 순서대로 보내드릴게요!" },
-    { day:"2026년 11월 18일 수요일", img:"assets/photos/alimtalk-thumb-payment.png", btn:"납부 완료", foot:true,
+    { day:"2026년 11월 18일 수요일", img:"assets/photos/alimtalk-thumb-payment.png", btn:"납부 완료", foot:true, long:true,
       body:"안녕하세요.\nOOO 대표님.\n박칠성 세무회계입니다.\n\n2026년 2기 부가가치세\n예정고지 납부 안내드려요.\n\n- 납부 금액: 999,999원\n- 납부 기한: 2026.11.25(수)\n- 납부 방법: 홈택스 또는 가상계좌\n\n이번 부가세는 별도 신고 없이\n고지된 금액만 납부하시면 됩니다.\n\n납부 완료하셨다면\n'납부 완료'버튼을 클릭해 주세요.\n\n문의: 02-000-0000" },
     { day:"2026년 11월 27일 금요일", img:"assets/photos/alimtalk-thumb-docs.png", btn:"변동 없음", foot:true,
       body:"안녕하세요,\nOOO 대표님\n박칠성 세무회계입니다.\n\n11월 지급분 인건비 신고를 위해\n아래 내용을 확인해 주세요.\n- 정규직 변동 여부\n  (신규 입사·퇴사·급여 변동)\n- 일용직 근로자 내역\n- 3.3% 사업소득(프리랜서) 내역\n\n12월 4일(금)까지 제출해 주세요.\n\n이전 달과 변동이 없으면\n'변동 없음'버튼을 클릭해 주세요." },
@@ -1062,7 +1066,7 @@ var KAKAO_URL = "";
       body:"안녕하세요,\n코넥트세무회계 박칠성입니다.\n\nOOO 대표님께 유익한\n새로운 콘텐츠가 발행됐어요.\n<b>[연말 전에 챙기면 좋은 절세 체크리스트]</b>아래 버튼을 눌러\n이번주 놓치면 안 되는 소식을\n확인해 보세요." }
   ];
   panel.innerHTML = MSGS.map(function(m, i){
-    return '<div class="wk-msg' + (i === 0 ? ' in' : '') + '"><div class="wk-sc">' +
+    return '<div class="wk-msg' + (i === 0 ? ' in' : '') + (m.long ? ' wk-long' : '') + '"><div class="wk-sc">' +
       '<div class="wk-day">' + m.day + '</div>' +
       '<div class="wk-row"><div class="wk-av"><span>코넥트<br>세무</span></div><div>' +
       '<div class="wk-who">코넥트세무회계</div><div class="wk-line"><div class="wk-at"><div class="wk-k">kakao</div><div class="wk-bub">' +

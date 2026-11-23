@@ -56,6 +56,15 @@
         ],
         "createdAt": "2026-11-23T13:14:24.361Z",
         "reason": "user confirmed: keep as intentional '자동화 프로세스 진행중' motion cue on the steps timeline, not a fake-liveness indicator"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:54:38.227Z",
+        "reason": "is a real KakaoTalk 알림톡 notification bubble (.wk-bub) recreated inside the phone chat panel (.wk-panel/.ph-screen) to mock an actual screenshot, not a generic card-in-card layout; same pattern as the already-sanctioned ph-notif phone mockup"
       }
     ]
   }
