@@ -1,0 +1,62 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:13:15.130Z",
+        "reason": "False positive: .band sections' real content lives in .wrap (line 76) which already applies the --gut horizontal gutter; .ph-avatar is a 2.7em circular initials badge, not a text block needing inset padding"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:13:20.199Z",
+        "reason": "body only sets overflow-x:hidden (line 72) to stop horizontal scroll from full-bleed decorative elements; vertical overflow stays visible so tooltips/popovers are never clipped"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:13:28.248Z",
+        "reason": "client confirmed (see code comment line 27): navy ink #222c40 is matched to taxcanvas.kr reference; the .steps dot ring reuses this brand ink at low opacity as a focus ring, not a decorative AI glow"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:13:28.271Z",
+        "reason": "the gradient is the lock-screen background inside the phone mockup (.ph-screen, dark bg:#000) illustrating an actual phone UI, not a decorative page-wide glow"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:13:33.926Z",
+        "reason": "Pretendard is the primary body font (var(--font-text), not flagged); Geist Mono is only the secondary accent face for mono-style labels/timestamps (var(--font-mono)), a deliberate pairing, not the primary typeface"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T13:14:24.361Z",
+        "reason": "user confirmed: keep as intentional '자동화 프로세스 진행중' motion cue on the steps timeline, not a fake-liveness indicator"
+      }
+    ]
+  }
+}
