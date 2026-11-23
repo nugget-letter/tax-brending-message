@@ -441,6 +441,31 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
 .feats li{display:flex;gap:10px;align-items:flex-start;color:var(--p-muted);font-size:14.5px;line-height:1.6}
 .feats svg{flex:0 0 17px;margin-top:4px;color:var(--p-accent)}
 .price-card .btn{margin-top:auto;width:100%}
+.price-card.is-featured{position:relative;border:2px solid var(--p-ink);background:#fff;box-shadow:0 18px 40px -12px rgba(20,30,60,.28);overflow:visible}
+.price-card.is-featured.is-visible{transform:translateY(-6px)}
+.price-card.is-muted.is-visible{opacity:.82}
+.plan-ribbon{position:absolute;top:-14px;left:32px;background:var(--p-ink);color:#fff;font-size:13px;font-weight:700;padding:6px 14px;border-radius:999px;letter-spacing:-.01em}
+.is-featured .plan-discount{background:#ffe8e0;color:#e0471f;font-weight:700;padding:3px 9px;border-radius:999px;font-size:12px}
+.free-first{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:-8px}
+.free-first b{font-family:var(--font-display);font-size:34px;font-weight:800;color:#e0471f;letter-spacing:-.02em}
+.free-first span{font-size:14px;color:var(--p-muted)}
+.now-pre{font-size:.55em;font-weight:500;color:var(--p-muted)}
+.is-featured .btn--primary{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.is-featured .btn--primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:btnShine 3.5s ease-in-out infinite;pointer-events:none}
+@keyframes btnShine{0%,70%{left:-60%}100%{left:130%}}
+.is-featured .btn--primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(20,30,60,.5)}
+.btn-arrow{display:inline-block;margin-left:6px;transition:transform .2s}
+.is-featured .btn--primary:hover .btn-arrow{transform:translateX(4px)}
+.price-assure{margin:-8px 0 0;text-align:center;font-size:13px;color:var(--p-muted);word-break:keep-all;text-wrap:balance}
+@media (max-width:900px){
+  .price-grid{row-gap:calc(var(--s-4) + 14px)}
+  .price-card.is-featured{margin-top:14px}
+  .price-card.is-featured.is-visible{transform:none}
+  .plan-ribbon{left:24px}
+  .free-first b{font-size:28px}
+}
+@media (max-width:360px){.price-assure{font-size:12px}}
+@media (prefers-reduced-motion:reduce){.is-featured .btn--primary::after{animation:none}.is-featured .btn--primary,.btn-arrow{transition:none}}
 
 /* ---------- faq ---------- */
 .faq{display:flex;flex-direction:column;min-width:0}
@@ -521,7 +546,7 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
   <div class="wrap">
     <a class="skip-link" href="#top">본문 바로가기</a>
     <a class="brand" href="#top">Konect</a>
-    <a class="btn btn--primary nav-cta" href="#lead-modal" data-lead>무료 체험 시작하기</a>
+    <a class="btn btn--primary nav-cta" href="#lead-modal" data-lead>첫 달 무료로 시작하기</a>
   </div>
 </header>
 
@@ -728,20 +753,23 @@ OOO 대표님
       <h2>우리 사무실에 맞춰 선택하는<br>코넥트 플랜</h2>
     </div>
     <div class="price-grid grid12">
-      <div class="card price-card c-6" data-reveal>
+      <div class="card price-card c-6 is-featured" data-reveal>
+        <span class="plan-ribbon">추천</span>
         <div class="plan-row">
           <span class="plan-name">Basic</span>
           <span class="plan-discount">50% 할인가</span>
         </div>
-        <div class="price-num"><span class="strike">20만원</span><span class="arrow">→</span><span class="now">월 10만원</span><span class="price-vat">VAT 별도</span></div>
+        <div class="free-first"><b>첫 달 0원</b><span>1개월 무료 체험</span></div>
+        <div class="price-num"><span class="strike">20만원</span><span class="arrow">→</span><span class="now"><span class="now-pre">이후 </span>월 10만원</span><span class="price-vat">VAT 별도</span></div>
         <span class="label" style="text-transform:none">1인·소규모 법인 세무사 추천</span>
         <ul class="feats">
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>주 1회 거래처 소통 콘텐츠</span></li>
           <li><svg viewBox="0 0 18 18" width="18" height="18" fill="none"><circle cx="9" cy="9" r="8.25" stroke="currentColor" stroke-width="1.5"/><path d="M5.3 9.2l2.5 2.5 5-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>세무 일정 맞춤형 알림 콘텐츠</span></li>
         </ul>
-        <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+        <a class="btn btn--primary" href="#lead-modal" data-lead>첫 달 무료로 시작하기<span class="btn-arrow" aria-hidden="true">→</span></a>
+        <p class="price-assure">카드 등록 없이 시작 · 언제든 해지 가능</p>
       </div>
-      <div class="card price-card c7-12" data-reveal>
+      <div class="card price-card c7-12 is-muted" data-reveal>
         <span class="plan-name">Enterprise</span>
         <div class="price-num"><span class="now">별도 협의</span></div>
         <span class="label" style="text-transform:none">대규모 법인 세무사 추천</span>
