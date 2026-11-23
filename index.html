@@ -358,6 +358,62 @@ section.story{height:460vh;padding:0;display:block;overflow:visible}
 .type-icon--solid{width:56px;height:56px;border-radius:0;background:none;border:none}
 @media (max-width:900px){ .type-grid{grid-template-columns:1fr} }
 
+/* ---------- 4가지 업무: scroll-pinned cards + 알림톡 말풍선 (no phone frame) ---------- */
+section.tasks{height:320vh;padding:0;display:block;overflow:visible}
+.wk-pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden;padding-top:var(--nav);box-sizing:border-box;z-index:2}
+.wk-in{width:min(100% - 2*var(--gut), 1080px);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:64px;align-items:center}
+.wk-copy h2{margin-bottom:28px}
+.wk-mob-head{display:none}
+.wk-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:440px}
+.wk-card{display:grid;grid-template-columns:44px 1fr;gap:2px 16px;align-items:center;width:100%;padding:14px 18px;border:0;border-radius:16px;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;opacity:.42;transition:opacity .35s,background .35s,box-shadow .35s}
+.wk-card svg{width:44px;height:44px;grid-row:span 2}
+.wk-card strong{font-size:17px;font-weight:600;letter-spacing:-.02em;line-height:1.4}
+.wk-card p{font-size:14.5px;line-height:1.6;color:var(--p-muted);display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .45s ease}
+.wk-card p span{overflow:hidden}
+.wk-card.on{opacity:1;background:#fff;box-shadow:0 6px 24px rgba(34,44,64,.08)}
+.wk-card.on p{grid-template-rows:1fr}
+.wk-card.done{opacity:.65}
+.wk-bar{display:flex;gap:6px;margin-top:22px;max-width:440px;padding-left:18px}
+.wk-bar i{height:4px;flex:1;border-radius:2px;background:var(--p-line);overflow:hidden;position:relative}
+.wk-bar b{position:absolute;inset:0;background:var(--p-accent);transform-origin:left;transform:scaleX(0)}
+
+.wk-panel{--u:min(18px, calc((100svh - var(--nav) - 60px) / 44));font-size:var(--u);width:25.5em;max-width:100%;height:44em;border-radius:28px;background:#B2C7DA;position:relative;overflow:hidden;box-shadow:0 30px 60px -32px rgba(28,35,51,.4);line-height:1.4;flex:none}
+.wk-msg{position:absolute;inset:0;padding:1.2em 1.3em;display:flex;flex-direction:column;justify-content:safe center;gap:.6em;opacity:0;transform:translateY(1.6em);transition:opacity .4s ease,transform .55s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.wk-msg.in{opacity:1;transform:none}
+.wk-msg.out{opacity:0;transform:translateY(-1.2em)}
+.wk-day{align-self:center;font-size:.8em;color:#fff;background:rgba(0,0,0,.18);border-radius:1em;padding:.25em .9em}
+.wk-row{display:grid;grid-template-columns:2.7em auto;gap:.55em;align-items:start}
+.wk-av{width:2.7em;height:2.7em;border-radius:1em;background:var(--p-accent);color:#fff;display:grid;place-items:center;font-weight:700;line-height:1.1;text-align:center;letter-spacing:-.02em}
+.wk-av span{font-size:.66em}
+.wk-who{font-size:.88em;color:#2b3340;margin-bottom:.3em}
+.wk-line{display:flex;align-items:flex-end;gap:.35em}
+.wk-time{font-size:.72em;color:#4b5563;white-space:nowrap;padding-bottom:.1em}
+.wk-at{position:relative;width:16.6em;flex:none}
+.wk-k{position:absolute;top:-.9em;right:-.9em;width:3.3em;height:3.3em;border-radius:50%;background:#3a3a3a;color:#fff;font-size:.6em;display:grid;place-items:center;z-index:2}
+.wk-bub{background:#fff;border-radius:1em;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.wk-head{background:var(--kakao);padding:.5em .95em;font-size:.82em;color:#191919}
+.wk-img{width:100%;height:auto;aspect-ratio:2/1;object-fit:cover}
+.wk-body{padding:.7em .95em .1em;font-size:.76em;line-height:1.5;color:#191919;white-space:pre-line}
+.wk-body b{display:block;margin:.5em 0;font-weight:700}
+.wk-foot{padding:.5em 1em 0;font-size:.68em;color:#8a8f99;line-height:1.45}
+.wk-btn{margin:.6em .95em .85em;background:#f3f3f3;border:1px solid #e6e6e6;border-radius:.5em;text-align:center;padding:.55em;font-size:.82em;color:#191919}
+.wk-end{height:.85em}
+@media (max-width:900px){
+  section.tasks{height:320vh;min-height:0}
+  .wk-pin{padding-top:calc(var(--nav) + 8px)}
+  .wk-in{grid-template-columns:1fr;justify-items:center;gap:14px;align-content:center}
+  .wk-copy{order:2;width:100%;text-align:center}
+  .wk-copy h2,.wk-bar{display:none}
+  .wk-mob-head{display:block;text-align:center;font-size:20px;line-height:1.35;letter-spacing:-.03em}
+  .wk-panel{--u:min(14px, calc((100svh - var(--nav) - 200px) / 44));order:1;border-radius:22px}
+  .wk-list{position:relative;min-height:5.6em;max-width:none;display:block}
+  .wk-card,.wk-card.done{position:absolute;inset:0;opacity:0;grid-template-columns:1fr;background:none;box-shadow:none;padding:0;text-align:center;pointer-events:none}
+  .wk-card svg{display:none}
+  .wk-card.on{opacity:1;background:none;box-shadow:none}
+  .wk-card p{grid-template-rows:1fr}
+}
+@media (prefers-reduced-motion:reduce){ .wk-msg,.wk-card,.wk-card p{transition:none} }
+
 /* ---------- pricing ---------- */
 .price-grid{align-items:stretch}
 .price-card{display:flex;flex-direction:column;gap:var(--s-4)}
@@ -512,17 +568,17 @@ section.story{height:460vh;padding:0;display:block;overflow:visible}
             <div class="ph-notifs">
               <div class="ph-notif" data-at="0.06">
                 <div class="ph-appicon"><svg viewBox="0 0 24 24"><path fill="#191919" d="M12 4C6.9 4 3 7.2 3 11.1c0 2.5 1.6 4.7 4.1 5.9l-.9 3.3c-.1.3.3.5.5.3l3.8-2.6c.5.1 1 .1 1.5.1 5.1 0 9-3.2 9-7.1S17.1 4 12 4z"/></svg></div>
-                <div><div class="ph-n-head"><b>김하늘 세무회계</b><span>지금</span></div>
-                <div class="ph-n-body">[종합소득세 중간예납 안내] 안녕하세요, 이도윤 대표님. 2026년 종합소득세 중간예납 고지 안내드려요.</div></div>
+                <div><div class="ph-n-head"><b>코넥트세무회계</b><span>지금</span></div>
+                <div class="ph-n-body">[종합소득세 중간예납 안내] 안녕하세요, OOO 대표님. 2026년 종합소득세 중간예납 고지 안내드려요.</div></div>
               </div>
               <div class="ph-notif" data-at="0.15">
                 <div class="ph-appicon"><svg viewBox="0 0 24 24"><path fill="#191919" d="M12 4C6.9 4 3 7.2 3 11.1c0 2.5 1.6 4.7 4.1 5.9l-.9 3.3c-.1.3.3.5.5.3l3.8-2.6c.5.1 1 .1 1.5.1 5.1 0 9-3.2 9-7.1S17.1 4 12 4z"/></svg></div>
-                <div><div class="ph-n-head"><b>김하늘 세무회계</b><span>지금</span></div>
+                <div><div class="ph-n-head"><b>코넥트세무회계</b><span>지금</span></div>
                 <div class="ph-n-body">[원천세 신고 자료 요청] 11월 지급분 인건비 신고를 위해 아래 내용을 확인해 주세요.</div></div>
               </div>
               <div class="ph-notif" data-at="0.24" id="ph-tap">
                 <div class="ph-appicon"><svg viewBox="0 0 24 24"><path fill="#191919" d="M12 4C6.9 4 3 7.2 3 11.1c0 2.5 1.6 4.7 4.1 5.9l-.9 3.3c-.1.3.3.5.5.3l3.8-2.6c.5.1 1 .1 1.5.1 5.1 0 9-3.2 9-7.1S17.1 4 12 4z"/></svg></div>
-                <div><div class="ph-n-head"><b>김하늘 세무회계</b><span>지금</span></div>
+                <div><div class="ph-n-head"><b>코넥트세무회계</b><span>지금</span></div>
                 <div class="ph-n-body">🎁 추석 선물, 준비하셨나요? 미처 준비하지 못했다면 4가지 만큼은 살펴보고 구매하는 걸 추천해요.</div></div>
               </div>
             </div>
@@ -538,18 +594,18 @@ section.story{height:460vh;padding:0;display:block;overflow:visible}
             </div>
             <div class="ph-top">
               <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-              <div class="ph-title">김하늘 세무회계 <span class="ph-badge">채널</span></div>
+              <div class="ph-title">코넥트세무회계 <span class="ph-badge">채널</span></div>
               <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
               <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
             </div>
             <div class="ph-view" id="ph-view">
               <div class="ph-thread" id="ph-thread">
                 <div class="ph-daydiv">2026년 11월 20일 금요일</div>
-                <div class="ph-msg"><div class="ph-avatar"><span>김하늘<br>세무</span></div><div><div class="ph-who">김하늘 세무회계</div>
+                <div class="ph-msg"><div class="ph-avatar"><span>코넥트<br>세무</span></div><div><div class="ph-who">코넥트세무회계</div>
                   <img src="assets/photos/alimtalk-sample-1.png" alt="" style="width:17.48em;margin:-1.07em 0 0 -2.92em;clip-path:polygon(16.73% 5.92%,84.87% 5.92%,84.87% 3.52%,100% 3.52%,100% 100%,16.73% 100%)"></div></div>
-                <div class="ph-msg"><div class="ph-avatar"><span>김하늘<br>세무</span></div><div><div class="ph-who">김하늘 세무회계</div>
+                <div class="ph-msg"><div class="ph-avatar"><span>코넥트<br>세무</span></div><div><div class="ph-who">코넥트세무회계</div>
                   <img src="assets/photos/alimtalk-sample-2.png" alt="" style="width:17.54em;margin:-1.07em 0 0 -2.92em;clip-path:polygon(16.67% 4.61%,84.56% 4.61%,84.56% 2.75%,100% 2.75%,100% 100%,16.67% 100%)"></div></div>
-                <div class="ph-msg"><div class="ph-avatar"><span>김하늘<br>세무</span></div><div><div class="ph-who">김하늘 세무회계</div>
+                <div class="ph-msg"><div class="ph-avatar"><span>코넥트<br>세무</span></div><div><div class="ph-who">코넥트세무회계</div>
                   <img src="assets/photos/alimtalk-sample-3.png" alt="" style="width:16.83em;margin:-1.07em 0 0 -2.92em;clip-path:polygon(17.37% 7.49%,88.12% 7.49%,88.12% 4.46%,100% 4.46%,100% 100%,17.37% 100%)"></div></div>
               </div>
             </div>
@@ -579,33 +635,22 @@ section.story{height:460vh;padding:0;display:block;overflow:visible}
   </div>
 </section>
 
-<!-- CONTENT TYPES -->
-<section class="band" style="justify-content:center">
-  <div class="wrap">
-    <div class="head" data-reveal>
-      <h2>지금 당장 코넥트와<br>4가지 업무를 자동화해보세요</h2>
-    </div>
-    <div class="type-grid" style="max-width:800px;margin:0 auto">
-      <div class="card type-card" data-reveal>
-        <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 일정 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="34" rx="9" fill="var(--p-accent)"/><rect x="20" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><rect x="37" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><circle cx="24" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="32" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="40" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="24" cy="46" r="3.6" fill="#fff" fill-opacity=".55"/><circle cx="32" cy="46" r="3.6" fill="var(--kakao)"/></svg></span>
-        <h3>세무 일정 안내</h3>
-        <p>이번 달 신고·제출해야 하는 세무 일정을 미리&nbsp;안내해요.</p>
+<!-- CONTENT TYPES: scroll-pinned cards → matching 알림톡 example -->
+<section class="band tasks" id="tasks" aria-label="지금 당장 코넥트와 4가지 업무를 자동화해보세요">
+  <div class="wk-pin">
+    <div class="wk-in">
+      <h2 class="wk-mob-head">지금 당장 코넥트와<br>4가지 업무를 자동화해보세요</h2>
+      <div class="wk-copy">
+        <h2>지금 당장 코넥트와<br>4가지 업무를 자동화해보세요</h2>
+        <ul class="wk-list">
+          <li><button type="button" class="wk-card on" data-i="0"><svg aria-hidden="true" viewBox="0 0 64 64" fill="none"><rect x="12" y="20" width="40" height="34" rx="9" fill="var(--p-accent)"/><rect x="20" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><rect x="37" y="8" width="7" height="16" rx="3.5" fill="var(--p-accent)"/><circle cx="24" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="32" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="40" cy="38" r="3.6" fill="#fff" fill-opacity=".9"/><circle cx="24" cy="46" r="3.6" fill="#fff" fill-opacity=".55"/><circle cx="32" cy="46" r="3.6" fill="var(--kakao)"/></svg><strong>세무 일정 안내</strong><p><span>이번 달 신고·제출해야 하는 세무 일정을 미리&nbsp;안내해요.</span></p></button></li>
+          <li><button type="button" class="wk-card" data-i="1"><svg aria-hidden="true" viewBox="0 0 64 64" fill="none"><rect x="26" y="6" width="12" height="9" rx="4" fill="var(--p-accent)"/><circle cx="32" cy="35" r="22" fill="var(--p-accent)"/><path d="M32 23v13l10 6" stroke="#fff" stroke-opacity=".9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="35" r="3.2" fill="var(--kakao)"/></svg><strong>납부 기한 안내</strong><p><span>부가가치세·원천세·4대 보험료 등 납부기한을&nbsp;안내해요.</span></p></button></li>
+          <li><button type="button" class="wk-card" data-i="2"><svg aria-hidden="true" viewBox="0 0 64 64" fill="none"><path d="M14 8h24l12 12v34a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" fill="var(--p-accent)"/><path d="M38 8v10a2 2 0 0 0 2 2h10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="17" y="30" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="38" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="46" width="13" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><circle cx="46" cy="48" r="9" fill="var(--kakao)"/><path d="M42 48.2l2.6 2.6 5.2-5.2" stroke="#3C1E1E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>신고 준비 서류 안내</strong><p><span>원천세·법인세·부가가치세 신고에 필요한 서류를 거래처에&nbsp;요청해요.</span></p></button></li>
+          <li><button type="button" class="wk-card" data-i="3"><svg aria-hidden="true" viewBox="0 0 64 64" fill="none"><path d="M32 7a17 17 0 0 0-8.6 31.7c1.9 1.1 3 3.2 3 5.4v1.4h11.2v-1.4c0-2.2 1.1-4.3 3-5.4A17 17 0 0 0 32 7Z" fill="var(--p-accent)"/><rect x="24.5" y="48.5" width="15" height="4.4" rx="2.2" fill="var(--p-accent)"/><rect x="26.5" y="55" width="11" height="3.6" rx="1.8" fill="var(--p-accent)"/><circle cx="32" cy="26" r="6.4" fill="var(--kakao)"/></svg><strong>세무 콘텐츠</strong><p><span>절세 꿀팁, 지원사업, 노무 등 거래처에 유용한 정보를&nbsp;제공해요.</span></p></button></li>
+        </ul>
+        <div class="wk-bar" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
       </div>
-      <div class="card type-card" data-reveal>
-        <span class="type-icon type-icon--solid"><svg role="img" aria-label="납부 기한 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="26" y="6" width="12" height="9" rx="4" fill="var(--p-accent)"/><circle cx="32" cy="35" r="22" fill="var(--p-accent)"/><path d="M32 23v13l10 6" stroke="#fff" stroke-opacity=".9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="35" r="3.2" fill="var(--kakao)"/></svg></span>
-        <h3>납부 기한 안내</h3>
-        <p>부가가치세·원천세·4대 보험료 등 납부기한을&nbsp;안내해요.</p>
-      </div>
-      <div class="card type-card" data-reveal>
-        <span class="type-icon type-icon--solid"><svg role="img" aria-label="신고 준비 서류 안내 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M14 8h24l12 12v34a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4Z" fill="var(--p-accent)"/><path d="M38 8v10a2 2 0 0 0 2 2h10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="17" y="30" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="38" width="20" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><rect x="17" y="46" width="13" height="3.4" rx="1.7" fill="#fff" fill-opacity=".85"/><circle cx="46" cy="48" r="9" fill="var(--kakao)"/><path d="M42 48.2l2.6 2.6 5.2-5.2" stroke="#3C1E1E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <h3>신고 준비 서류 안내</h3>
-        <p>원천세·법인세·부가가치세 신고에 필요한 서류를 <br class="br-wide">거래처에 요청해요.</p>
-      </div>
-      <div class="card type-card" data-reveal>
-        <span class="type-icon type-icon--solid"><svg role="img" aria-label="세무 콘텐츠 아이콘" width="56" height="56" viewBox="0 0 64 64" fill="none"><path d="M32 7a17 17 0 0 0-8.6 31.7c1.9 1.1 3 3.2 3 5.4v1.4h11.2v-1.4c0-2.2 1.1-4.3 3-5.4A17 17 0 0 0 32 7Z" fill="var(--p-accent)"/><rect x="24.5" y="48.5" width="15" height="4.4" rx="2.2" fill="var(--p-accent)"/><rect x="26.5" y="55" width="11" height="3.6" rx="1.8" fill="var(--p-accent)"/><circle cx="32" cy="26" r="6.4" fill="var(--kakao)"/></svg></span>
-        <h3>세무 콘텐츠</h3>
-        <p>절세 꿀팁, 지원사업, 노무 등 거래처에<br>유용한 정보를&nbsp;제공해요.</p>
-      </div>
+      <div class="wk-panel" aria-hidden="true" id="wk-panel"></div>
     </div>
   </div>
 </section>
@@ -963,6 +1008,65 @@ var KAKAO_URL = "";
   addEventListener("resize", function(){ measure(); update(); });
   addEventListener("load", function(){ measure(); update(); });
   measure(); update();
+})();
+</script>
+<script>
+/* 4가지 업무: 알림톡 예시 (솔라피 템플릿 본문, 변수는 예시 값) */
+(function(){
+  var sec = document.getElementById("tasks"), panel = document.getElementById("wk-panel");
+  if (!sec || !panel) return;
+  var MSGS = [
+    { day:"2026년 11월 2일 월요일", img:"assets/photos/alimtalk-thumb-schedule.png",
+      body:"OOO 대표님 안녕하세요.\n코넥트세무회계 박칠성 세무사입니다.\n\n11월 신고·제출해야 하는 세무 일정을 미리 안내드려요.\n\n• 원천세(10월 지급분) 신고 (~11월 10일)\n• 부가가치세 예정고지 납부 (~11월 25일)\n\n일정에 맞춰 자료 요청이나 납부 안내 알림톡을 순서대로 보내드릴게요!" },
+    { day:"2026년 11월 18일 수요일", img:"assets/photos/alimtalk-thumb-payment.png", btn:"납부 완료", foot:true,
+      body:"안녕하세요.\nOOO 대표님.\n박칠성 세무회계입니다.\n\n2026년 2기 부가가치세\n예정고지 납부 안내드려요.\n\n- 납부 금액: 999,999원\n- 납부 기한: 2026.11.25(수)\n- 납부 방법: 홈택스 또는 가상계좌\n\n이번 부가세는 별도 신고 없이\n고지된 금액만 납부하시면 됩니다.\n\n납부 완료하셨다면\n'납부 완료'버튼을 클릭해 주세요.\n\n문의: 02-000-0000" },
+    { day:"2026년 11월 27일 금요일", img:"assets/photos/alimtalk-thumb-docs.png", btn:"변동 없음", foot:true,
+      body:"안녕하세요,\nOOO 대표님\n박칠성 세무회계입니다.\n\n11월 지급분 인건비 신고를 위해\n아래 내용을 확인해 주세요.\n- 정규직 변동 여부\n  (신규 입사·퇴사·급여 변동)\n- 일용직 근로자 내역\n- 3.3% 사업소득(프리랜서) 내역\n\n12월 4일(금)까지 제출해 주세요.\n\n이전 달과 변동이 없으면\n'변동 없음'버튼을 클릭해 주세요." },
+    { day:"2026년 11월 20일 금요일", img:"assets/photos/alimtalk-thumb-content.png", btn:"콘텐츠 보기",
+      body:"안녕하세요,\n코넥트세무회계 박칠성입니다.\n\nOOO 대표님께 유익한\n새로운 콘텐츠가 발행됐어요.\n<b>[연말 전에 챙기면 좋은 절세 체크리스트]</b>아래 버튼을 눌러\n이번주 놓치면 안 되는 소식을\n확인해 보세요." }
+  ];
+  panel.innerHTML = MSGS.map(function(m, i){
+    return '<div class="wk-msg' + (i === 0 ? ' in' : '') + '">' +
+      '<div class="wk-day">' + m.day + '</div>' +
+      '<div class="wk-row"><div class="wk-av"><span>코넥트<br>세무</span></div><div>' +
+      '<div class="wk-who">코넥트세무회계</div><div class="wk-line"><div class="wk-at"><div class="wk-k">kakao</div><div class="wk-bub">' +
+      '<div class="wk-head">알림톡 도착</div><img class="wk-img" src="' + m.img + '" alt="" loading="lazy" width="800" height="400">' +
+      '<div class="wk-body">' + m.body + '</div>' +
+      (m.foot ? '<div class="wk-foot">이 메시지는 계약이나 거래관계로 인해 발송되는 메시지입니다.</div>' : '') +
+      (m.btn ? '<div class="wk-btn">' + m.btn + '</div>' : '<div class="wk-end"></div>') +
+      '</div></div><span class="wk-time">오전 9:00</span></div></div></div></div>';
+  }).join("");
+
+  var cards = sec.querySelectorAll(".wk-card"), msgs = panel.querySelectorAll(".wk-msg"), bars = sec.querySelectorAll(".wk-bar b");
+  var N = cards.length, cur = 0, ticking = false;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function progress(){
+    var total = sec.offsetHeight - innerHeight;
+    return total > 0 ? Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total)) : 0;
+  }
+  function update(){
+    ticking = false;
+    var p = progress(), i = Math.min(N - 1, Math.floor(p * N));
+    for (var k = 0; k < N; k++){
+      cards[k].classList.toggle("on", k === i);
+      cards[k].classList.toggle("done", k < i);
+      if (bars[k]) bars[k].style.transform = "scaleX(" + Math.min(1, Math.max(0, p * N - k)) + ")";
+    }
+    if (i !== cur){
+      var prev = cur; cur = i;
+      for (var j = 0; j < N; j++){ msgs[j].classList.toggle("in", j === i); msgs[j].classList.toggle("out", j === prev); }
+      setTimeout(function(){ for (var j = 0; j < N; j++) if (j !== cur) msgs[j].classList.remove("out"); }, 450);
+    }
+  }
+  function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(update); } }
+  for (var c = 0; c < N; c++) cards[c].addEventListener("click", function(){
+    var i = +this.getAttribute("data-i"), total = sec.offsetHeight - innerHeight;
+    scrollTo({ top: sec.getBoundingClientRect().top + scrollY + total * ((i + .5) / N), behavior: reduce ? "auto" : "smooth" });
+  });
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll);
+  update();
 })();
 </script>
 </body>
