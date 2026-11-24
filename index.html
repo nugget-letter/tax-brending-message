@@ -20,6 +20,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400..500&display=swap">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+
+<!-- Meta Pixel ─ 이벤트 관리자에서 발급받은 숫자 ID로 아래 PIXEL_ID 를 교체하세요 -->
+<script>
+var PIXEL_ID = "1396955215849062";
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', PIXEL_ID);
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1396955215849062&ev=PageView&noscript=1"
+/></noscript>
+<!-- Meta Pixel 끝 -->
 </head>
 <body>
 <!--
@@ -900,7 +919,10 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq
   }
 
   document.querySelectorAll("[data-lead]").forEach(function(b){
-    b.addEventListener("click", openModal);
+    b.addEventListener("click", function(e){
+      if (window.fbq) fbq('track', 'Contact');
+      openModal(e);
+    });
   });
   modal.addEventListener("click", function(e){
     if (e.target.hasAttribute && e.target.hasAttribute("data-close")) closeModal();
@@ -991,6 +1013,7 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq
   });
 
   function finish(title, sub){
+    if (window.fbq) fbq('track', 'Lead');
     doneEl.querySelector("h3").textContent = title;
     doneEl.querySelector(".modal-sub").textContent = sub;
     bodyEl.hidden = true;
