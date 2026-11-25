@@ -15,7 +15,7 @@ var NOTIFY_EMAIL = "won@nugget.im";
 // 기록할 시트 이름
 var SHEET_NAME = "신청";
 
-var HEADERS = ["접수시각", "이름", "사무실", "연락처", "이메일", "동의", "유입경로", "어드민 전송"];
+var HEADERS = ["접수시각", "이름", "사무실", "연락처", "이메일", "동의", "유입경로", "어드민 전송", "알림톡 전송"];
 
 // 신청을 어드민(tax-auto)에도 함께 보낸다. 시트는 그대로 남기고 어드민이 추가로
 // 받는 구조라, 전송이 실패해도 신청 자체는 시트와 알림 메일로 남는다.
@@ -26,6 +26,28 @@ var ADMIN_ENDPOINT = "https://tax-auto.vercel.app/api/submissions";
 //       속성 SUBMISSION_TOKEN, 값은 Vercel 환경변수와 같은 문자열
 function adminToken_() {
   return PropertiesService.getScriptProperties().getProperty("SUBMISSION_TOKEN") || "";
+}
+
+// 솔라피(Solapi) 알림톡 발송 설정. 전부 스크립트 속성에서 읽는다 — 코드에 키를
+// 박아두지 않기 위해서다. 설정: Apps Script 편집기 → 프로젝트 설정 → 스크립트 속성
+//   SOLAPI_API_KEY       솔라피 콘솔 → API Key 관리
+//   SOLAPI_API_SECRET    같은 화면의 API Secret
+//   SOLAPI_PFID          카카오톡 채널 발신 프로필 키 (pfId)
+//   SOLAPI_TEMPLATE_ID   승인된 알림톡 템플릿 코드
+//   SOLAPI_SENDER_PHONE  솔라피에 등록한 발신번호 (알림톡 실패 시 대체 문자 발송용)
+//   SOLAPI_GUIDE_URL     세팅 가이드 노션 페이지 URL (대체 문자에만 쓰임, 선택)
+// 템플릿이 아직 승인되지 않았다면 속성을 비워두면 된다 — 아래 sendAlimtalk_가
+// "미설정"을 돌려줄 뿐 신청 처리 자체는 그대로 계속된다.
+function solapiConfig_() {
+  var props = PropertiesService.getScriptProperties();
+  return {
+    apiKey:      props.getProperty("SOLAPI_API_KEY"),
+    apiSecret:   props.getProperty("SOLAPI_API_SECRET"),
+    pfId:        props.getProperty("SOLAPI_PFID"),
+    templateId:  props.getProperty("SOLAPI_TEMPLATE_ID"),
+    senderPhone: props.getProperty("SOLAPI_SENDER_PHONE"),
+    guideUrl:    props.getProperty("SOLAPI_GUIDE_URL")
+  };
 }
 
 
@@ -53,9 +75,10 @@ function doPost(e) {
 
     notify_(p);
 
-    // 어드민 전송은 시트 기록이 끝난 뒤에 한다 — 여기서 뭐가 터지든 위의
-    // 기록과 알림은 이미 끝나 있어서 신청이 사라지지 않는다.
+    // 어드민 전송과 알림톡 발송은 시트 기록이 끝난 뒤에 한다 — 여기서 뭐가
+    // 터지든 위의 기록과 알림은 이미 끝나 있어서 신청이 사라지지 않는다.
     sheet.getRange(row, 8).setValue(sendToAdmin_(p));
+    sheet.getRange(row, 9).setValue(sendAlimtalk_(p));
 
     return json_({ ok: true });
 
@@ -88,6 +111,7 @@ function getSheet_() {
     sheet.setColumnWidth(5, 200);
     sheet.setColumnWidth(7, 160);
     sheet.setColumnWidth(8, 110);
+    sheet.setColumnWidth(9, 110);
   }
   return sheet;
 }
@@ -122,6 +146,84 @@ function sendToAdmin_(p) {
 
     var code = res.getResponseCode();
     if (code === 201) return "o";
+    return "실패: " + code + " " + res.getContentText().slice(0, 100);
+
+  } catch (err) {
+    return "실패: " + String(err).slice(0, 100);
+  }
+}
+
+
+/**
+ * 솔라피 알림톡 발송. API Key/Secret은 HMAC-SHA256으로 서명해서 보낸다
+ * (솔라피 인증 방식). 템플릿이 아직 없거나 속성이 비어 있으면 "미설정"을
+ * 돌려주고 조용히 넘어간다 — sendToAdmin_과 같은 이유로, 이 호출 때문에
+ * 신청 처리가 깨지면 안 되기 때문이다.
+ *
+ * 솔라피에 등록할 템플릿 (변수명은 아래 variables와 반드시 일치):
+ *   #{신청자}님, 코넥트 무료 체험 신청이 접수됐습니다.
+ *
+ *   ■ 신청 정보
+ *   - 사무실: #{사무실}
+ *
+ *   아래 '세팅 가이드 보기' 버튼을 눌러 무료 체험 신청의 마지막 과정을 진행해주세요.
+ *   관리자 설정까지 마무리해야 한 달 무료 체험이 시작돼요.
+ *   완료되면 코넥트가 확인 후 무료 체험 전 안내 연락을 드릴게요.
+ *
+ *   어려운 점이 있다면 '문의하기' 버튼을 통해 언제든 문의해주세요.
+ *
+ *   버튼: [세팅 가이드 보기] 웹링크 → https://airy-pig-79d.notion.site/4220d43d16f981158fdee80cb7b89c1e?source=copy_link
+ *         [문의하기] 웹링크 → http://pf.kakao.com/_axggwX/chat
+ */
+function sendAlimtalk_(p) {
+  var cfg = solapiConfig_();
+  if (!cfg.apiKey || !cfg.apiSecret || !cfg.pfId || !cfg.templateId || !cfg.senderPhone) {
+    return "미설정";
+  }
+
+  var to = (p.phone || "").replace(/[^0-9]/g, "");
+  if (!to) return "연락처 없음";
+
+  try {
+    var date = new Date().toISOString();
+    var salt = Utilities.getUuid();
+    var signature = Utilities.computeHmacSha256Signature(date + salt, cfg.apiSecret)
+      .map(function (b) {
+        var hex = ((b < 0 ? b + 256 : b)).toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      })
+      .join("");
+
+    var res = UrlFetchApp.fetch("https://api.solapi.com/messages/v4/send", {
+      method: "post",
+      contentType: "application/json",
+      headers: {
+        Authorization: "HMAC-SHA256 apiKey=" + cfg.apiKey + ", date=" + date + ", salt=" + salt + ", signature=" + signature
+      },
+      payload: JSON.stringify({
+        message: {
+          to: to,
+          from: cfg.senderPhone,
+          kakaoOptions: {
+            pfId: cfg.pfId,
+            templateId: cfg.templateId,
+            // 승인된 템플릿의 변수명과 반드시 동일해야 한다.
+            variables: {
+              "#{신청자}": p.name || "",
+              "#{사무실}": p.office || ""
+            },
+            // 알림톡이 실패하면(채널 미친구 추가 등) 같은 내용을 문자로 대체 발송
+            disableSms: false
+          },
+          text: (p.name || "고객") + "님, 코넥트 무료 체험 신청이 접수됐습니다. 관리자 설정까지 마무리해야 한 달 무료 체험이 시작돼요."
+            + (cfg.guideUrl ? " 세팅 가이드: " + cfg.guideUrl : "")
+        }
+      }),
+      muteHttpExceptions: true
+    });
+
+    var code = res.getResponseCode();
+    if (code === 200 || code === 201) return "o";
     return "실패: " + code + " " + res.getContentText().slice(0, 100);
 
   } catch (err) {
