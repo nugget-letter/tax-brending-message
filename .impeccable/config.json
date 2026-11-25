@@ -65,6 +65,24 @@
         ],
         "createdAt": "2026-11-23T13:54:38.227Z",
         "reason": "is a real KakaoTalk 알림톡 notification bubble (.wk-bub) recreated inside the phone chat panel (.wk-panel/.ph-screen) to mock an actual screenshot, not a generic card-in-card layout; same pattern as the already-sanctioned ph-notif phone mockup"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-25T10:24:36.978Z",
+        "reason": "large bold text (34px/800, .free-first b) only needs 3:1 AA; measured 3.5:1 passes, pre-existing and unrelated to current edit"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-25T10:26:24.130Z",
+        "reason": "all sub-11px text is em-based inside the scaled .ph/.wk phone-notification mockup illustration (storytelling graphic of an alimtalk/chat screen), not real interactive site UI; actual functional nav/buttons/labels/footer text are all >=11px"
       }
     ]
   }

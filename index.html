@@ -469,12 +469,12 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
 .free-first b{font-family:var(--font-display);font-size:34px;font-weight:800;color:#e0471f;letter-spacing:-.02em}
 .free-first span{font-size:14px;color:var(--p-muted)}
 .now-pre{font-size:.55em;font-weight:500;color:var(--p-muted)}
-.is-featured .btn--primary{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
-.is-featured .btn--primary::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:btnShine 3.5s ease-in-out infinite;pointer-events:none}
+.is-featured .btn--primary,.btn--primary.is-featured{position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.is-featured .btn--primary::after,.btn--primary.is-featured::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:btnShine 3.5s ease-in-out infinite;pointer-events:none}
 @keyframes btnShine{0%,70%{left:-60%}100%{left:130%}}
-.is-featured .btn--primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(20,30,60,.5)}
+.is-featured .btn--primary:hover,.btn--primary.is-featured:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(20,30,60,.5)}
 .btn-arrow{display:inline-block;margin-left:6px;transition:transform .2s}
-.is-featured .btn--primary:hover .btn-arrow{transform:translateX(4px)}
+.is-featured .btn--primary:hover .btn-arrow,.btn--primary.is-featured:hover .btn-arrow{transform:translateX(4px)}
 .price-assure{margin:-8px 0 0;text-align:center;font-size:13px;color:var(--p-muted);word-break:keep-all;text-wrap:balance}
 @media (max-width:900px){
   .price-grid{row-gap:calc(var(--s-4) + 14px)}
@@ -484,7 +484,7 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
   .free-first b{font-size:28px}
 }
 @media (max-width:360px){.price-assure{font-size:12px}}
-@media (prefers-reduced-motion:reduce){.is-featured .btn--primary::after{animation:none}.is-featured .btn--primary,.btn-arrow{transition:none}}
+@media (prefers-reduced-motion:reduce){.is-featured .btn--primary::after,.btn--primary.is-featured::after{animation:none}.is-featured .btn--primary,.btn--primary.is-featured,.btn-arrow{transition:none}}
 
 /* ---------- faq ---------- */
 .faq{display:flex;flex-direction:column;min-width:0}
@@ -535,6 +535,7 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
 .modal-sub{color:#5B6678;font-size:14px;line-height:1.6;margin:8px 0 22px}
 .field{display:block;margin-bottom:14px}
 .field > span.lb{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:#121826}
+.field-hint{font-weight:400;color:#5B6678}
 .field .req{color:#D64545;margin-left:2px}
 .field input{width:100%;font-family:inherit;font-size:16px;color:#121826;height:48px;padding-inline:14px;border:1px solid #DCD6CE;border-radius:var(--r-sm);background:#FCFBFA}
 .field input::placeholder{color:#A9A099}
@@ -565,7 +566,7 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
   <div class="wrap">
     <a class="skip-link" href="#top">본문 바로가기</a>
     <a class="brand" href="#top">Konect</a>
-    <a class="btn btn--primary nav-cta" href="#lead-modal" data-lead>첫 달 무료로 시작하기</a>
+    <a class="btn btn--primary is-featured nav-cta" href="#lead-modal" data-lead>첫 달 무료로 시작하기</a>
   </div>
 </header>
 
@@ -579,7 +580,7 @@ section.tasks{height:320vh;padding:0;display:block;overflow:visible}
         <h1><span class="lead-in">세무사를 위한</span><br>고객 커뮤니케이션 자동화 솔루션</h1>
         <p class="lede">세무사가 매달 반복하는 커뮤니케이션 업무를 <span class="mention">코넥트</span>가 모두 자동화해 드립니다.<br>콘텐츠 제작부터 발송까지, <br class="br-m">세무사님은 검토만 하세요.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+          <a class="btn btn--primary is-featured" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
           <a class="btn btn--secondary" href="#" id="kakao-cta">카카오톡으로 상담하기</a>
         </div>
       </div>
@@ -812,7 +813,7 @@ OOO 대표님
     <div class="close-copy" data-reveal style="margin-top:var(--s-7)">
       <h2>거래처 커뮤니케이션, 지금 코넥트에 맡겨보세요</h2>
       <div class="btn-row">
-        <a class="btn btn--primary" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
+        <a class="btn btn--primary is-featured" href="#lead-modal" data-lead>1개월 무료로 시작하기</a>
         <a class="btn btn--secondary" href="#" id="kakao-cta-2">카카오톡으로 상담하기</a>
       </div>
     </div>
@@ -855,7 +856,7 @@ OOO 대표님
           <span class="err">사무실 이름을 입력해주세요.</span>
         </label>
         <label class="field" id="f-phone">
-          <span class="lb">연락처<span class="req">*</span></span>
+          <span class="lb">연락처<span class="req">*</span><span class="field-hint"> · 카카오 알림톡이 발송되니 정확히 입력해주세요</span></span>
           <input name="phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-1234-5678">
           <span class="err">연락처를 정확히 입력해주세요.</span>
         </label>
@@ -881,7 +882,7 @@ OOO 대표님
     <div id="lead-done" class="modal-done" hidden="">
       <div class="check">✓</div>
       <h3>신청이 접수되었습니다</h3>
-      <p class="modal-sub">1영업일 안에 연락드리겠습니다. 감사합니다.</p>
+      <p class="modal-sub">입력하신 연락처로 카카오 알림톡을 보내드렸어요. 알림톡의 안내에 따라 설정을 완료해주세요.</p>
       <button class="btn btn--primary" type="button" data-close="">닫기</button>
     </div>
   </div>
@@ -989,7 +990,7 @@ var FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwl3XRIdaU6vzkeaZgq
 
       fetch(FORM_ENDPOINT, opts).then(function(r){
         if (!isSheets && !r.ok) throw new Error("bad response");
-        finish("신청이 접수되었습니다", "1영업일 안에 연락드리겠습니다. 감사합니다.");
+        finish("신청이 접수되었습니다", "입력하신 연락처로 카카오 알림톡을 보내드렸어요. 알림톡의 안내에 따라 설정을 완료해주세요.");
       }).catch(function(){
         btn.disabled = false;
         btn.textContent = "신청하기";
